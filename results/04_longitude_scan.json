@@ -1,0 +1,34 @@
+{
+  "script": "04_longitude_scan.py",
+  "status": "CONFIRMATORY (pre-registered \u00a710)",
+  "run_timestamp_utc": "2026-05-17T22:37:20.110709+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "alpha": 0.05,
+  "n_in_range": 994,
+  "target_lon_deg_primary": -47.1,
+  "scan_resolution_primary": 5.0,
+  "scan_resolution_fine": 1.0,
+  "T_obs_47W": 4.648886006364627,
+  "T_obs_min_across_scan": 3.7832506064944673,
+  "T_obs_min_longitude": -20.0,
+  "T_obs_47W_rank_in_scan": 10,
+  "n_longitudes_5deg": 72,
+  "step_10a_5deg": {
+    "p_LEE": 9.999000099990002e-05,
+    "T_min_null_mean": 45.02211681043716,
+    "T_min_null_std": 1.2548779926030709,
+    "T_min_null_min": 40.61221125636369,
+    "T_min_null_p1": 42.10215023558349,
+    "T_min_null_p5": 42.93238405985774,
+    "T_min_null_median": 45.033146655448995,
+    "count_T_min_null_le_T_obs_47W": 0,
+    "verdict": "SIGNIFICANT at \u03b1 = 0.05 after look-elsewhere correction"
+  },
+  "step_10b_1deg": {
+    "p_LEE": 9.999000099990002e-05,
+    "executed": true
+  }
+}

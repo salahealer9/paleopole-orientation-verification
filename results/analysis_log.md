@@ -282,3 +282,74 @@ Both results are correct. Together they describe what the data shows: the bearin
 This is the central empirical finding of the analysis. The final writeup will present both results, with the pre-registered result as the confirmatory finding and the conditional-null result as the exploratory finding clarifying what the pre-registered null could not isolate. The data owner will receive both results 14 days before public release per pre-registration §12 point 2.
 
 ---
+
+## 2026-05-17 — Longitude scan result (script 04, pre-registered §10)
+
+Script 04 ran the pre-registered look-elsewhere longitude scan as specified in §10 of the pre-registration. The scan uses the same unconditional null as §7 (script 03), which is the pre-registered specification.
+
+### Observed-data finding (non-null)
+
+Before considering any Monte Carlo, the observed T_obs at each of 72 longitudes (5° resolution) yields a striking result:
+
+- **T_obs at 47°W (pre-registered): 4.649°**
+- **T_obs minimum across the scan: 3.783° at longitude −20°E** (off the West African coast)
+- **47°W is rank 10 of 72 most-clustered meridians.**
+
+The top 10 most-clustered meridians are all in a contiguous band from approximately −40° to 0° (the Atlantic between Africa and South America, plus the prime meridian). Ranks 1-9 all lie in a single 40°-wide longitude window. Rank 10 (+0°, the prime meridian) is the first to break the pattern. The pre-registered 47°W meridian falls on the *edge* of this attractor band, not at its center.
+
+**This is a falsifiable, non-statistical observation that does not depend on any null model.** Within the observed data, 47°W is not the most-clustered meridian. The natural geometric attractor for great-circle intersections of these sites in the northern hemisphere is centered around −20°E, not −47°W.
+
+| Rank | Longitude | T_obs |
+|---:|---:|---:|
+| 1 | −20.0° | 3.783° |
+| 2 | −25.0° | 3.787° |
+| 3 | −30.0° | 3.826° |
+| 4 | −15.0° | 3.844° |
+| 5 | −35.0° | 3.936° |
+| 6 | −10.0° | 3.983° |
+| 7 | −40.0° | 4.158° |
+| 8 | **−45.0°** | **4.470°** (pre-registered band) |
+| 9 | −5.0° | 4.511° |
+| 10 | 0.0° | 5.072° |
+
+### Pre-registered Monte Carlo result
+
+The look-elsewhere null distribution (M = 10,000, 5° resolution) under the pre-registered unconditional null:
+
+- T_min null mean: 45.02°
+- T_min null std: 1.25°
+- T_min null minimum (across iterations): 40.61°
+- T_min null 5th percentile: 42.93°
+- Count of T_min_null ≤ T_obs(47°W): 0 / 10,000
+- **p_LEE (5° primary): 0.0001 (SIGNIFICANT at α = 0.05)**
+
+The 1° resolution sensitivity scan was triggered by the 5° result being below α = 0.05 (per §10b):
+
+- **p_LEE (1° sensitivity): 0.0001**
+
+### Interpretation: same artifact as script 03
+
+The pre-registered null in §10 inherits the hemisphere-mismatch issue documented for §7: random bearing permutations produce only ~54% northern-hemisphere intersections at any given meridian, while observed bearings produce ~99% northern. The "minimum T across longitudes under random permutation" is therefore still dominated by southern-hemisphere contributions: the null T_min mean of ~45° is consistent with most meridians having ~half their intersections in the south, contributing ~100°+ per such structure.
+
+T_obs(47°W) = 4.65° appears extraordinarily small relative to T_min null mean of 45°, producing p_LEE = 0.0001. But this is the same artifact that produced the script 03 result: the test is sensitive to "are bearings random in any sense," not "is 47°W specifically clustered compared to geometry-driven attractor meridians."
+
+### Combined picture (as of this entry)
+
+| Test | Status | p-value | What it shows |
+|---|---|---|---|
+| §7 unconditional null at 47°W | pre-registered (script 03) | 0.0001 | Bearings non-random in producing northern intersections |
+| Conditional null at 47°W | exploratory (script 03b) | 0.9989 | Within-hemisphere clustering at 47°W not distinguishable from random geometry |
+| §10 look-elsewhere unconditional | pre-registered (script 04) | 0.0001 | Same artifact as §7, propagated through longitude scan |
+| **Observed-data ranking** | **descriptive** | **n/a** | **47°W is rank 10 of 72; minimum-T meridian is at −20°E** |
+
+The pre-registered tests both show "significance," but the observed-data ranking and the conditional-null result jointly demonstrate that 47°W is not the specially-clustered meridian Mario's framework claims it is. The natural geometric attractor band centers around −20°E, and even at 47°W, within-hemisphere clustering is not distinguishable from random great-circle geometry.
+
+### Next analytical step
+
+A **conditional look-elsewhere scan** would parallel the relationship of script 03b to script 03: it would replace the unconditional null in §10's longitude scan with the conditional swap-chain null from 03b. This is not pre-registered and would be labeled exploratory.
+
+Given the observed-data ranking finding above, and the consistency between scripts 03 and 04 in showing the same hemisphere-mismatch artifact, a conditional look-elsewhere scan may not be necessary for the substantive finding — the observed-data result already shows that 47°W is not the minimum-T meridian, which is the relevant non-statistical fact. The conditional look-elsewhere scan would convert this descriptive fact into a formal p-value, but the substantive conclusion is already clear.
+
+For completeness and methodological symmetry, an exploratory conditional look-elsewhere scan may still be run as script 04b. To be decided in light of the remaining pre-registered work in script 05 (per-pole confirmatory and site-to-pole assignment tests).
+
+---
