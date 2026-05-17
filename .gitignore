@@ -1,0 +1,113 @@
+# =============================================================================
+# DATA FILES — NEVER COMMIT
+# =============================================================================
+# Per agreement with the data provider (Mario Buildreps), the database file
+# must not be redistributed. This block enforces that at the tooling level.
+
+data/*.xlsx
+data/*.xls
+data/*.csv
+data/*.tsv
+data/*.ods
+data/*.parquet
+data/*.feather
+data/*.json
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# Allow data/README.md and other documentation
+!data/README.md
+!data/*.md
+
+# Allow proof
+!data/*.sha256
+!data/*.sha256.asc
+!data/*.sha256.ots
+!data/*.asc.ots
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# pytest / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# =============================================================================
+# R (in case any R is used)
+# =============================================================================
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# =============================================================================
+# OS-generated files
+# =============================================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# =============================================================================
+# Editors / IDEs
+# =============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# =============================================================================
+# Secrets / local config
+# =============================================================================
+.env
+.env.local
+*.pem
+*.key
+secrets.yml
+config.local.*
