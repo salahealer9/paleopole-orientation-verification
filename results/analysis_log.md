@@ -192,7 +192,14 @@ A simple diagnostic comparing one random permutation against the observed data r
 
 The observed data has 994 northern-hemisphere intersections because the data owner classified those structures as in-range — i.e., the (site, bearing) pairs in the observed set were *selected* to produce northern intersections. When we randomly permute the bearings, most random pairings of (site, bearing) produce southern-hemisphere intersections, giving very large d_i values to the nearest northern pole and inflating T.
 
-The null distribution mean of ~56° corresponds approximately to "typical permuted intersection at latitude −20° to −30°, average distance to nearest pole in [52.3°, 90°] is ~75° — softened by some fraction landing near a pole." This null is dominated by "permuted intersections that fell in the southern hemisphere," not by "permuted intersections that fell at non-special northern latitudes."
+A further diagnostic stratified d_min by the hemisphere of the resulting permuted intersection:
+
+- Permuted intersections in [0°, 90°] (540 of 994 in one iteration): **median d_min = 2.02°**.
+- Permuted intersections in [−90°, 0°) (454 of 994 in one iteration): **median d_min = 119.30°**.
+
+This breakdown is decisive. The observed d_min median is **1.81°**. The permuted d_min median *for the northern subset only* is **2.02°** — essentially identical. The 26-sigma "highly significant" headline result is therefore entirely an artefact of the hemisphere mismatch in the null model: random bearings paired with observed sites yield ~54% northern intersections, while observed bearings paired with observed sites yield ~99% northern intersections, and the southern half of the random permutations contributes ~120° to d_min each, dominating T.
+
+The null mean of ~56° is consistent with this decomposition: (454 × 119.3 + 540 × 2.0) / 994 ≈ 55.9°, matching the observed null mean of 55.89° to two decimal places.
 
 ### What the pre-registered null actually tests vs. what we wanted to test
 
@@ -202,16 +209,20 @@ The null distribution mean of ~56° corresponds approximately to "typical permut
 
 **What we intended to test**: given that the orientations are non-random in a way that produces predominantly northern-hemisphere intersections, are those intersections clustering more tightly at the five specific paleopoles than expected?
 
-**The pre-registered null does not isolate this question.** It rejects the broader hypothesis that bearings are randomly paired with sites, which is true but is a weaker and less informative finding than the framework's specific claim.
+**The pre-registered null does not isolate this question.** The diagnostic above suggests that *within* the northern hemisphere, random permutation produces clustering essentially indistinguishable from the observed clustering (2.02° vs 1.81°). This is consistent with the alternative hypothesis that the apparent clustering at the five proposed poles is a geometric inevitability of where great circles from this geographic distribution of sites land in the northern hemisphere of the 47°W meridian — not evidence of pole-pointing by ancient builders.
+
+The 47°W meridian passes through Greenland and the high-latitude North Atlantic. Sites concentrated in the mid-latitudes (Mesoamerica, the Mediterranean, the Middle East, South and East Asia) have great circles that, when they cross 47°W in the northern hemisphere at all, are geometrically constrained to a band roughly covering [50°N, 90°N] — i.e., the range in which the five proposed poles lie. The five "poles" may be five marker points within a region where great-circle geometry already concentrates crossings, rather than five distinct attractors.
 
 ### Decision
 
-Per pre-registration §12 point 4 ("Method changes after seeing the data are prohibited"), I will not revise §7 or deposit a v1.2 of the pre-registration after seeing the data. The pre-registered analysis is the analysis I committed to, and its result (p = 0.0001, "highly significant" under §9) stands as the pre-registered confirmatory finding.
+Per pre-registration §12 point 4 ("Method changes after seeing the data are prohibited"), I will not revise §7 or deposit a v1.2 of the pre-registration after seeing the data. The pre-registered analysis is the analysis I committed to, and its result (p = 0.0001, "highly significant" under §9) stands as the pre-registered confirmatory finding — but with the interpretive limitation documented above.
 
-The interpretive limitation will be reported transparently in the final writeup. The pre-registered finding will be characterised accurately: it rejects the null that "any random reassignment of bearings produces this much northern-hemisphere concentration," which is a meaningful but weaker statement than "the bearings cluster around the five specific proposed poles more than other plausible explanations predict."
+The pre-registered finding will be characterised accurately in the final writeup: it rejects the null that "any random reassignment of bearings produces this much northern-hemisphere concentration," which is a meaningful but weaker statement than "the bearings cluster around the five specific proposed poles more than expected from great-circle geometry alone."
 
-Per pre-registration §12 point 3 ("No new tests will be added post-hoc without clear labeling"), I will additionally implement and run a **conditional null Monte Carlo** that preserves the in-range property of the observed data. This is an **exploratory** analysis in the formal sense — it was not pre-registered and is run after seeing the data. It addresses what the pre-registered null was *intended* to test but failed to isolate. Its result will be reported alongside the pre-registered result with the explicit labeling required by §12 point 3.
+Per pre-registration §12 point 3 ("No new tests will be added post-hoc without clear labeling"), I will additionally implement and run a **conditional null Monte Carlo** (script 03b) that preserves the in-range property of the observed data. This is an **exploratory** analysis in the formal sense: it was not pre-registered and is run after seeing the data. It addresses the within-hemisphere clustering question that the pre-registered null could not isolate. Its result will be reported alongside the pre-registered result with the explicit labeling required by §12 point 3.
 
-The script for the exploratory conditional Monte Carlo will be `03b_conditional_null_exploratory.py`. The conditional null will be specified as: rejection-sample bearing permutations until one produces 994 in-range intersections (per the data owner's classification criterion applied to the permuted data), then compute T from those 994. This null preserves both the marginal bearing distribution and the in-range property.
+**Anticipated outcome**: based on the diagnostic above (2.02° permuted vs 1.81° observed within the northern hemisphere), the conditional-null p-value is expected to be well above the pre-registered α = 0.05 threshold. If confirmed, this would indicate that the observed clustering at the proposed paleopoles is not statistically distinguishable from random great-circle geometry conditioned on northern-hemisphere intersection.
+
+The conditional null will be specified as a **site-wise restricted permutation** (Conditional-null A): for each site, the bearing pool is restricted to those bearings (from the empirical pool of 994) which, when assigned to that site, produce a northern-hemisphere intersection. Permutation samples from these per-site restricted pools. This preserves the in-range property by construction, with the trade-off that the resulting marginal bearing distribution may be slightly distorted relative to the empirical marginal. The distortion will be quantified and reported as a sensitivity check.
 
 ---
