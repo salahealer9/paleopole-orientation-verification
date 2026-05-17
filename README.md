@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20258203.svg)](https://doi.org/10.5281/zenodo.20258203)
+
 # Paleopole Orientation Verification
 
 An independent, pre-registered statistical test of the claim that the orientations of ancient pyramids, temples, and megalithic structures cluster around proposed former geographic pole positions.
@@ -49,7 +51,7 @@ The SHA-256 hash of the exact file used in this analysis is recorded in `data/RE
 
 The pre-registration is deposited on Zenodo with a permanent DOI and OpenTimestamps proof. It is also committed to this repository under `preregistration/` and signed with a GPG key for additional provenance.
 
-**Zenodo DOI**: *(to be added once deposited)*
+**Zenodo DOI**: *[10.5281/zenodo.20258203](https://doi.org/10.5281/zenodo.20258203)*
 
 The pre-registration was written and timestamped **before** the database file was opened. The SHA-256 hash of the database file is recorded in the pre-registration itself, so the analysis can only legitimately be run against that exact file.
 
