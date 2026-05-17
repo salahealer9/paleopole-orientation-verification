@@ -1,0 +1,29 @@
+{
+  "script": "01_geometry_check.py",
+  "run_timestamp_utc": "2026-05-17T16:56:00.372848+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "target_lon_deg": -47.1,
+  "discrepancy_threshold_deg": 0.1,
+  "n_rows_total": 1159,
+  "n_rows_compared_numeric": 993,
+  "abs_diff_mean_deg": 1.4182111738346705,
+  "abs_diff_median_deg": 0.02540621431933232,
+  "abs_diff_max_deg": 179.14316808493254,
+  "diff_std_deg": 15.272242052784403,
+  "agreement_at_thresholds": {
+    "0.001_deg": 80,
+    "0.01_deg": 226,
+    "0.1_deg": 950,
+    "1.0_deg": 977
+  },
+  "no_intersect_counts": {
+    "marios_no_intersect": 166,
+    "independent_no_intersect": 0,
+    "both_agree_no_intersect": 0,
+    "marios_only_no_intersect": 166,
+    "independent_only_no_intersect": 0
+  },
+  "n_discrepant_rows": 209,
+  "discrepancy_threshold_used": 0.1
+}
