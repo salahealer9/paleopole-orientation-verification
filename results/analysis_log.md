@@ -226,3 +226,59 @@ Per pre-registration §12 point 3 ("No new tests will be added post-hoc without 
 The conditional null will be specified as a **site-wise restricted permutation** (Conditional-null A): for each site, the bearing pool is restricted to those bearings (from the empirical pool of 994) which, when assigned to that site, produce a northern-hemisphere intersection. Permutation samples from these per-site restricted pools. This preserves the in-range property by construction, with the trade-off that the resulting marginal bearing distribution may be slightly distorted relative to the empirical marginal. The distortion will be quantified and reported as a sensitivity check.
 
 ---
+
+## 2026-05-17 — Conditional-null exploratory result (script 03b)
+
+Script 03b ran the exploratory conditional-null Monte Carlo as specified in the previous log entry. Implementation: Metropolis swap chain starting at the identity permutation, with site-wise compatibility constraints, M = 10,000 retained permutations after 4,970-swap warmup with 1,988-swap thinning interval.
+
+### Result
+
+**5-pole (primary structure, exploratory only)**:
+- T_obs: 4.6489°
+- Conditional null mean: 4.1286°
+- Null std: 0.1534°
+- Null 5th / 50th / 95th percentile: 3.882° / 4.124° / 4.384°
+- Count of T_null ≤ T_obs: **9,989 / 10,000**
+- **p-value (exploratory): 0.9989**
+
+**6-pole (sensitivity, exploratory)**:
+- T_obs: 3.6099°
+- Conditional null mean: 3.1605°
+- Count of T_null ≤ T_obs: 9,996 / 10,000
+- p-value (exploratory): 0.9996
+
+### Interpretation
+
+The prediction in the previous log entry was confirmed and refined: within the conditional null preserving the northern-hemisphere property, the observed data is **not** more clustered at the five proposed paleopoles than random great-circle geometry would produce. The observed T is in the upper tail of the conditional null — i.e., observed clustering is *worse* than random.
+
+Substantively, this means:
+
+- The 26-sigma "highly significant" pre-registered result is entirely explained by the hemisphere preference: observed bearings produce ~99% northern-hemisphere intersections, while random bearings on the same sites produce only ~54% northern. The pre-registered null detected this hemisphere preference and rejected the broad null of "any random reassignment of bearings."
+- Once the hemisphere preference is preserved by construction (the conditional null), the observed clustering at the five specific poles is not statistically distinguishable from random great-circle geometry on this site distribution. In fact, it is slightly *worse* than typical random permutations, driven in part by the 8 manually-adjusted structures whose geometrically-correct intersections (which our analysis uses) are in the southern hemisphere, contributing ~141° per structure to T_obs.
+
+### Chain diagnostics and methodological notes
+
+- Compatibility matrix density: 53.7% (530,380 of 988,036 (site, bearing) pairs in-range).
+- Per-site eligibility ranged from 370 to 824 bearings out of 994.
+- Identity-permutation diagonal validity: 985 of 994 (the 9 sites failing this check were Shimao, Haran, and the 7 manually-snapped ±1° structures — see earlier log entries for 2026-05-17 documenting these as the data owner's hand-adjustments).
+- Swap acceptance rate: 0.5006 (consistent with rapid mixing).
+- Residual conditional-null property violation: 403 southern intersections across 9,940,000 total permuted intersections (0.0041%). This residual is concentrated at the 9 sites with forced-True diagonal entries; it inflates the null mean by approximately 0.006°, well below the precision needed for the headline finding (T_obs of 4.65° vs null mean of 4.13°, separation of 0.52°).
+
+The 403-intersection residual is documented here for transparency and would be eliminated in a strict-rejection implementation, but the cost of strict rejection (rejection rate near 100% for these specific sites under independent re-sampling) would dwarf the methodological gain.
+
+### Status of this result
+
+EXPLORATORY per pre-registration §12 point 3. This finding does not constitute a confirmatory rejection of the framework's hypothesis. It does, however, provide strong evidence that the within-northern-hemisphere clustering at the proposed paleopoles is not distinguishable from great-circle geometry's natural concentration on this geographic sample.
+
+### Combined interpretation of the two Monte Carlo results
+
+| Question | Test | p-value | Status |
+|---|---|---|---|
+| Are bearings random across all (site, bearing) pairings? | Pre-registered §7 null | 0.0001 | Confirmatory: rejected. |
+| Are bearings random *conditional on the in-range filter*? | Conditional null (exploratory) | 0.9989 | Exploratory: not rejected, in fact directionally opposite. |
+
+Both results are correct. Together they describe what the data shows: the bearings are non-random in producing predominantly northern-hemisphere intersections, but within the northern hemisphere, the clustering at the proposed paleopoles is a geometric inevitability of great-circle geometry given this site distribution and meridian choice — not evidence of pole-pointing by the structures' builders.
+
+This is the central empirical finding of the analysis. The final writeup will present both results, with the pre-registered result as the confirmatory finding and the conditional-null result as the exploratory finding clarifying what the pre-registered null could not isolate. The data owner will receive both results 14 days before public release per pre-registration §12 point 2.
+
+---

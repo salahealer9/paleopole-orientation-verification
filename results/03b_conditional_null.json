@@ -1,0 +1,57 @@
+{
+  "script": "03b_conditional_null_exploratory.py",
+  "status": "EXPLORATORY (post-hoc, per pre-registration \u00a712 point 3)",
+  "run_timestamp_utc": "2026-05-17T22:00:13.710077+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "swaps_per_sample": 1988,
+  "warmup_swaps": 4970,
+  "alpha_reference": 0.05,
+  "n_in_range": 994,
+  "target_lon_deg": -47.1,
+  "compatibility_density": 0.536811411729937,
+  "compatibility_per_site_min_max": [
+    370,
+    824
+  ],
+  "chain_acceptance_rate": 0.5005986430957653,
+  "poles_primary": {
+    "I (current)": 90.0,
+    "II": 76.0,
+    "III": 72.2,
+    "IV": 64.1,
+    "V": 52.3
+  },
+  "poles_with_vi": {
+    "I (current)": 90.0,
+    "II": 76.0,
+    "III": 72.2,
+    "IV": 64.1,
+    "V": 52.3,
+    "VI": 42.0
+  },
+  "primary_5pole": {
+    "T_obs": 4.648886006364627,
+    "T_null_mean": 4.1285652176463525,
+    "T_null_std": 0.1533933904697003,
+    "T_null_min": 3.58597237026279,
+    "T_null_p1": 3.7812868732683422,
+    "T_null_p5": 3.8816609506708724,
+    "T_null_median": 4.1245486044590995,
+    "T_null_p95": 4.3843981900323925,
+    "T_null_max": 5.294972327598218,
+    "count_T_null_le_T_obs": 9989,
+    "p_value_exploratory": 0.9989001099890011,
+    "status": "NOT significant at \u03b1 = 0.05"
+  },
+  "sensitivity_6pole": {
+    "T_obs": 3.609898121316729,
+    "T_null_mean": 3.160501971539379,
+    "T_null_std": 0.1083699628938756,
+    "T_null_p5": 2.9869015383557476,
+    "count_T_null_le_T_obs": 9996,
+    "p_value_exploratory": 0.9996000399960004
+  }
+}
