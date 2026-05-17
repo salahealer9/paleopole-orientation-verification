@@ -1,0 +1,12 @@
+# Python environment for paleopole-orientation-verification
+# Tested with Python 3.11
+#
+# Pin to compatible major versions to balance reproducibility against
+# security patches. Exact versions used in the verified analysis run
+# will be recorded in results/ along with the analysis output.
+
+pandas>=2.0,<3.0
+numpy>=1.24,<3.0
+openpyxl>=3.1,<4.0          # required by pandas to read .xlsx
+scipy>=1.10,<2.0
+matplotlib>=3.7,<4.0

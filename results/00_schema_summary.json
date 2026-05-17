@@ -1,0 +1,146 @@
+{
+  "script": "00_verify_and_describe.py",
+  "run_timestamp_utc": "2026-05-17T16:29:12.228360+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "workbook_sheets": {
+    "All Data": {
+      "n_rows": 1159,
+      "n_cols": 9,
+      "columns": [
+        "SITE NAME",
+        "COUNTRY",
+        "LAT",
+        "LON",
+        "BEARING",
+        "Intersection Latitude at Lon 47.1W Line",
+        "Rounded Latitudes",
+        "Remarks",
+        "Date added"
+      ]
+    },
+    "Concentrations around LAT 44-47": {
+      "n_rows": 92,
+      "n_cols": 7,
+      "columns": [
+        "Lat",
+        "Amount",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "Unnamed: 6"
+      ]
+    },
+    "Collective Orientation v2020": {
+      "n_rows": 446,
+      "n_cols": 15,
+      "columns": [
+        "Unnamed: 0",
+        "DATA WESTERN HEMISPHERE, ORIENT >=+10",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "Unnamed: 5",
+        "DATA EASTERN HEMISPHERE, ORIENT <=-10",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9",
+        "Unnamed: 10",
+        "Loc 1",
+        9.65608528216704,
+        -87.6735140632054,
+        25.3216704288939
+      ]
+    },
+    "Collective Orientation v2015": {
+      "n_rows": 212,
+      "n_cols": 13,
+      "columns": [
+        "Unnamed: 0",
+        "WESTERN HEMISPHERE",
+        "Unnamed: 2",
+        "Unnamed: 3",
+        "Unnamed: 4",
+        "EASTERN HEMISPHERE",
+        "Unnamed: 6",
+        "Unnamed: 7",
+        "Unnamed: 8",
+        "Unnamed: 9",
+        "Unnamed: 10",
+        "Unnamed: 11",
+        "Unnamed: 12"
+      ]
+    }
+  },
+  "primary_sheet": {
+    "sheet_name": "All Data",
+    "n_rows": 1159,
+    "n_cols": 9,
+    "columns_present": [
+      "SITE NAME",
+      "COUNTRY",
+      "LAT",
+      "LON",
+      "BEARING",
+      "Intersection Latitude at Lon 47.1W Line",
+      "Rounded Latitudes",
+      "Remarks",
+      "Date added"
+    ],
+    "missing_columns": [],
+    "unexpected_columns": [],
+    "dtypes": {
+      "SITE NAME": "str",
+      "COUNTRY": "str",
+      "LAT": "float64",
+      "LON": "float64",
+      "BEARING": "float64",
+      "Intersection Latitude at Lon 47.1W Line": "object",
+      "Rounded Latitudes": "float64",
+      "Remarks": "str",
+      "Date added": "object"
+    },
+    "nan_counts": {
+      "SITE NAME": 1,
+      "COUNTRY": 0,
+      "LAT": 0,
+      "LON": 0,
+      "BEARING": 0,
+      "Intersection Latitude at Lon 47.1W Line": 0,
+      "Rounded Latitudes": 165,
+      "Remarks": 910,
+      "Date added": 24
+    },
+    "range_checks": {
+      "LAT": {
+        "expected_range": [
+          -90.0,
+          90.0
+        ],
+        "n_below_range": 0,
+        "n_above_range": 0,
+        "n_nan": 0
+      },
+      "LON": {
+        "expected_range": [
+          -180.0,
+          180.0
+        ],
+        "n_below_range": 0,
+        "n_above_range": 0,
+        "n_nan": 0
+      },
+      "BEARING": {
+        "expected_range": [
+          -45.0,
+          45.0
+        ],
+        "n_below_range": 0,
+        "n_above_range": 0,
+        "n_nan": 0
+      }
+    },
+    "row_count_match": true
+  }
+}
