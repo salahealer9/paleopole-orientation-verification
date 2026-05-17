@@ -1,6 +1,6 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20258203.svg)](https://doi.org/10.5281/zenodo.20258203)
-
 # Paleopole Orientation Verification
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20258203.svg)](https://doi.org/10.5281/zenodo.20258203)
 
 An independent, pre-registered statistical test of the claim that the orientations of ancient pyramids, temples, and megalithic structures cluster around proposed former geographic pole positions.
 
