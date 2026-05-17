@@ -165,6 +165,53 @@ This concludes the inspection of the observed data. Script 03 (Monte Carlo null 
 
 ---
 
+## 2026-05-17 — Primary Monte Carlo result and a critical interpretive limitation of the pre-registered null
 
+Script 03 was run as specified in pre-registration §7. The headline result:
 
+- **T_obs (5-pole, primary)**: 4.6489°
+- **Null mean**: 55.89°, **null std**: 1.71°, **null minimum across M = 10,000 iterations**: 49.86°
+- **Count of T_null ≤ T_obs**: 0 / 10,000
+- **p-value (5-pole)**: 0.0001
+- **Verdict per pre-registration §9**: HIGHLY SIGNIFICANT (p < 0.01)
 
+- **T_obs (6-pole, sensitivity)**: 3.6099°
+- **p-value (6-pole)**: 0.0001 (count 0 / 10,000)
+
+### Why the result is methodologically suspect at face value
+
+T_obs is more than 26 standard deviations below the null mean. The closest random permutation in 10,000 was still ~45° worse than the observed value. Real-world archaeological data does not produce 26-sigma effects without some artefact of the null model. This called for diagnostic investigation before accepting the result.
+
+### Diagnostic: the null does not preserve the in-range property
+
+A simple diagnostic comparing one random permutation against the observed data revealed the mechanism:
+
+- **Observed intersection latitudes**: 99.1% in the northern hemisphere (985 of 994); median +70.3°.
+- **Single random permutation**: 51.6% in the northern hemisphere (513 of 994); median +29.5°.
+- **Across 100 random permutations**: northern-hemisphere count averaged 534.8, range [482, 576].
+
+The observed data has 994 northern-hemisphere intersections because the data owner classified those structures as in-range — i.e., the (site, bearing) pairs in the observed set were *selected* to produce northern intersections. When we randomly permute the bearings, most random pairings of (site, bearing) produce southern-hemisphere intersections, giving very large d_i values to the nearest northern pole and inflating T.
+
+The null distribution mean of ~56° corresponds approximately to "typical permuted intersection at latitude −20° to −30°, average distance to nearest pole in [52.3°, 90°] is ~75° — softened by some fraction landing near a pole." This null is dominated by "permuted intersections that fell in the southern hemisphere," not by "permuted intersections that fell at non-special northern latitudes."
+
+### What the pre-registered null actually tests vs. what we wanted to test
+
+**What §7 implements**: given the 994 (lat, lon, bearing) triples from the observed in-range set, are random re-pairings of bearings to sites consistent with the observed concentration near the five proposed pole latitudes?
+
+**Result**: very strongly no. Random re-pairings produce mostly southern-hemisphere intersections. The observed data does not.
+
+**What we intended to test**: given that the orientations are non-random in a way that produces predominantly northern-hemisphere intersections, are those intersections clustering more tightly at the five specific paleopoles than expected?
+
+**The pre-registered null does not isolate this question.** It rejects the broader hypothesis that bearings are randomly paired with sites, which is true but is a weaker and less informative finding than the framework's specific claim.
+
+### Decision
+
+Per pre-registration §12 point 4 ("Method changes after seeing the data are prohibited"), I will not revise §7 or deposit a v1.2 of the pre-registration after seeing the data. The pre-registered analysis is the analysis I committed to, and its result (p = 0.0001, "highly significant" under §9) stands as the pre-registered confirmatory finding.
+
+The interpretive limitation will be reported transparently in the final writeup. The pre-registered finding will be characterised accurately: it rejects the null that "any random reassignment of bearings produces this much northern-hemisphere concentration," which is a meaningful but weaker statement than "the bearings cluster around the five specific proposed poles more than other plausible explanations predict."
+
+Per pre-registration §12 point 3 ("No new tests will be added post-hoc without clear labeling"), I will additionally implement and run a **conditional null Monte Carlo** that preserves the in-range property of the observed data. This is an **exploratory** analysis in the formal sense — it was not pre-registered and is run after seeing the data. It addresses what the pre-registered null was *intended* to test but failed to isolate. Its result will be reported alongside the pre-registered result with the explicit labeling required by §12 point 3.
+
+The script for the exploratory conditional Monte Carlo will be `03b_conditional_null_exploratory.py`. The conditional null will be specified as: rejection-sample bearing permutations until one produces 994 in-range intersections (per the data owner's classification criterion applied to the permuted data), then compute T from those 994. This null preserves both the marginal bearing distribution and the in-range property.
+
+---

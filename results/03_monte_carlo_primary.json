@@ -1,0 +1,48 @@
+{
+  "script": "03_monte_carlo_primary.py",
+  "run_timestamp_utc": "2026-05-17T18:59:36.758077+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "alpha_primary": 0.05,
+  "n_in_range": 994,
+  "target_lon_deg": -47.1,
+  "poles_primary": {
+    "I (current)": 90.0,
+    "II": 76.0,
+    "III": 72.2,
+    "IV": 64.1,
+    "V": 52.3
+  },
+  "poles_with_vi": {
+    "I (current)": 90.0,
+    "II": 76.0,
+    "III": 72.2,
+    "IV": 64.1,
+    "V": 52.3,
+    "VI": 42.0
+  },
+  "primary_5pole": {
+    "T_obs": 4.648886006364627,
+    "T_null_mean": 55.88816766729902,
+    "T_null_std": 1.7074145165739905,
+    "T_null_min": 49.86295112770564,
+    "T_null_p1": 51.90942764636278,
+    "T_null_p5": 53.07444265649667,
+    "T_null_median": 55.88116835515663,
+    "T_null_p95": 58.73569842414203,
+    "T_null_max": 61.728652808112386,
+    "count_T_null_le_T_obs": 0,
+    "p_value": 9.999000099990002e-05,
+    "verdict": "HIGHLY SIGNIFICANT (p < 0.01)"
+  },
+  "sensitivity_6pole": {
+    "T_obs": 3.609898121316729,
+    "T_null_mean": 50.63959403690037,
+    "T_null_std": 1.5648124722613788,
+    "T_null_p5": 48.056932864189065,
+    "count_T_null_le_T_obs": 0,
+    "p_value": 9.999000099990002e-05
+  }
+}
