@@ -1,6 +1,6 @@
 {
   "script": "01_geometry_check.py",
-  "run_timestamp_utc": "2026-05-17T16:56:00.372848+00:00",
+  "run_timestamp_utc": "2026-05-17T18:12:32.527047+00:00",
   "preregistration_doi": "10.5281/zenodo.20258204",
   "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
   "target_lon_deg": -47.1,
@@ -24,6 +24,5 @@
     "marios_only_no_intersect": 166,
     "independent_only_no_intersect": 0
   },
-  "n_discrepant_rows": 209,
-  "discrepancy_threshold_used": 0.1
+  "n_discrepant_rows": 209
 }

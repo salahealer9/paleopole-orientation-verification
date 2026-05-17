@@ -96,4 +96,75 @@ The geometry validation is now considered complete. Script 01 is ready to commit
 
 ---
 
+## 2026-05-17 — Inclusion criterion refined; data parsing fix for European decimal separator
+
+The first run of `02_observed_test_statistic.py` revealed that applying a strict northern-hemisphere filter (intersection latitude ≥ 0) gives N = 985, not the pre-registered N = 993. A diagnostic comparison against the data owner's `Intersection Latitude at Lon 47.1W Line` column showed 10 disagreements:
+
+**9 "Mario IN-range, our hemisphere filter OUT-of-range":**
+
+- **7 manually-snapped sites** (bearings near ±1°: Castillo de Teayo, Cempoala, Messene, Red Pyramid, Bent Pyramid, Lumbini, Tomb of First Emperor). The data owner confirmed in his email of 2026-05-17 that these are case-by-case adjustments where he "attached" the structure to the current pole. His published values are 90°; geometrically-correct values are near −89°.
+- **1 partially-snapped site**: Haran (LAT 36.86, LON 39.03, BEARING +10°). The data owner's value is +15°; independent geometry gives −81.9°. This is a much larger discrepancy than the ±1° cases (97° apart), but the pattern is the same: a hand-adjusted value differs substantially from the algorithmic output.
+- **1 counter-example to the hemisphere filter**: Shimao (LAT 38.6, LON 110.3, BEARING −38°, Mario value −6.1°, independent value −6.15°). Mario classifies a southern-hemisphere intersection as in-range. This shows that the "No Intersect" classification is not strictly hemisphere-based — there is at least one southern-hemisphere intersection in Mario's in-range set.
+
+**1 "Mario OUT-of-range, our hemisphere filter IN-range":**
+
+- **Chaco Canyon** (LAT 40.38, LON −7.34, BEARING −45°). The data owner's column shows `56,2` (with a comma decimal separator, European convention). Our pandas-based parser failed to convert this to a number, so we marked it as "No Intersect." Independent geometry gives +56.19°, matching the intended `56.2°` exactly. This is a data-quality / parsing issue, not a methodological disagreement.
+
+### Decisions
+
+**(1) Inclusion criterion**: the pre-registered N = 993 is the data owner's classification. We adopt his classification (the `Intersection Latitude at Lon 47.1W Line` column is numeric vs. non-numeric) as the inclusion criterion. This matches the pre-registered N exactly.
+
+**(2) Geometry**: regardless of Mario's classification or pre-computed intersection values, the test statistic T uses our independent geometry (per his explicit recommendation of 2026-05-17). For the 8 manually-adjusted sites that he classifies in-range, this means their geometrically-correct intersections (~−89° for the bearing-±1° cases, −81.9° for Haran) will contribute large d_i values to T, pulling T upward. This is conservative: it tests the clustering claim under the geometry Mario himself endorsed, rather than under the hand-adjusted values that strengthen his published probabilities.
+
+**(3) Parser fix**: the parsing of Mario's column is updated to replace comma decimal separators with periods before numeric conversion. This correctly classifies Chaco Canyon as in-range.
+
+### Effect on pre-registered analysis
+
+None on test specification, null model, or significance thresholds. The pre-registered N = 993 is preserved exactly. The inclusion criterion is the data owner's published classification, which is what the pre-registration was written against.
+
+The "hemisphere filter" framing in the previous log entry (Convention 1) was an inference that turned out to be approximate but not exact. The accurate framing is: the inclusion criterion is whatever the data owner himself classifies as in-range, which is approximately but not strictly a northern-hemisphere filter. This refinement is documented here for transparency.
+
+---
+
+## 2026-05-17 — Final reconciliation of N: 994 in-range, +1 from pre-registered N = 993
+
+After applying the comma-decimal parser fix, the in-range count is 994, not the pre-registered 993. The single additional structure is Chaco Canyon, whose intersection latitude was recorded as `56,2` (European decimal comma) in the data owner's spreadsheet — clearly a numeric value he intended as in-range, but mis-parsed as text in any pipeline using period-as-decimal-separator (including his own MATLAB pipeline, judging from his published count of 993).
+
+### Possible explanations for the +1 discrepancy
+
+- Mario's stated count of 993 may have come from his own pipeline that also failed to parse `56,2`, in which case our value of 994 corrects the same parsing error in his code.
+- Alternatively, the 993 figure may have been from an earlier version of the database before Chaco Canyon was added (some rows in the file have "Date added" = 2020).
+- A third possibility is that he was approximating ("about 1,000 in-range") and our 994 happens to be the precise number.
+
+We cannot determine which without further correspondence, and the distinction does not affect the methodology.
+
+### Decision: use N = 994 and document the +1 deviation
+
+Per pre-registration §12, point 4: "Method changes after seeing the data are prohibited. If a clear specification error in this pre-registration is discovered after opening the data ... I will document the error, the correction, and the reason in the final write-up."
+
+This is a specification error of the most minor kind: the pre-registration described the data owner's *stated count* of 993, but the data file (with his classification rule applied consistently and with European decimal parsing) contains 994 in-range structures. Manually excluding Chaco Canyon to hit N = 993 would itself be a researcher degree of freedom (choosing which structure to drop on a target N), introducing a different and larger bias than the +1 deviation it would "fix."
+
+The faithful interpretation of the pre-registration is that N is determined by the inclusion rule (the data owner's classification, parseable as numeric), not by the stated count. The rule gives N = 994. Including Chaco Canyon is the conservative choice: it adds one structure with a geometrically valid intersection that is well-positioned (independent value: +56.19°, close to Pole V at +52.3°), which mildly *strengthens* the apparent clustering rather than weakening it. Excluding it would arbitrarily remove a structure that the data owner intended to include.
+
+### Effect on pre-registered analysis
+
+The +1 deviation in N is documented here transparently. No test statistic, null model, significance threshold, or sensitivity analysis is changed. T_obs (5-pole) computed on N = 994 is 4.649°. The Monte Carlo null distribution will be computed using the same 994 structures, and the p-value will be unaffected by this single-structure deviation from the pre-registered count.
+
+### Effect on T_obs
+
+After applying the data owner's recommended geometry (raw bearings, no hand-snapping) and using his classification for inclusion (994 in-range):
+
+- T_obs (5-pole, primary): 4.649°
+- T_obs (6-pole, sensitivity): 3.610°
+
+The 8 manually-snapped structures (the 7 the data owner identified plus Haran, which appears to be a similar manual adjustment) contribute large d_i values to T (each near 141°, distance from their geometrically-correct ~−89° intersection to the nearest of the five proposed poles). These 8 structures account for roughly 1.1° of the 4.6° in T_obs — i.e., T would be ~3.5° without them. The published probability values of the data owner depended on their being snapped to the current pole, which our analysis does not adopt.
+
+The d_min distribution shows a clear bimodal-ish character: 75% of structures are within 4.12° of a pole, with a long tail driven by the manually-snapped structures and other geometrically-distant intersections. The Monte Carlo will reveal whether the bulk concentration is unusual under the null.
+
+This concludes the inspection of the observed data. Script 03 (Monte Carlo null distribution) is the next step.
+
+---
+
+
+
 
