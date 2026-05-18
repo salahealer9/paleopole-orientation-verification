@@ -353,3 +353,84 @@ Given the observed-data ranking finding above, and the consistency between scrip
 For completeness and methodological symmetry, an exploratory conditional look-elsewhere scan may still be run as script 04b. To be decided in light of the remaining pre-registered work in script 05 (per-pole confirmatory and site-to-pole assignment tests).
 
 ---
+
+## 2026-05-18 — Per-pole and assignment test results (script 05)
+
+Script 05 implements §11(a) (per-pole confirmatory) and §11(b) (site-to-pole assignment), each under the pre-registered unconditional null AND under the exploratory swap-chain conditional null. The §11(b) assignment is operationalised as the nearest of the five (or six) proposed poles to the data owner's published intersection latitude per structure, per the decision documented in the previous analysis log entry.
+
+### Key results
+
+#### §11(a) per-pole, conditional null (exploratory, 5-pole)
+
+| Pole | Lat | Observed | Cond null mean | p-raw | p-Šidák |
+|---|---|---|---|---|---|
+| I (current) | 90.0°N | 95 | 102.77 | 1.0000 | 1.0000 |
+| II | 76.0°N | 115 | 85.92 | 0.0001 | 0.0005 |
+| III | 72.2°N | 119 | 83.77 | 0.0001 | 0.0005 |
+| IV | 64.1°N | 70 | 63.73 | 0.1967 | 0.6655 |
+| V | 52.3°N | 57 | 42.22 | 0.0090 | 0.0442 |
+
+#### §11(b) assignment, both nulls (5-pole)
+
+- Observed count: **454 / 994** match (46%)
+- Unconditional null mean: 45.5 (p = 0.0001)
+- Conditional null mean: 81.1 (p = 0.0001 exploratory)
+
+### Substantive interpretation: a genuine within-hemisphere finding
+
+These results show structure that script 03b's aggregate T statistic did not reveal. Specifically:
+
+**Within the conditional null** (which preserves the northern-hemisphere property of the observed data), three of the five proposed poles show significant excess concentration of structures:
+
+- **Pole II (76.0°N): observed 115 vs expected 86** — a 34% excess.
+- **Pole III (72.2°N): observed 119 vs expected 84** — a 42% excess.
+- **Pole V (52.3°N): observed 57 vs expected 42** — a 36% excess (marginal under Šidák).
+
+Poles I (90°N) and IV (64.1°N) show no significant excess. The §11(b) assignment test confirms the aggregate pattern: 454 structures (46%) have their independent intersection within 1.5° of their pipeline-assigned pole, compared to ~81 (8%) expected under the conditional null. This is a roughly 45σ effect — not a hemisphere-mismatch artifact, because the conditional null preserves the in-range property by construction.
+
+**Reconciling with script 03b's aggregate T result**: the conditional null mean T was 4.13°, while observed T was 4.65° — observed appears slightly *worse* on the aggregate statistic. The reconciliation:
+
+- The aggregate T = mean(d_min) is sensitive to outliers. The 8 manually-snapped structures with geometrically-correct intersections near −89°N contribute d_min ≈ 141° each, pulling T up by ~1.1°.
+- The §11(b) match count, being binary (within 1.5° or not), is insensitive to those outliers — they count as "non-match" regardless of how far from a pole they are.
+- For the bulk of structures (excluding the ~8 outliers), the data clusters at specific pole latitudes more tightly than the conditional null produces.
+
+### What this within-hemisphere finding does and does not show
+
+**Shows**: the observed bearings produce intersection latitudes that concentrate at specific narrow bands around Poles II, III, and V (76°, 72°, 52°N), more so than random bearings constrained to produce northern-hemisphere intersections would. This is a real statistical effect that cannot be attributed to the hemisphere-mismatch artifact responsible for the script 03 and script 04 pre-registered "significance."
+
+**Does not show**: that these concentrations represent ancient pole-pointing. The concentrations occur within a natural geometric attractor band (centered at −20°E per script 04, but evident across longitudes in [−40°, 0°]) determined by the site distribution. The proposed pole latitudes were derived by the data owner from where intersections concentrate, not specified independently. Other explanations for within-band concentration include cultural orientation conventions (e.g., shared architectural traditions producing similar bearings across regional groups), measurement quantization (bearings reported in degree increments), or specific orientation targets unrelated to paleopoles (e.g., sunrise/sunset directions at certain dates).
+
+The pre-registration does not test among these alternative explanations. The site-to-pole assignment test (§11(b)) was the strongest pre-registered test of the framework's specific predictions, and it does support the claim that the proposed poles capture concentrations in the data — but it does not establish that the concentrations represent the specific phenomenon (former geographic pole positions) that the framework hypothesises.
+
+### Interaction with the manually-adjusted structures
+
+The 8 manually-snapped structures (the ±1° bearing structures and Haran) are interesting from a §11(b) perspective. The data owner assigned all 8 to Pole I (90°N) in his published values (intersection = 90°). Our independent geometry places them at ≈ −89°. Under §11(b), these 8 structures contribute as "non-matches" because the geometrically-correct intersection is far from the assigned pole. Without them, the assignment match rate would be 462/986 = 47% rather than 454/994 = 46%.
+
+The data owner's case-by-case manual adjustments are the only place in the analysis where our pipeline gives systematically different results from his on the in-range subset. They contribute about 0.1° upward bias to T_obs and reduce the §11(b) match count by 8.
+
+### Combined picture, all pre-registered tests
+
+| Test | Section | Status | Result |
+|---|---|---|---|
+| Primary T, unconditional null | §7 (script 03) | pre-registered | p = 0.0001 (significant, but hemisphere-mismatch artifact) |
+| Primary T, conditional null | exploratory (script 03b) | exploratory | p = 0.9989 (observed worse than null) |
+| Look-elsewhere, unconditional | §10 (script 04) | pre-registered | p = 0.0001 (same artifact; 47°W is rank 10/72 in observed data) |
+| Per-pole, unconditional | §11(a) | pre-registered | All five poles "significant" by artifact |
+| Per-pole, conditional | exploratory | exploratory | Poles II, III significant (Šidák p < 0.001); Pole V marginal; Poles I, IV null |
+| Assignment, unconditional | §11(b) | pre-registered | p = 0.0001 (artifact) |
+| Assignment, conditional | exploratory | exploratory | **p = 0.0001 — genuine effect, ~45σ** |
+
+### Status of analysis
+
+The substantive analytical work is now complete. The framework's central claim of orientation-clustering at the proposed paleopoles is *partially* supported (Poles II, III, V show within-hemisphere excess), *not supported* for Pole I and Pole IV, and the broader interpretive claim (these are former geographic poles) is neither tested nor supported by this analysis.
+
+The writeup must navigate this carefully. The pre-registered tests "succeed" in the formal sense (significant p-values), but for the wrong reason (hemisphere mismatch). The exploratory conditional tests, taken together, paint a more nuanced picture: there IS a within-hemisphere clustering effect at three of the five poles, but it does not establish the framework's interpretive claim.
+
+The data owner will receive these findings 14 days before public release per pre-registration §12 point 2.
+
+---
+
+
+
+
+
