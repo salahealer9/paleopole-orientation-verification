@@ -1,0 +1,72 @@
+{
+  "script": "06_geographic_block_null.py",
+  "status": "Pre-registered \u00a711(d) sensitivity",
+  "run_timestamp_utc": "2026-05-18T06:19:20.530038+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "n_in_range": 994,
+  "blocks": {
+    "Africa": 2,
+    "Americas": 539,
+    "East Asia": 32,
+    "Europe-Med": 120,
+    "Middle East": 205,
+    "Oceania/SE Asia": 23,
+    "Other": 8,
+    "South Asia": 65
+  },
+  "T_observed": 4.648886006364627,
+  "block_unconditional": {
+    "T_null_mean": 4.755008651828784,
+    "T_null_std": 0.1168117521002604,
+    "p_T": 0.1700829917008299,
+    "per_pole_null_mean": {
+      "I (current)": 95.1353,
+      "II": 90.2976,
+      "III": 90.7222,
+      "IV": 70.192,
+      "V": 51.0626
+    },
+    "per_pole_p_sidak": {
+      "I (current)": 0.9981007861044074,
+      "II": 0.0014989504648502683,
+      "III": 0.000999500169955203,
+      "IV": 0.9792118230818111,
+      "V": 0.5673653816416037
+    },
+    "assignment_null_mean": 92.2591,
+    "assignment_p": 9.999000099990002e-05
+  },
+  "block_conditional": {
+    "T_null_mean": 4.5464283083003725,
+    "T_null_std": 0.10059347019814201,
+    "p_T": 0.8424157584241576,
+    "per_pole_null_mean": {
+      "I (current)": 95.4443,
+      "II": 90.2878,
+      "III": 90.6253,
+      "IV": 70.1313,
+      "V": 50.7747
+    },
+    "per_pole_p_sidak": {
+      "I (current)": 0.9997857398783943,
+      "II": 0.0014989504648502683,
+      "III": 0.0004998500349930879,
+      "IV": 0.9788713382423841,
+      "V": 0.5422492197739784
+    },
+    "assignment_null_mean": 92.1554,
+    "assignment_p": 9.999000099990002e-05,
+    "chain_acceptance_rate": 0.3522704836869254
+  },
+  "observed_per_pole": {
+    "I (current)": 95,
+    "II": 115,
+    "III": 119,
+    "IV": 70,
+    "V": 57
+  },
+  "observed_assignment": 454
+}

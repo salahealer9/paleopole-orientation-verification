@@ -430,6 +430,92 @@ The data owner will receive these findings 14 days before public release per pre
 
 ---
 
+## 2026-05-18 — Geographic-block null sensitivity (script 06, pre-registered §11(d))
+
+Script 06 implements the pre-registered §11(d) geographic-block null model. Bearings are permuted within seven geographic blocks (Americas n=539, Middle East n=205, Europe-Med n=120, South Asia n=65, East Asia n=32, Oceania/SE Asia n=23, Africa n=2), plus 8 sites in an "Other" block (mostly Central Asian sites that fell outside the box definitions: Sawran ×4, Toniná, Koshoy Korgon ×2, Big Qırq Qız Qala). The Americas block dominates (54% of in-range structures), reflecting the geographic concentration of the database.
+
+The script runs both a block-unconditional null (within-block shuffle without further constraint) and a block-conditional null (within-block swap chain preserving the northern-hemisphere property). The block-conditional null is the most stringent test in the analysis: it preserves site coordinates, marginal bearing distribution within each block, and the northern-hemisphere intersection property simultaneously.
+
+### Results
+
+**Primary T statistic:**
+
+| Test | T_obs | Null mean | p |
+|---|---|---|---|
+| Block-unconditional | 4.65° | 4.76° | 0.170 |
+| Block-conditional | 4.65° | 4.55° | 0.842 |
+
+Aggregate T shows no clustering signal under either block-permutation null.
+
+**§11(a) per-pole counts (block-conditional null, Šidák-corrected):**
+
+| Pole | Lat | Observed | Block-cond null mean | p-Šidák |
+|---|---|---|---|---|
+| I (current) | 90.0°N | 95 | 95.44 | 0.9998 |
+| II | 76.0°N | 115 | 90.29 | **0.0015** |
+| III | 72.2°N | 119 | 90.63 | **0.0005** |
+| IV | 64.1°N | 70 | 70.13 | 0.9789 |
+| V | 52.3°N | 57 | 50.77 | 0.5422 |
+
+**§11(b) assignment match (block-conditional null):**
+- Observed: 454; null mean: 92.2; p = 0.0001 (exploratory)
+
+### Substantive interpretation
+
+The block-permutation null reveals which apparent signals are robust to regional patterns and which are not.
+
+**Robust signals (survive all four null models):**
+
+- **Pole II (76°N)** shows an excess of ~25 structures over expectation (115 vs 90), p-Šidák = 0.0015. This survives unconditional, conditional, block-unconditional, and block-conditional permutation. The clustering at 76°N is a real feature of the data that is not explained by hemisphere selection, latitudinal range, or regional orientation patterns.
+- **Pole III (72.2°N)** shows an excess of ~28 structures (119 vs 91), p-Šidák = 0.0005. Same robustness profile as Pole II.
+
+**Region-specific signal (disappears under block-conditional):**
+
+- **Pole V (52.3°N)** was marginally significant (p-Šidák = 0.0442) under the conditional null in script 05. Under the block-conditional null, this drops to p-Šidák = 0.5422. The Pole V excess was driven by region-specific bearing patterns — once we permute only within regions, the apparent concentration at 52°N disappears. This is consistent with one region (likely Americas, given its size and the proximity of typical Mesoamerican site latitudes) having a bearing distribution that places intersections preferentially at 52°N.
+
+**No signal under any null:**
+
+- **Pole I (90°N)**: observed 95 vs expected 95 across all nulls. The current geographic pole is not a concentration point in the data.
+- **Pole IV (64.1°N)**: observed 70 vs expected 70 across all nulls. No excess.
+
+**§11(b) assignment match remains highly significant (p = 0.0001) under all null models including block-conditional.** This signal is robust because the §11(b) test measures agreement between our independent pipeline and the data owner's pipeline at the pole-assignment level, which is a structural feature of the data that block-permutation does not eliminate.
+
+### Final summary of all tests run
+
+| Test | Pre-registered? | Status | Key finding |
+|---|---|---|---|
+| §7 primary T, unconditional null | Yes | Confirmatory (script 03) | p = 0.0001, but artifact of hemisphere mismatch |
+| §7 primary T, conditional null | No | Exploratory (script 03b) | p = 0.9989, observed worse than null |
+| §10 look-elsewhere, unconditional | Yes | Confirmatory (script 04) | p = 0.0001, same artifact. Descriptive: 47°W is rank 10/72 |
+| §11(a) per-pole, unconditional | Yes | Confirmatory (script 05) | All five "significant" by artifact |
+| §11(a) per-pole, conditional | No | Exploratory (script 05) | **Poles II, III significant**; V marginal; I, IV null |
+| §11(a) per-pole, block-conditional | Yes | Confirmatory §11(d) (script 06) | **Poles II, III remain significant**; V null; I, IV null |
+| §11(b) assignment, unconditional | Yes | Confirmatory (script 05) | p = 0.0001, partly artifact |
+| §11(b) assignment, conditional | No | Exploratory (script 05) | p = 0.0001 (~45σ effect) |
+| §11(b) assignment, block-conditional | Yes | Confirmatory §11(d) (script 06) | **p = 0.0001 robust to regional patterns** |
+
+### Final interpretation
+
+After comprehensive testing under multiple null models including the most stringent (block-conditional), the analysis finds:
+
+1. **Genuine within-hemisphere clustering exists at Poles II (76°N) and III (72.2°N).** This is the strongest, most robust finding of the analysis. About 234 structures (24% of the in-range set) point at intersections near these two latitudes, ~50 more than expected under the most stringent null model. The clustering is real and is not attributable to hemisphere selection, regional patterns, geographic distribution of sites, or measurement artifacts.
+
+2. **Poles I, IV, V, and VI do not show robust support.** Pole V showed a region-specific signal that disappears under within-region permutation. Poles I, IV, and VI show no excess under any principled null. The framework's claim of five (or six) distinct paleopoles is not supported in this specific form.
+
+3. **The site-to-pole assignment match rate is very high (46% vs 8% expected under random permutation, p = 0.0001 under all nulls).** This reflects close pipeline agreement between our independent geometry and the data owner's, combined with the latitude-band structure of the data. It is consistent with the framework's pole-assignment claims but does not by itself establish them — the same statistic would obtain for any framework that placed candidate "poles" at the observed concentration latitudes.
+
+4. **The aggregate primary T statistic is null under all principled nulls.** The 26-sigma result under the pre-registered unconditional null was entirely an artifact of hemisphere mismatch.
+
+5. **The interpretive claim that the observed latitude concentrations represent former geographic pole positions is not testable by this analysis** and is neither confirmed nor refuted. Alternative explanations for the within-hemisphere clustering at 72° and 76°N — including cultural orientation conventions, astronomical alignment patterns, archaeological measurement conventions, or other causes — are not addressed by an orientation-clustering test alone.
+
+### Status of analysis
+
+The substantive pre-registered analysis is now complete. Aggregation-threshold sensitivity (§11(c)) was not feasible to implement because the database contains the data owner's pre-aggregated structure entries rather than raw multi-structure data, and we could not obtain raw structure-by-structure data without further correspondence. This will be noted in the writeup as a documented limitation.
+
+Next step: draft the writeup and prepare the 14-day notice email to the data owner per pre-registration §12 point 2.
+
+---
+
 
 
 
