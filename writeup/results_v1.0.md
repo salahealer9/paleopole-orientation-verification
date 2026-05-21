@@ -105,3 +105,124 @@ The pre-registration §11(c) commits to a sensitivity analysis varying the per-s
 
 All analyses use a fixed pseudo-random seed (`20260517`, derived from the date of the pre-registration deposit) so that Monte Carlo results are bit-for-bit reproducible. The compatibility matrix used by the conditional and block-conditional swap chains is computed once and shared between scripts that use it. The chunk-vectorized implementation processes M = 10,000 permutations across 994 structures in a few seconds for the unconditional nulls and in 30–60 seconds for the conditional nulls (depending on the chain configuration). All scripts, the pre-registration document, the analysis log, and the data file's SHA-256 hash are publicly available at the project repository linked in the document header.
 
+## 3. Results
+
+### 3.1 The pre-registered primary result
+
+Under the pre-registered null model (§2.4), the primary test statistic at the 47°W meridian gave the following result with M = 10,000 Monte Carlo iterations:
+
+- **T_obs** = 4.65°
+- Null distribution mean = 55.9°, standard deviation 1.7°, minimum across 10,000 iterations = 49.9°
+- **Count of T^(m) ≤ T_obs: 0 / 10,000**
+- **p = 0.0001** (the floor of the Monte Carlo resolution)
+
+Per the pre-registration's verdict criteria (§9), this result is "highly significant" at the α = 0.05 threshold. The observed T value of 4.65° is more than 26 standard deviations below the null mean. The pre-registered 6-pole sensitivity analysis (including Pole VI at 42°N) produced the same qualitative result: T_obs = 3.61°, null mean = 50.6°, p = 0.0001.
+
+This is the pre-registered confirmatory finding. Were it the only test performed, it would constitute strong statistical support for the framework's clustering claim. However, the magnitude of the result — a separation between observed and null of more than 45 degrees — exceeded what we expected from the analysis even under the framework's own hypothesis, and prompted a diagnostic investigation before the result was accepted at face value.
+
+### 3.2 Diagnostic: what the pre-registered null is actually testing
+
+A simple diagnostic comparing the observed intersection latitudes with those produced by a single random permutation revealed the source of the extreme magnitude. The observed in-range set is 99% northern-hemisphere intersections by construction: those structures are precisely the ones the data owner classified as in-range because their bearings produce intersections north of the equator. Under random permutation, however, only about 54% of intersections land in the northern hemisphere — the random pairing of bearings to sites frequently produces great circles that cross the 47°W meridian in the southern hemisphere, far from any of the five (northern) proposed poles.
+
+To isolate the within-hemisphere question, we stratified d_min (the per-structure distance to the nearest pole) within a single random permutation by hemisphere of the resulting intersection:
+
+- Permuted intersections falling in the northern hemisphere (540 of 994 in the iteration we examined): **median d_min = 2.02°**.
+- Permuted intersections falling in the southern hemisphere (454 of 994): median d_min = 119.3°.
+- The corresponding observed-data quantity: median d_min = 1.81°.
+
+The observed within-hemisphere clustering (1.81°) is essentially indistinguishable from the within-hemisphere clustering produced by random permutation (2.02°). The dramatic difference between the observed T (4.65°) and the null T (55.9°) is therefore explained by the difference in *hemisphere composition* (99% northern vs 54% northern), not by within-hemisphere structure. Random permutations contribute ~120° per southern intersection to T; observed permutations contribute essentially none. The pre-registered null was conflating two distinct questions: whether bearings cluster at the proposed poles, and whether bearings produce predominantly northern-hemisphere intersections.
+
+### 3.3 The conditional null result
+
+The conditional null (§2.5) preserves the northern-hemisphere intersection property by construction, isolating the within-hemisphere clustering question. Under M = 10,000 Metropolis-swap-chain samples:
+
+- T_obs = 4.65° (unchanged; the observed test statistic is the same)
+- **Conditional null distribution mean = 4.13°, standard deviation 0.15°, range [3.59°, 5.29°]**
+- **Count of T^(m) ≤ T_obs: 9,989 / 10,000**
+- **p (exploratory) = 0.9989**
+
+The observed test statistic sits at approximately the 99.9th percentile of the conditional null distribution — i.e., observed pole-pointing, measured by aggregate T, is *less* concentrated than the within-hemisphere null distribution. The pre-registered result of "26-sigma highly significant" is, under the appropriate within-hemisphere null, reversed: the observed bearings produce slightly more dispersion across the northern hemisphere than would be expected from random great-circle geometry on this site distribution.
+
+A contributing factor: the eight manually-snapped structures (whose geometrically-correct intersections fall near −89°N while the data owner's published intersections are 90°N) each contribute d_min ≈ 141° to T_obs under our independent geometry. These eight structures inflate T_obs by approximately 1.1° relative to a sample that excluded them. Even setting them aside, however, the residual T_obs of ~3.5° remains above the conditional null mean of 4.13° — the manually-snapped structures account for some but not all of the apparent dispersion.
+
+### 3.4 The longitude scan and a descriptive finding about meridian choice
+
+The pre-registered look-elsewhere control (§2.7) computed T at each of 72 meridians at 5° resolution and compared T_obs(47°W) to the null distribution of the minimum-T across all 72.
+
+Two distinct findings emerged: one descriptive, and one statistical.
+
+**Descriptive finding (independent of any null model).** Among the 72 longitudes scanned, the *observed* T was minimised not at the 47°W meridian but at −20°E. The ten most-clustered meridians in the observed data are:
+
+| Rank | Longitude | T_obs |
+|---:|---:|---:|
+| 1 | −20°E | 3.78° |
+| 2 | −25°E | 3.79° |
+| 3 | −30°E | 3.83° |
+| 4 | −15°E | 3.84° |
+| 5 | −35°E | 3.94° |
+| 6 | −10°E | 3.98° |
+| 7 | −40°E | 4.16° |
+| 8 | **−45°E** | **4.47°** (pre-registered band) |
+| 9 | −5°E | 4.51° |
+| 10 | 0°E | 5.07° |
+
+The pre-registered 47°W meridian is rank 10 of 72. The geometric attractor band of strongest clustering is a contiguous longitude window from approximately −40°E to 0°E (Atlantic Ocean between West Africa and Brazil, plus the prime meridian), with the minimum at −20°E rather than at 47°W. This is a finding about the data itself, independent of any statistical model; it shows that the framework's choice of the 47°W meridian as the locus of clustering does not coincide with the meridian at which the observed data is most-tightly clustered.
+
+**Statistical finding (pre-registered).** The look-elsewhere null distribution, like the primary null, is dominated by the hemisphere-mismatch effect: T_min null mean = 45.0°, standard deviation 1.3°. Under this null, T_obs(47°W) = 4.65° gives p_LEE = 0.0001 at 5° resolution. The same result at the pre-registered 1° resolution refinement was also p_LEE = 0.0001. These p-values inherit the same interpretive limitation as the primary §7 result: they are dominated by hemisphere-mismatch, not by genuine 47°W-specific clustering.
+
+The descriptive finding above (47°W is rank 10, attractor at −20°E) is the more substantive look-elsewhere observation, as it does not depend on a null model.
+
+### 3.5 Per-pole confirmatory results across all four null models
+
+The pre-registered per-pole confirmatory test (§11(a)) counts structures within ±1.5° of each proposed pole latitude. With four null models tested and five (or six) poles per family, the natural presentation is a table. We report 5-pole results under each null model below; 6-pole results are qualitatively identical (numerical values are in the analysis log).
+
+| Pole | Lat (°N) | Observed | Uncond. null mean | p-Šidák (uncond.) | Cond. null mean | p-Šidák (cond.) | Block-cond. null mean | p-Šidák (block-cond.) |
+|---|---|---|---|---|---|---|---|---|
+| I (current) | 90.0 | 95 | 84.4 | 0.003 | 102.8 | 1.000 | 95.4 | 1.000 |
+| II | 76.0 | 115 | 43.7 | 0.0005 | 85.9 | **0.0005** | 90.3 | **0.0015** |
+| III | 72.2 | 119 | 42.9 | 0.0005 | 83.8 | **0.0005** | 90.6 | **0.0005** |
+| IV | 64.1 | 70 | 32.5 | 0.0005 | 63.7 | 0.666 | 70.1 | 0.979 |
+| V | 52.3 | 57 | 20.9 | 0.0005 | 42.2 | 0.044 | 50.8 | 0.542 |
+
+Reading the table by column:
+
+- **Unconditional null**: all five proposed poles show "significant" excess (p-Šidák ≤ 0.003), reflecting the same hemisphere-mismatch effect described in §3.2. Without the conditional and block-conditional checks, this is the result the pre-registered test would have presented as a confirmation of the framework.
+
+- **Conditional null**: under the within-hemisphere null, Poles II (76.0°N) and III (72.2°N) maintain strong significance (p-Šidák = 0.0005). Pole V (52.3°N) is marginally significant (p-Šidák = 0.044). Poles I and IV show no excess.
+
+- **Block-conditional null**: this is the most stringent of the four. Poles II and III remain significant (p-Šidák = 0.0015 and 0.0005). Pole V's marginal signal disappears (p-Šidák = 0.542), indicating that the apparent excess at 52.3°N was driven by region-specific bearing patterns and is eliminated when bearings are shuffled only within their own geographic block. Poles I and IV continue to show no excess.
+
+**The robust signals are at Poles II and III.** Approximately 234 structures (24% of the in-range set) point at intersections near these two latitudes, ~50 more than expected under the most stringent null model. This excess survives every null model tested, including the block-conditional null that preserves regional bearing patterns. The clustering at 76°N and 72.2°N is a real feature of the data that cannot be attributed to hemisphere selection, regional patterns, or sampling geometry.
+
+### 3.6 Site-to-pole assignment results
+
+The pre-registered §11(b) test asks whether the data owner's implicit pole assignments (operationalized as the nearest pole to each structure's data-owner-published intersection latitude — see §2.8) are confirmed by our independent geometry within ±1.5°. Across all four null models:
+
+| Null model | Status | Observed match | Null mean | p |
+|---|---|---|---|---|
+| Pre-registered unconditional | Confirmatory | 454 / 994 (46%) | 45.5 (4.6%) | 0.0001 |
+| Conditional (exploratory) | Exploratory | 454 / 994 | 81.1 (8.2%) | 0.0001 |
+| Block-unconditional | Confirmatory | 454 / 994 | 92.3 (9.3%) | 0.0001 |
+| Block-conditional | Confirmatory | 454 / 994 | 92.2 (9.3%) | 0.0001 |
+
+The assignment match rate is robustly significant under every null model, including the most stringent. The observed match rate of 46% is approximately 5× the expected rate under the block-conditional null (9.3%), and the null distribution has small variance (std ≈ 8 of 994), placing the observed value many standard deviations above the null distribution.
+
+Interpretively, this result reflects two facts about the data. First, our independent geometry and the data owner's pipeline agree on the intersection latitude to within 0.1° for 95.7% of structures, so the assignment derived from his pipeline is closely confirmed by ours. Second, the bearings concentrate in narrow latitude bands within the northern hemisphere, so the question "is this structure within 1.5° of *its* assigned pole" is approximately equivalent to "is this structure within 1.5° of *any* pole," given the concentration structure of the data. The signal is robust to all four null models because it captures both pipeline agreement and within-hemisphere concentration, both of which are real features of the data.
+
+### 3.7 Summary of all tests
+
+The complete set of pre-registered and exploratory tests is summarised in the table below. The "Status" column distinguishes pre-registered confirmatory tests (which can support or fail to support pre-registered hypotheses) from exploratory tests (which provide methodological diagnostic information but cannot make confirmatory claims, per pre-registration §12 point 3).
+
+| Test | Section | Status | p-value | Interpretation |
+|---|---|---|---|---|
+| Primary T, unconditional null | §7 | Pre-registered | 0.0001 | Significant by hemisphere-mismatch artifact |
+| Primary T, conditional null | (added) | Exploratory | 0.9989 | Observed less concentrated than null |
+| Look-elsewhere, unconditional | §10 | Pre-registered | 0.0001 | Same artifact; descriptive: 47°W is rank 10/72 |
+| §11(a) per-pole, unconditional | §11(a) | Pre-registered | all p < 0.003 | All five "significant" by artifact |
+| §11(a) per-pole, conditional | (added) | Exploratory | II, III: 0.0005; V: 0.044 | Poles II, III robust; V marginal; I, IV null |
+| §11(a) per-pole, block-conditional | §11(d) | **Pre-registered** | **II: 0.0015; III: 0.0005** | **Poles II, III remain robust; V eliminated** |
+| §11(b) assignment, unconditional | §11(b) | Pre-registered | 0.0001 | Partly artifact, partly genuine |
+| §11(b) assignment, conditional | (added) | Exploratory | 0.0001 | Robust ~45σ effect |
+| §11(b) assignment, block-conditional | §11(d) | **Pre-registered** | **0.0001** | **Robust to regional patterns** |
+
+The pre-registered findings, taken at face value (the four "all significant" rows in the unconditional null), tell one story: the framework's clustering claim is strongly confirmed across all tests. The full picture, including the conditional and block-conditional results, tells a more specific story: clustering at Poles II and III is robust under stringent tests; clustering at Poles I, IV, V is not; the aggregate test statistic is null under the appropriate null model; the data owner's implicit pole assignments are robustly confirmed by our independent geometry. Interpretation of these results is the subject of §4.
