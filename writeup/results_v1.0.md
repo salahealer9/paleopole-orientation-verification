@@ -325,8 +325,33 @@ The contrast is substantive. The published probabilities derive from a null mode
 
 The published probability claims should be understood as artifacts of the choice of binomial test against a uniform null, not as confidence statements about the framework's claims.
 
-### 4.7 What this means for the framework
+### 4.7 Conclusion
 
 The framework receives partial empirical support. Two of its five proposed pole latitudes — Pole II (76°N) and Pole III (72.2°N) — show real, robust within-hemisphere clustering that survives all four null models tested in this analysis, including the most stringent variant that preserves regional bearing patterns. The other three proposed poles do not show such clustering under principled nulls. The pre-registered aggregate test statistic, though formally "highly significant," is structurally confounded and does not support the framework once the confound is corrected. The data owner's published probability claims of "100%" and "99.999%" overstate the strength of evidence even for the supported poles.
 
 The broader interpretive claim — that the observed latitude concentrations represent former positions of Earth's rotational axis — is not tested by this analysis and would require independent geological evidence (paleomagnetic, climatological, geological-dating) of a kind outside the scope of an orientation-clustering test. The orientation pattern, on its own, is consistent with multiple causes and cannot establish the geophysical interpretation.
+
+## 5. Acknowledgments and References
+
+### Acknowledgments
+
+I thank Mario Buildreps for providing the database file used in this analysis under the conditions described in §2.1, for confirming methodological details about his pipeline via direct correspondence during the analysis period (notably the recommendation to use the geometrically-correct raw-bearing approach rather than the manually-adjusted values published in his pre-computed column), and for accepting the 14-day comment window between the sharing of preliminary findings and the public release of this report. His willingness to make his data available for independent verification was essential to this work and is a substantial methodological contribution in its own right, regardless of the analytical conclusions reached.
+
+The pre-registration document, the analysis code, the full analysis log, and the frozen snapshot of the analysis log as it stood at the opening of the comment window are all publicly available at the project repository. The analysis can be reproduced from the database file using the fixed random seed documented in the pre-registration; cryptographic verification of the data file is built into every analysis script.
+
+This work received no external funding. The author declares no conflicts of interest.
+
+### References
+
+Buildreps M. *Antiquity Reborn (v10): Orientations of pyramids and ancient sites around the world.* <https://mariobuildreps.com/> (accessed 2026-05-17). [Primary source for the framework being tested in this analysis, including the proposed pole positions and the published probability claims.]
+
+Gherbi S-E. *Pre-registration: Independent Monte Carlo verification of paleopole orientation clustering in the Buildreps database.* Zenodo, version 1.1 deposited 17 May 2026. DOI: [10.5281/zenodo.20258204](https://doi.org/10.5281/zenodo.20258204). [The full statistical protocol committed to before the database file was opened; GPG-signed and OpenTimestamped.]
+
+Gherbi S-E. *Paleopole orientation verification: analysis code, results, and full analysis log.* GitHub repository. <https://github.com/salahealer9/paleopole-orientation-verification>. [All scripts, output files, results, and the frozen analysis log are available here. The frozen snapshot as it stood when the data owner received the preliminary findings on 18 May 2026 is at [`results/analysis_log_frozen_2026-05-18.md`](https://github.com/salahealer9/paleopole-orientation-verification/blob/main/results/analysis_log_frozen_2026-05-18.md).]
+
+---
+
+*Author:* Salah-Eddin Gherbi
+*ORCID:* [0009-0005-4017-1095](https://orcid.org/0009-0005-4017-1095)
+*Contact:* salahealer@gmail.com
+*License:* This report is released under CC-BY-4.0. The accompanying code is released under MIT.
