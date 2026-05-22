@@ -1,18 +1,3 @@
-**Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database**
-
-**Final Report**
-
-**Author:** Salah-Eddin Gherbi
-**ORCID:** 0009-0005-4017-1095
-**Version:** 1.0 (draft)
-**Date:** [to be added on finalisation]
-
-**Pre-registration:** [10.5281/zenodo.20258204](https://doi.org/10.5281/zenodo.20258204)
-**Repository:** <https://github.com/salahealer9/paleopole-orientation-verification>
-**Frozen analysis log:** [`results/analysis_log_frozen_2026-05-18.md`](https://github.com/salahealer9/paleopole-orientation-verification/blob/main/results/analysis_log_frozen_2026-05-18.md)
-
----
-
 # Background
 
 The independent researcher Mario Buildreps has assembled, over the past decade, a database of approximately 1,159 ancient pyramids, temples, and megalithic structures worldwide, recording each site's geographic coordinates and the orientation of its principal architectural axis relative to current true north. From this database he proposes a claim that has attracted public attention but no formal independent statistical verification: that the orientations of these ancient structures cluster around five proposed pole positions located along the ~47°W meridian, which he interprets as past positions of Earth's rotational axis. The proposed pole latitudes are 76.0°N, 72.2°N, 64.1°N, and 52.3°N (designated Poles II through V), together with the current geographic pole at 90°N (Pole I). A sixth candidate position at 42.0°N (Pole VI) is described in the framework as "out of scope," excluded from his published probability calculations; the framework notes that including it would weaken those calculations.
@@ -33,7 +18,8 @@ The framework's claim is therefore neither confirmed nor refuted in the simple s
 
 ## Data
 
-The database file `Database_Mario_Buildreps_V14.xlsx` was provided by the data owner on the date recorded in the project's first repository commit (`ab12dc5`). The SHA-256 hash of the file is `426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c`, recorded in the pre-registration document and re-verified at the start of every analysis script.
+The database file `Database_Mario_Buildreps_V14.xlsx` was provided by the data owner on the date recorded in the project's first repository commit (`ab12dc5`). The SHA-256 hash of the file is 
+\texttt{\seqsplit{426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c}}, recorded in the pre-registration document and re-verified at the start of every analysis script.
 
 The file contains 1,159 rows on its primary sheet (`All Data`), each row representing one structure or site. The relevant columns for this analysis are the geographic coordinates (`LAT`, `LON`), the architectural orientation (`BEARING`, folded into the range [−45°, +45°] relative to current true north per the data owner's convention), and a pre-computed `Intersection Latitude at Lon 47.1W Line` column representing the data owner's own computation of where each structure's great-circle orientation crosses the 47°W meridian. The pre-computed column is used in this analysis only as the inclusion criterion (numeric values mark a structure as "in-range" per the data owner's classification; non-numeric values such as the string "No Intersect 47.1W" mark a structure as "out-of-range"), giving a sample of 994 in-range structures. The actual intersection latitudes used in the analysis are computed independently from the raw `LAT`, `LON`, and `BEARING` columns, using the spherical geometry described below.
 
@@ -47,7 +33,7 @@ The geometric pipeline is verified against the data owner's pre-computed interse
 
 ## The pre-registered test statistic and the geometric question being asked
 
-The pre-registration specifies the primary test statistic T as the mean over all 994 in-range structures of the minimum angular distance from each structure's great-circle intersection latitude on the 47°W meridian to the nearest of the five proposed poles. Formally, with φ_k ∈ {52.3°, 64.1°, 72.2°, 76.0°, 90.0°} denoting the proposed pole latitudes,
+The pre-registration specifies the primary test statistic T as the mean over all 994 in-range structures of the minimum angular distance from each structure's great-circle intersection latitude on the 47°W meridian to the nearest of the five proposed poles. Formally, with φₖ ∈ {52.3°, 64.1°, 72.2°, 76.0°, 90.0°} denoting the proposed pole latitudes,
 
 > T = (1/N) Σᵢ minₖ |φ′ᵢ − φₖ|.
 
