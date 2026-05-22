@@ -226,3 +226,107 @@ The complete set of pre-registered and exploratory tests is summarised in the ta
 | §11(b) assignment, block-conditional | §11(d) | **Pre-registered** | **0.0001** | **Robust to regional patterns** |
 
 The pre-registered findings, taken at face value (the four "all significant" rows in the unconditional null), tell one story: the framework's clustering claim is strongly confirmed across all tests. The full picture, including the conditional and block-conditional results, tells a more specific story: clustering at Poles II and III is robust under stringent tests; clustering at Poles I, IV, V is not; the aggregate test statistic is null under the appropriate null model; the data owner's implicit pole assignments are robustly confirmed by our independent geometry. Interpretation of these results is the subject of §4.
+
+## 4. Discussion
+
+### 4.1 What the data shows
+
+Setting aside interpretation for a moment, the empirical observations from §3 can be stated as follows:
+
+- Within the 994 in-range structures, intersection latitudes on the 47°W meridian show real concentration at two of the five proposed pole latitudes — Pole II (76.0°N) and Pole III (72.2°N). Approximately 234 structures (24% of the sample) point at intersections within ±1.5° of these two latitudes, roughly 50 more than expected under the most stringent null model tested. This excess survives all four null variants (unconditional, conditional, block-unconditional, block-conditional).
+- The other three proposed pole latitudes do not show robust clustering. Pole V (52.3°N) showed weak excess under the conditional null but was eliminated by the block-conditional null, indicating its apparent signal was driven by region-specific bearing patterns rather than a cross-regional phenomenon. Poles I (90°N) and IV (64.1°N) show no excess under any principled null model.
+- The aggregate primary test statistic, T = mean d_min, is null under principled nulls. The "26-sigma highly significant" pre-registered result was an artifact of hemisphere-mismatch between the observed (99% northern by selection) and permuted (~54% northern by chance) intersection distributions; under nulls that preserve the in-range property by construction, T_obs is consistent with random great-circle geometry on this site distribution.
+- The site-to-pole assignment match rate (454 of 994, or 46%) is robustly significant under all four null models. Interpretively, this result reflects two facts about the data: our independent geometry agrees with the data owner's pipeline to within 0.1° for 95.7% of structures, and the bearings concentrate in narrow latitude bands within the northern hemisphere. The signal captures both pipeline agreement and within-hemisphere concentration.
+- Descriptively (independent of any null model), the 47°W meridian is not the meridian at which the observed data is most-tightly clustered. Across the 72 longitudes scanned at 5° resolution, the minimum T was observed at −20°E, and the 47°W meridian was rank 10 of 72. The natural geometric attractor band for great-circle intersections in this site distribution is a contiguous longitude window from approximately −40°E to 0°E.
+
+### 4.2 Alternative explanations for the within-hemisphere clustering at Poles II and III
+
+The clustering at 76°N and 72°N is a real feature of the data — but its cause is not determined by this analysis. Several distinct hypotheses can explain it; an orientation-clustering test does not, in principle, distinguish among them.
+
+**Cultural orientation conventions.** Ancient architectural traditions often align structures to specific celestial or landscape features. If the relevant features (the cardinal points, the celestial pole as it appeared in the past, prominent astronomical objects, regional landscape orientations) happened to project, by great-circle geometry, to specific latitudes on the 47°W meridian, the resulting intersection distribution would show concentration without any reference to former pole positions.
+
+**Astronomical alignments.** Structures oriented to solstitial sunrise/sunset, lunar standstill events, stellar risings, or other astronomical phenomena will produce bearings that depend on the structure's latitude and the celestial event's declination. These dependencies can produce great-circle intersections that cluster at latitudes that have no special status as pole positions but are simply where the geometry concentrates intersections for a population of mid-latitude sites observing common celestial events.
+
+**Archaeological measurement effects.** Bearings in the database are reported to a precision of approximately 0.5–1.0° (the data owner's stated measurement error). Quantization in bearing measurement, combined with the data owner's per-site averaging rule for multi-structure sites, can produce apparent concentration at specific latitudes as an artifact of the discretization rather than as a property of the underlying orientations.
+
+**Selection in the database itself.** The database is a curated collection. If the data owner's site-selection process favored structures that point in particular directions — even unintentionally, through criteria like "well-documented orientation" or "archaeological prominence" — the resulting sample could show clustering that reflects the selection rather than a universal architectural pattern.
+
+**The framework's own claim.** The data owner's hypothesis is that the clustering reflects past positions of Earth's rotational axis at the times the structures were built. Under this hypothesis, the orientation patterns would directly encode the geographic locations of paleopoles.
+
+Our analysis cannot distinguish among these explanations, and no claim about the cause of the observed clustering is implied by the statistical findings.
+
+### 4.3 What the framework's broader claim requires
+
+The framework's interpretive claim — that the observed latitude concentrations correspond to former positions of Earth's rotational axis — is qualitatively different from the orientation-clustering claim our analysis tests. An orientation-clustering test can establish whether clustering exists; it cannot establish the *cause*. The framework's broader claim is a geological and geophysical claim, and it requires geological and geophysical evidence to evaluate.
+
+What kind of evidence would bear on the claim?
+
+**Paleomagnetic data from the proposed time periods.** Earth's magnetic and rotational poles do not coincide, but their relationship is constrained over geological time. Paleomagnetic measurements from rocks dating to the time windows when the framework proposes the rotational axis was at each of the alternative pole positions could test whether the magnetic-pole record is consistent with such large excursions of the rotational axis.
+
+**Geological evidence of true polar wander.** Apparent polar wander paths are a standard subject of plate tectonics; large excursions of the rotational pole on the timescales implicit in the framework (tens of thousands of years rather than tens of millions) would imply specific patterns of crustal deformation, sea-level change, and climate that should be detectable in the geological record.
+
+**Independent dating of the structures.** The framework attaches specific date ranges to each proposed pole (the time during which that latitude was supposedly the rotational pole). Comparing structure construction dates from radiocarbon, dendrochronology, archaeological context, or other dating methods against the framework's proposed timeline would test the temporal consistency of the claim.
+
+**Climate and sea-level proxies.** Different paleopole positions imply different global climate regimes. Independent climate proxies from the proposed time windows (ice cores, sediment records, biological proxies) could test whether the implied climate matches the geological record.
+
+None of this is within the scope of the present analysis, and none is required by the orientation-clustering claim taken on its own terms. But the framework's broader interpretive claim — the one that distinguishes it from any of the alternative explanations enumerated in §4.2 — depends on this kind of independent evidence. The orientation pattern, on its own, is consistent with multiple causes.
+
+### 4.4 Methodological lessons from the diagnostic
+
+The most generalisable contribution of this analysis is methodological, not substantive: the demonstration that a 26-standard-deviation pre-registered result can be a hemisphere-selection artifact rather than a genuine effect.
+
+The pre-registration committed the analysis to a specific null model: random permutation of folded bearings across the 994 in-range sites. This null preserves site geography and the marginal bearing distribution. It does not, however, preserve the *condition that gave rise to the in-range set in the first place* — namely, that those 994 structures had bearings producing northern-hemisphere intersections on the 47°W meridian. Under random permutation, only about 54% of permuted intersections land in the northern hemisphere, while the observed in-range set is 99% northern by construction. The test of "is the observed T smaller than the null T?" is therefore conflated with the test of "do random bearings preserve the northern-hemisphere selection?" — and the latter dominates, producing a null mean for T of approximately 56° even though the within-hemisphere clustering question gives a null mean of approximately 4°.
+
+The lesson is concrete and transferable to any pre-registered analysis that operates on a filtered or curated data set:
+
+> **Pre-register the full data-processing pipeline, not just the final test statistic. Selection effects that operate before the registered test can produce arbitrarily large apparent significance.**
+
+When a data set has been filtered using a criterion that interacts with the test statistic, the null model must preserve that criterion by construction, not assume that random permutation will reproduce it in expectation.
+
+The conditional null model implemented in this analysis (§2.5) is one way to achieve this: a Metropolis swap chain on the bipartite compatibility graph, accepting only those permutations that satisfy the in-range criterion for every structure. The block-conditional null (§2.6) generalises this further by also preserving regional partitioning. The general principle is that the null model is a model of the data-generating process *under the null hypothesis*, and the data-generating process includes any filtering that operated on the sample before it reached the test.
+
+This is not a flaw in the abstract concept of pre-registration. It is a flaw in any pre-registration that does not anticipate the full pipeline. The remedy is more careful pipeline specification, not less stringent pre-registration.
+
+### 4.5 Limitations of this analysis
+
+Several limitations constrain the conclusions that can be drawn from this work.
+
+**The aggregation-threshold sensitivity (§11(c)) was not implementable.** The data file contains the data owner's pre-aggregated structure entries, where multi-structure sites have already been collapsed into single rows according to his stated ~2° rule. The underlying multi-structure data was not available, so we could not vary the aggregation threshold to test sensitivity. The pre-registered sensitivity check is documented as not run.
+
+**The eight manually-snapped structures.** The data owner's published intersection latitudes for eight structures with near-zero bearings differ from the geometrically-correct values by ~180°. These are case-by-case manual adjustments confirmed by the data owner. Our analysis uses the geometrically-correct values, which contribute ~141° per structure to T_obs and reduce the §11(b) assignment match count by 8 from 462 to 454. The analytical effect is small but documented.
+
+**The database has not been independently audited for completeness or systematic biases.** The 1,159 structures in the database represent the data owner's selection from a much larger global population of ancient monuments. The selection criteria, the completeness of coverage, and potential systematic biases (toward certain structure types, certain geographic regions, certain time periods, or certain orientation patterns) have not been independently verified. Any clustering observed in the database is a property of *this specific curated sample* and may not generalise to a complete or differently-curated population of ancient structures.
+
+**Regional imbalance in the sample.** The Americas block (n = 539) contains 54% of the in-range structures. The remaining 455 structures are distributed across six other geographic blocks, with two of them (Africa, Oceania/SE Asia) holding fewer than 25 structures each. The block-conditional null is therefore much more constrained by the Americas block than by the others, and the per-region analysis is limited by sample size in the smaller blocks. The geographic coverage of the database is also heavily weighted toward Mesoamerican and Mediterranean-Middle Eastern sites, which may affect the generalisability of any findings to ancient structures in regions less represented in this sample.
+
+**The analysis tests one specific framework, not a general hypothesis about ancient orientations.** The proposed pole latitudes were specified by the data owner before our analysis began, so the test is well-defined. But the test does not address alternative configurations of paleopoles, alternative meridians, or other frameworks that might also predict clustering at different latitudes. The conclusions are specific to the framework as specified in the pre-registration document.
+
+### 4.6 Comparison with the data owner's published probability claims
+
+The data owner's published methodology associates the following confidence claims with each pole:
+
+- Pole I (current): approximately 100%
+- Pole II (76°N): approximately 100%
+- Pole III (72.2°N): approximately 100%
+- Pole IV (64.1°N): approximately 99.999%
+- Pole V (52.3°N): approximately 99.999%
+
+These claims derive from a binomial test against a uniform null distribution along the 47°W meridian, using non-uniform bin widths described as "Dynamical Grouping" of the latitude axis.
+
+The present analysis does not support these confidence claims in their published form. Under principled null models that preserve the relevant features of the data (site geography, in-range hemisphere selection, regional patterns), the analysis finds:
+
+- Pole I: no excess concentration (observed 95 structures within 1.5° vs null mean 95). The "approximately 100%" claim for Pole I is not supported.
+- Pole II: real excess concentration (115 vs 90 under the most stringent null, p-Šidák = 0.0015). Genuinely significant but at a much weaker confidence level than "100%."
+- Pole III: real excess concentration (119 vs 91, p-Šidák = 0.0005). Genuinely significant, but again weaker than the published "100%."
+- Pole IV: no excess concentration (70 vs 70). The "99.999%" claim is not supported.
+- Pole V: no excess under the block-conditional null (57 vs 51, p-Šidák = 0.542). The "99.999%" claim is not supported.
+
+The contrast is substantive. The published probabilities derive from a null model (uniform distribution along the meridian) that does not capture the actual concentration structure of great-circle geometry applied to the database's site distribution. When the null model is chosen to preserve the relevant features of the data, three of the five poles produce no significant signal, and the two that do produce significant signal do so at significance levels several orders of magnitude weaker than "100%."
+
+The published probability claims should be understood as artifacts of the choice of binomial test against a uniform null, not as confidence statements about the framework's claims.
+
+### 4.7 What this means for the framework
+
+The framework receives partial empirical support. Two of its five proposed pole latitudes — Pole II (76°N) and Pole III (72.2°N) — show real, robust within-hemisphere clustering that survives all four null models tested in this analysis, including the most stringent variant that preserves regional bearing patterns. The other three proposed poles do not show such clustering under principled nulls. The pre-registered aggregate test statistic, though formally "highly significant," is structurally confounded and does not support the framework once the confound is corrected. The data owner's published probability claims of "100%" and "99.999%" overstate the strength of evidence even for the supported poles.
+
+The broader interpretive claim — that the observed latitude concentrations represent former positions of Earth's rotational axis — is not tested by this analysis and would require independent geological evidence (paleomagnetic, climatological, geological-dating) of a kind outside the scope of an orientation-clustering test. The orientation pattern, on its own, is consistent with multiple causes and cannot establish the geophysical interpretation.
