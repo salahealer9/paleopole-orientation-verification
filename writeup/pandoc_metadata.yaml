@@ -1,0 +1,56 @@
+---
+title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database"
+subtitle: "Final Report"
+author:
+  - name: "Salah-Eddin Gherbi"
+    orcid: "0009-0005-4017-1095"
+date: "1 June 2026"
+
+# Document class and layout
+documentclass: scrartcl
+classoption:
+  - 11pt
+  - a4paper
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1in
+  - right=1in
+linestretch: 1.15
+
+# Typography
+fontfamily: lmodern
+mainfont: "DejaVu Serif"
+sansfont: "DejaVu Sans"
+monofont: "DejaVu Sans Mono"
+mathfont: "DejaVu Serif"
+fontenc: T1
+lang: en
+
+# Hyperlinks
+colorlinks: true
+linkcolor: NavyBlue
+urlcolor: NavyBlue
+citecolor: NavyBlue
+toccolor: NavyBlue
+
+# Page header/footer
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{Paleopole orientation verification}
+  - \fancyhead[R]{Gherbi 2026}
+  - \fancyfoot[C]{\thepage}
+  - \renewcommand{\headrulewidth}{0.4pt}
+  - \renewcommand{\footrulewidth}{0pt}
+  - \setlength{\headheight}{14pt}
+
+# Other
+toc-title: "Contents"
+abstract: |
+  This report presents the results of a pre-registered, independent Monte Carlo verification of orientation-clustering claims associated with the Buildreps database of approximately 1,159 ancient pyramids and temples. Under the most stringent null model tested (geographic-block conditional, preserving site geography, hemisphere, and regional bearing patterns), two of five proposed paleopole latitudes — Pole II (76.0°N) and Pole III (72.2°N) — show robust within-hemisphere clustering of intersections (Šidák-corrected p = 0.0015 and 0.0005 respectively). The remaining three proposed poles (I, IV, V) do not show robust clustering under principled nulls. The aggregate primary test statistic, formally significant at p = 0.0001 under the pre-registered unconditional null, is shown by diagnostic analysis to be an artifact of hemisphere-selection in the in-range subset; under nulls that preserve the selection criterion, the aggregate signal vanishes. A descriptive finding from the longitude scan: the 47°W meridian is rank 10 of 72 most-clustered meridians in the observed data, with the natural attractor at −20°E. The framework's broader interpretive claim — that the observed concentrations represent former positions of Earth's rotational axis — is not tested by an orientation-clustering analysis and would require independent geological evidence.
+
+# Bibliography (no bibliography file used; references are in the body)
+---
