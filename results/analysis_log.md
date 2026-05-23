@@ -582,7 +582,4 @@ This is, in itself, a methodological choice that may inform future pre-registere
 
 ### Status
 
-The writeup edits described above have been applied to `writeup/results_v1.0.md` and committed on 23 May 2026. The data owner has been notified of the changes in a response sent on the same date. The publication date remains 1 June 2026 as per the pre-registration; if the data owner provides factual corrections to the language drafted in response to his commentary by 30 May, these will be incorporated.
-
-
-
+The writeup edits described above have been applied to `writeup/results_v1.0.md` and committed on 23 May 2026. The data owner has been notified of the changes in a response sent on the same date. The text of the response is preserved at `results/correspondence/2026-05-23_response_to_mario.md`. The publication date remains 1 June 2026 as per the pre-registration; if the data owner provides factual corrections to the language drafted in response to his commentary by 30 May, these will be incorporated.
