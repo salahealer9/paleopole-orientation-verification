@@ -69,9 +69,11 @@ The block-conditional null combines two restrictions simultaneously: bearings ar
 
 ## Look-elsewhere control (pre-registered §10)
 
-The 47°W meridian is itself a researcher choice: the data owner has identified it as the longitude of strongest clustering in his own exploratory analysis. Asking "is T at 47°W unusually small?" implicitly asks the test to find clustering at *the* most-clustered meridian, which biases the test toward significance. The pre-registration §10 corrects for this with a longitude scan: T is computed observationally at each of 72 meridians (at 5° resolution from −180° to +175°), and the Monte Carlo null records, for each of M = 10,000 iterations, the *minimum* T across all 72 meridians. The p-value is then "how often does the null distribution of minimum-T match or beat T_obs(47°W)?" — testing whether 47°W is unusual against the multiplicity of meridian choices, not just against random bearings at a single meridian.
+The 47°W meridian was treated by the pre-registration as a researcher-selected parameter that warrants look-elsewhere correction. The data owner, in commentary provided during the 14-day pre-publication window (see Appendix A), has clarified that the 47°W value was derived from a 2015 geometric calculation rather than identified by scanning for the strongest clustering. Specifically, he reports that the intersection of great-circle paths from the average orientations of Western and Eastern Hemisphere structures, computed in 2015, yields 71.6°N, 47.1°W. A 2020 recalculation with an expanded dataset yielded approximately 58°N, 44°W — still in the same Atlantic sector but drifted from the 2015 value.
 
-The pre-registration also commits to a 1° resolution refinement if the 5° result is significant.
+Whether the meridian is best understood as theoretically-derived or as an empirically-tuned parameter is a question this analysis cannot fully adjudicate. The 2015 derivation is plausible but not independently verified by our analysis. The 2020 drift to 44°W and the empirical attractor at −20°E (§3.4) both indicate that the exact longitude is not strongly determined by either method. We retain the look-elsewhere scan as a useful descriptive instrument regardless of the meridian's provenance: it reports the observed data's structure across longitudes and characterises the natural attractor band for great-circle intersections in this site distribution.
+
+The pre-registration §10 corrects for the meridian choice with a longitude scan: T is computed observationally at each of 72 meridians (at 5° resolution from −180° to +175°), and the Monte Carlo null records, for each of M = 10,000 iterations, the *minimum* T across all 72 meridians. The p-value is then "how often does the null distribution of minimum-T match or beat T_obs(47°W)?" — testing whether 47°W is unusual against the multiplicity of meridian choices, not just against random bearings at a single meridian. The pre-registration also commits to a 1° resolution refinement if the 5° result is significant.
 
 ## Per-pole confirmatory and site-to-pole assignment (pre-registered §11(a, b))
 
@@ -154,7 +156,7 @@ Two distinct findings emerged: one descriptive, and one statistical.
 
 The pre-registered 47°W meridian is rank 10 of 72. The geometric attractor band of strongest clustering is a contiguous longitude window from approximately −40°E to 0°E (Atlantic Ocean between West Africa and Brazil, plus the prime meridian), with the minimum at −20°E rather than at 47°W. This is a finding about the data itself, independent of any statistical model; it shows that the framework's choice of the 47°W meridian as the locus of clustering does not coincide with the meridian at which the observed data is most-tightly clustered.
 
-**Statistical finding (pre-registered).** The look-elsewhere null distribution, like the primary null, is dominated by the hemisphere-mismatch effect: T_min null mean = 45.0°, standard deviation 1.3°. Under this null, T_obs(47°W) = 4.65° gives p_LEE = 0.0001 at 5° resolution. The same result at the pre-registered 1° resolution refinement was also p_LEE = 0.0001. These p-values inherit the same interpretive limitation as the primary §7 result: they are dominated by hemisphere-mismatch, not by genuine 47°W-specific clustering.
+**Statistical finding (pre-registered).** The look-elsewhere null distribution, like the primary null, is dominated by the hemisphere-mismatch effect: T_min null mean = 45.0°, standard deviation 1.3°. Under this null, T_obs(47°W) = 4.65° gives p_LEE = 0.0001 at 5° resolution. The same result at the pre-registered 1° resolution refinement was also p_LEE = 0.0001. These p-values inherit the same interpretive limitation as the primary §7 result: they are dominated by hemisphere-mismatch, not by genuine 47°W-specific clustering. The longitude scan uses the same aggregate T statistic shown to be unreliable for the primary test, and the same caveat applies: a statistic that is dominated by hemisphere-selection at one meridian is dominated by the same effect when applied across 72 meridians. The pre-registered p_LEE value is reported here as the pre-registered finding, with this limitation acknowledged.
 
 The descriptive finding above (47°W is rank 10, attractor at −20°E) is the more substantive look-elsewhere observation, as it does not depend on a null model.
 
@@ -285,6 +287,8 @@ Several limitations constrain the conclusions that can be drawn from this work.
 
 **Regional imbalance in the sample.** The Americas block (n = 539) contains 54% of the in-range structures. The remaining 455 structures are distributed across six other geographic blocks, with two of them (Africa, Oceania/SE Asia) holding fewer than 25 structures each. The block-conditional null is therefore much more constrained by the Americas block than by the others, and the per-region analysis is limited by sample size in the smaller blocks. The geographic coverage of the database is also heavily weighted toward Mesoamerican and Mediterranean-Middle Eastern sites, which may affect the generalisability of any findings to ancient structures in regions less represented in this sample.
 
+**What the block-conditional null can and cannot detect.** The block-conditional null is the most stringent test in this analysis, preserving site geography, regional bearing patterns, and northern-hemisphere intersection simultaneously. It is, however, *conservative* with respect to cross-regional signals that operate within blocks. The null shuffles bearings within each block while leaving structures in their original blocks. A signal that appears in multiple blocks simultaneously — for instance, if structures in the Americas, Europe, and Asia all point toward a common latitude — would not be eliminated by the null, because the structures remain in their original blocks and the cross-block pattern is preserved. The null does, however, absorb any signal whose driving force is *region-specific bearing distribution alone*. If the latitude concentration is driven by, say, a regional architectural convention that happens to produce a particular intersection latitude when applied to the typical sites in that region, the null will erase it (this is, in fact, what we observe for Pole V: §3.5). If the latitude concentration is shared *across* regions but absent *within* any single region's distribution, the null might partially absorb such a signal. The signals we detect at Poles II and III survive the block-conditional null with substantial excess (115 vs 90, 119 vs 91), which indicates either that the signal is genuinely cross-regional (the structures clustering at these latitudes come from multiple blocks) or that the signal is sufficiently robust to within-block permutation that it cannot be eliminated. We do not formally separate these two possibilities. A reader inclined toward the data owner's framework would note that a global geophysical event would produce a cross-regional pattern by construction; the null is well-suited to detecting such patterns precisely because they survive within-block permutation.
+
 **The analysis tests one specific framework, not a general hypothesis about ancient orientations.** The proposed pole latitudes were specified by the data owner before our analysis began, so the test is well-defined. But the test does not address alternative configurations of paleopoles, alternative meridians, or other frameworks that might also predict clustering at different latitudes. The conclusions are specific to the framework as specified in the pre-registration document.
 
 ## Comparison with the data owner's published probability claims
@@ -301,7 +305,7 @@ These claims derive from a binomial test against a uniform null distribution alo
 
 The present analysis does not support these confidence claims in their published form. Under principled null models that preserve the relevant features of the data (site geography, in-range hemisphere selection, regional patterns), the analysis finds:
 
-- Pole I: no excess concentration (observed 95 structures within 1.5° vs null mean 95). The "approximately 100%" claim for Pole I is not supported.
+- Pole I: no excess concentration (observed 95 structures within 1.5° vs null mean 95). The "approximately 100%" claim for Pole I is not supported.[^poleinote]
 - Pole II: real excess concentration (115 vs 90 under the most stringent null, p-Šidák = 0.0015). Genuinely significant but at a much weaker confidence level than "100%."
 - Pole III: real excess concentration (119 vs 91, p-Šidák = 0.0005). Genuinely significant, but again weaker than the published "100%."
 - Pole IV: no excess concentration (70 vs 70). The "99.999%" claim is not supported.
@@ -311,17 +315,167 @@ The contrast is substantive. The published probabilities derive from a null mode
 
 The published probability claims should be understood as artifacts of the choice of binomial test against a uniform null, not as confidence statements about the framework's claims.
 
+[^poleinote]: The data owner, in commentary provided during the 14-day comment window (see Appendix A), observes that a "background-consistent" finding for the current geographic pole is not necessarily evidence against his framework: under a model of discrete pole shifts, structures built during the current rotational regime should show a distribution consistent with the geometric background, while structures oriented to earlier pole positions should appear as anomalies relative to that background. This is a reasonable interpretive frame and is recorded here. It does not change the statistical finding that Pole I shows no excess clustering under any null model tested in this analysis; the alternative interpretation is a different reading of what such a null result means in the context of his framework.
+
 ## Conclusion
 
 The framework receives partial empirical support. Two of its five proposed pole latitudes — Pole II (76°N) and Pole III (72.2°N) — show real, robust within-hemisphere clustering that survives all four null models tested in this analysis, including the most stringent variant that preserves regional bearing patterns. The other three proposed poles do not show such clustering under principled nulls. The pre-registered aggregate test statistic, though formally "highly significant," is structurally confounded and does not support the framework once the confound is corrected. The data owner's published probability claims of "100%" and "99.999%" overstate the strength of evidence even for the supported poles.
 
 The broader interpretive claim — that the observed latitude concentrations represent former positions of Earth's rotational axis — is not tested by this analysis and would require independent geological evidence (paleomagnetic, climatological, geological-dating) of a kind outside the scope of an orientation-clustering test. The orientation pattern, on its own, is consistent with multiple causes and cannot establish the geophysical interpretation.
 
+# Appendix A: Commentary by the data owner (Mario Buildreps)
+
+*The text of this appendix was provided in full by Mario Buildreps in correspondence dated 23 May 2026, during the 14-day pre-publication notice window committed by the pre-registration (§12 point 2). It is appended verbatim, with permission, as the data owner's formal commentary on the findings of this report. Some formatting has been adjusted for typographic consistency with the rest of the document; no content has been changed. Section numbering within the appendix is the data owner's own.*
+
+---
+
+Dear Salah-Eddin,
+
+Thank you for sharing these results and for the rigorous process you have followed. Before I address points of disagreement, I want to acknowledge several things that deserve recognition.
+
+First, I want to acknowledge something about your analytical process that reflects genuine scientific integrity. Your pre-registered primary test produced a nominally overwhelming result in my favor — p = 0.0001, a 26-sigma effect. You could have reported this as confirmation and stopped. Instead, you diagnosed it, identified the hemisphere-mismatch artifact that produced it, documented it transparently in your analysis log, and developed properly conditioned null models that isolated the within-hemisphere question. This is scientific practice of a high standard, and I respect it regardless of how I view the interpretation of your findings.
+
+Second, your critique of my original binomial test is valid in one important respect. I used a uniform null along the meridian, and this is a simplification that does not fully account for the geometric and geographic structure of the data. A uniform distribution of intersection latitudes is not the correct null expectation, and your geography-preserving permutation approach is a more principled baseline. I accept this criticism.
+
+I do want to clarify a point about the sample size in that binomial test. My calculation used the full database of approximately 1,159 structures as N, including the 166 structures that cannot intersect the 47°W meridian by geometry. Because these out-of-range structures cannot contribute to any latitude bin, including them in N while keeping P based on the 90° range makes the expected count higher for a given bin width, and therefore makes the test more conservative — it is harder to reach a given significance threshold. My approach understated the nominal probabilities, not inflated them. That said, the deeper issue you identified — that the binomial test was applied to peaks selected from the same data — is a valid concern about circularity. The nominal probabilities, whether conservative or not, do not carry the confirmatory weight of an independent test. I acknowledge that, and I will present future statistical analyses with more appropriate methods.
+
+Third, I want to clarify how the pole positions were derived, as this affects the interpretation of your confirmatory test. The initial pole position was identified from two independent sources: the centroid of the former ice sheets, derived from geological evidence, and the crustal displacement hypothesis. The orientation data was subsequently used to refine this position and to identify additional clustering peaks along the meridian that these independent sources pointed toward. The starting point was the current geographic pole at 90°N, which is independently known. A second reference point was derived from the intersection of great-circle paths from the average orientations of Western and Eastern Hemisphere structures — a procedure I first performed in 2015, yielding an intersection at 71.6°N, 47.1°W, and repeated with an expanded dataset in 2020, yielding approximately 58°N, 44°W. Both pointed to the Greenland sector. With the meridian thus established, I examined the distribution of intersection latitudes from individual structures along this band. Additional clustering peaks were identified at 76.0°N, 72.2°N, 64.1°N, and 52.3°N. This means that Poles II through V were identified partly through examination of the orientation data, not from independent geophysical predictions. A purely confirmatory pre-registered test that treats them as a priori predictions is therefore better understood as a cross-validation exercise than as a test of independent predictions. I should have been clearer about this distinction in our earlier correspondence.
+
+Fourth, your independent confirmation that statistically significant clustering exists at 72.2°N and 76°N — surviving even your most stringent null models — is a meaningful contribution. Under your block-conditional null, the most hostile test you applied, Pole II shows 115 observed structures within 1.5° of 76.0°N compared to approximately 90 expected (p-Šidák = 0.0015), and Pole III shows 119 observed compared to approximately 91 expected (p-Šidák = 0.0005). This means that about 234 structures — roughly one quarter of the in-range set — concentrate near these two latitudes, approximately 50 more than expected under a null model that preserves site geography, regional bearing patterns, and the northern-hemisphere intersection property simultaneously. As you write in your analysis log: "The clustering is real and is not attributable to hemisphere selection, regional patterns, geographic distribution of sites, or measurement artifacts." I thank you for that independent confirmation.
+
+I also note that your site-to-pole assignment test found a 46% match rate between your independent geometry and my published pole assignments, compared to approximately 9% expected under the block-conditional null. This is a substantial effect that survives all null models. You interpret it cautiously as reflecting pipeline agreement and latitude-band structure. I would add that it also demonstrates that the pole assignments I published are not arbitrary — they capture genuine concentrations in the data that an independent geometric pipeline recovers.
+
+With these acknowledgments made, I have substantive concerns about the framing and interpretation of your findings. I raise them here so that they can be included alongside your public release, as your pre-registration provides.
+
+**1. The Derivation of the 47°W Meridian Has Been Mischaracterized**
+
+Your pre-registration and summary treat the 47°W meridian as a researcher degree of freedom — a parameter I optimized by scanning for the longitude that maximized orientation clustering. Your longitude scan and look-elsewhere correction are built on this premise. It is incorrect.
+
+The 47°W meridian was not found by scanning. It was derived from a geometric procedure that predates the full clustering analysis, and that was performed twice, years apart, with different subsets of data — both pointing to the same sector of the North Atlantic.
+
+The method has its intellectual origins in the crustal displacement hypothesis, which Charles Hapgood explored in the mid-20th century. In testing these ideas against the orientations of ancient structures, I found patterns that were consistent with crustal displacement but inconsistent with the specific mechanism Hapgood proposed. The data pointed toward a different process, involving Earth expansion rather than rigid crustal sliding, with Antarctica remaining approximately in place, the Pacific Basin accommodating expansion through crustal bulging, and the Atlantic Basin accommodating it through horizontal widening.
+
+Under this model, a coherent rotational component of crustal motion remains a central prediction. If such rotation occurred around an Euler pole in the North Atlantic-Arctic sector, then a specific geometric consequence follows: ancient structures in the Western Hemisphere should, on average, show a systematic clockwise deviation of their orientations relative to current true north, while structures in the Eastern Hemisphere should show a systematic counterclockwise deviation. The great-circle paths from these two hemispheric averages should intersect near the displacement path. This intersection provides a geometrically-derived estimate independent of any analysis of individual structure intersections.
+
+I performed this calculation twice:
+
+- **2015 derivation:** Western Hemisphere mean at 14.60°N, 88.80°W, deviation +14.56° clockwise. Eastern Hemisphere mean at 27.59°N, 80.99°E, deviation −9.20° counterclockwise. The great circles intersect at **71.56°N, 47.09°W** — directly on the 47°W meridian, at a latitude that sits between what I would later identify as Pole II (76.0°N) and Pole III (72.2°N).
+
+- **2020 derivation:** Using an expanded dataset with different filtering, the intersection shifted to approximately **58°N, 44°W** — still in the Greenland-Labrador Sea region, but moved south and east. The drift between the two derivations likely reflects the inclusion of additional structures that dilute the hemispheric asymmetry, and it suggests that the method is sensitive to which subset of the data is used — an important methodological point in its own right.
+
+Both independent calculations place the displacement path in the Greenland-Labrador Sea sector. The 2015 result points directly to 47°W. The 2020 result drifts to 44°W but stays within the same general band. This is the context in which I adopted 47°W as the reference meridian — not because I scanned the globe for the strongest clustering, but because it was the longitude derived from the initial 2015 calculation, and the clustering analysis subsequently confirmed it as productive.
+
+I acknowledge that the 2020 derivation did not reproduce 47°W exactly, and that the longitude scan in your analysis found stronger clustering at other meridians within the Atlantic band. I accept this descriptive finding. A theoretically-derived parameter need not be the empirical optimum under every metric, and the drift between the 2015 and 2020 results indicates that the exact longitude is less precisely determined than the general sector. What remains, in my assessment, is the convergence of independent lines of evidence — ice-sheet centroid, hemispheric orientation asymmetry, and intersection clustering — on the same region of the globe. The 2015 hemispheric intersection at 71.6°N, 47.1°W and the independently confirmed clustering at Poles II and III (72.2°N and 76.0°N) represent a consistency that your analysis was not designed to evaluate but that is central to the empirical case.
+
+I also note that your meridian scan was conducted using the aggregate T statistic that you yourself identified as producing artifactual results due to hemisphere mismatch. A statistic that you have judged unreliable for testing the 47°W meridian in isolation cannot become reliable when applied to 71 other meridians. At minimum, this caveat should be stated clearly in your write-up.
+
+**2. The Block-Conditional Null Has a Structural Limitation That Should Be Discussed**
+
+Your most stringent test shuffles orientations only within pre-defined geographic and cultural blocks. I understand the rationale: it controls for the possibility that regional building traditions produce apparent clustering. This is a reasonable sensitivity analysis.
+
+However, the test encodes an assumption that your write-up should make explicit to readers. By design, a block-conditional null cannot detect a signal that is correlated across blocks. If a global geophysical event caused structures in multiple regions to orient toward the same meridian-aligned latitudes, that cross-regional correlation would be treated as noise by your model and destroyed through permutation. The test is structurally incapable of finding the very phenomenon my hypothesis proposes.
+
+This limitation is amplified by the composition of the database. Your analysis log notes that the Americas block contains 539 of the 994 in-range structures — 54% of the total. When orientations are shuffled within a block that contains over half the data, any global signal that is expressed through those structures is absorbed into the block and eliminated. The block-conditional null is not neutral with respect to my hypothesis. It is biased against it by construction.
+
+I note that your block-conditional null found that the clustering at Pole V (52.3°N) does not reach significance, with a Šidák-corrected p-value of 0.5422, and you attribute this to region-specific bearing patterns, likely Mesoamerican. I acknowledge this finding. Pole V — which my model predicts should be the most diffuse due to its greater age and accumulated crustal deformation — may be particularly vulnerable to the assumptions of a null model that imposes regional independence. Whether the null finding reflects absence of signal or limitation of the null remains an open question.
+
+The fact that clustering at Poles II and III survives even this hostile null — with observed counts of 115 and 119 compared to expected counts of approximately 90 and 91 — is, if anything, stronger evidence for the signal's robustness. The null findings for other poles should be interpreted in light of the model's structural assumptions. I ask that your write-up include a brief discussion of what the block-conditional null can and cannot see.
+
+**3. The Full Latitude Distribution Contains Structure That the Primary Test Does Not Capture**
+
+Your primary test statistic T reduces the entire latitude distribution along 47°W to a single number: the average distance from each intersection to the nearest proposed pole. This is a valid test of one specific claim, but it discards most of the information in the data. As your own analysis log notes, T is sensitive to outliers — the 8 manually-adjusted structures with geometrically-correct intersections near −89° contribute approximately 141° each, inflating T by roughly 1.1° — while the per-pole count tests that revealed the Pole II and III signals are binary and unaffected by outlier magnitude.
+
+The frequency distribution of intersection latitudes — the histogram shown in Tab 2 of the spreadsheet — contains structure that your aggregate test does not engage:
+
+- **Discrete peaks separated by gaps.** The distribution shows clear peaks at approximately 90°N, 76°N, 72°N, 64°N, and 52°N, separated by latitudes where counts drop sharply. At latitude 74, there is a pronounced gap between the Pole II and Pole III clusters. At latitudes 82–88, counts drop to single digits between Pole I and Pole II. These gaps are evidence of discrete pole positions separated by periods of rapid movement, not a continuous distribution.
+
+- **A systematic trend in dispersion with latitude.** The cluster at 90°N (Pole I) is tight. The cluster at 76°N (Pole II) is broader. The cluster at 52°N (Pole V) is the most diffuse. This trend — older poles showing greater dispersion — is consistent with the crustal displacement model, which expects older pole positions to have endured more cumulative deformation cycles and therefore show more scattered orientation signatures. Your T statistic produces the same value whether Pole V is tight and Pole II is scattered or vice versa. It cannot detect this pattern.
+
+- **Hemispheric asymmetry in the underlying orientations.** As described in Point 1, Western Hemisphere structures tend to be rotated clockwise relative to true north, while Eastern Hemisphere structures tend to be rotated counterclockwise. This asymmetry is itself a prediction of a crustal rotation around a point in the Atlantic-Arctic region. Your null models, which permute orientations without regard to hemisphere, destroy this signal by design.
+
+I am not suggesting your test is invalid. I am suggesting it is incomplete. A full evaluation of the Archaeorientation framework requires engaging the complete latitude distribution — its peaks, its gaps, its dispersion trend, and its hemispheric structure — not just proximity to five pre-specified points.
+
+**4. The Current Geographic Pole Result Warrants Reflection**
+
+Your analysis finds that Pole I (90°N, the current geographic pole) shows no excess concentration under any null model, with an observed count of 95 structures compared to approximately 95 expected. This is a notable result. The current geographic pole is verifiably the rotational axis of the Earth, and the database contains 95 structures whose great-circle intersections fall within 1.5° of it. Your null model treats this count as geometrically expected and therefore unremarkable.
+
+I would offer a different perspective. The fact that the current pole's signature is geometrically "normal" under your null, while Poles II and III show robust excess, is precisely what a model of discrete pole shifts would predict. Structures built during the current rotational regime should show a distribution consistent with the geometric background. Structures oriented to earlier pole positions should appear as anomalies against that background. Your null model has, in effect, independently sorted the proposed poles into two categories — background-consistent and anomalous — in a way that aligns with the temporal structure of the crustal displacement model.
+
+I raise this not to claim that your analysis supports the model on this point, but to suggest that the null finding for Pole I is more interpretively ambiguous than a simple "not significant" label conveys.
+
+**5. The Pre-Registration's Scope Limitation Should Be Stated More Prominently**
+
+Your pre-registration states that the analysis "does not test, support, or refute any of the broader interpretive claims associated with the framework, including but not limited to: Earth expansion, crustal-deformation theories of ice ages, the antiquity of ancient structures beyond conventional chronology."
+
+This is a legitimate scope limitation, but it has consequences that should be made clear to readers. The empirical claim you tested — that five specific latitudes on the 47°W meridian show excess clustering — is only one component of a larger model. That model also makes claims about:
+
+- The meridian itself, derived from the intersection of hemispheric average great circles, a procedure that yields 47°W in the 2015 derivation and the same general sector in the 2020 derivation.
+
+- The hemispheric pattern of clockwise versus counterclockwise rotation, which is the input to that derivation and a direct geometric consequence of crustal rotation about an Euler pole.
+
+- The systematic increase in cluster dispersion with distance from the current pole, consistent with cumulative crustal deformation over successive pole shifts.
+
+- The existence of gaps between clusters, corresponding to periods of rapid pole movement.
+
+Your analysis engaged only the first of these components. Your null findings for Poles IV and V, and your characterization of Pole I as "not significant" under your null, do not falsify the broader model. They address one test of one component. I ask that your abstract and conclusion make this limitation clear, so that readers do not infer a broader negative result than your analysis can support.
+
+**6. The Confirmed Signal Should Lead the Narrative**
+
+Your own words in the analysis log are clear: "The clustering at 76°N and 72.2°N is a real feature of the data that is not explained by hemisphere selection, latitudinal range, or regional orientation patterns." And in your summary to me: "The clustering at 76°N and 72.2°N is real and is not attributable to hemisphere selection, regional patterns, or sampling geometry."
+
+This is the central empirical finding of your analysis. Two specific latitudes on the 47°W meridian — latitudes I identified as Pole II and Pole III — show a concentration of great-circle intersections that cannot be explained by random chance, geographic bias, regional building traditions, or hemispheric selection effects. About 234 structures, roughly one quarter of the in-range set, concentrate near these two latitudes, approximately 50 more than expected under the most stringent null model you applied.
+
+Notably, the 2015 hemispheric intersection point at 71.6°N, 47.1°W falls almost exactly between these two confirmed pole latitudes at 72.2°N and 76.0°N. This convergence of independent methods — hemispheric averaging and individual intersection clustering — is precisely the kind of internal consistency that gives the model its empirical weight.
+
+I ask that your abstract, conclusion, and any public-facing summary lead with this finding. The null results for other poles should be reported, but they are secondary. A reader who encounters your work should come away understanding that an independent, pre-registered analysis with stringent geographic controls has confirmed non-random orientation clustering at two of the five proposed pole positions, with the site-to-pole assignment test providing additional corroboration at 46% match rate versus 9% expected. The fact that other proposed poles did not survive your tests is scientifically interesting, but it does not diminish the importance of what did survive — particularly given the structural limitations of the null models discussed above, and the independent hemispheric derivation that points to the same latitude band.
+
+**7. Concluding Remarks**
+
+Your analysis has advanced this investigation in one important respect: it provides independent confirmation, using independently written code and stringent geographic controls, that statistically significant orientation clustering exists at 72.2°N and 76°N on the 47°W meridian. This clustering survives null models designed to be maximally hostile to my hypothesis. I appreciate that confirmation.
+
+Beyond this, the analysis also illustrates the limitations of approaching a complex geophysical model with a single statistical test isolated from the broader evidential context. The Archaeorientation framework rests on multiple converging lines of evidence — the ice-sheet centroid, the hemispheric orientation asymmetry and its geometric consequences, the multi-peak structure of the latitude distribution, the dispersion-age trend, and the match between the 2015 hemispheric intersection point and the confirmed clustering at Poles II and III. No single test of a single component can adjudicate the model as a whole.
+
+I have provided this commentary in the spirit of the scientific exchange your pre-registration invited. I trust that your final write-up will present the confirmed findings prominently, acknowledge the limitations discussed above, and make clear to readers that your analysis tested one specific statistical claim rather than the broader model from which it derives.
+
+I look forward to reading the final publication.
+
+Sincerely,
+
+Mario Buildreps
+
+**Appendix: Summary of Points for the Reader**
+
+1. The initial pole position was identified from two independent sources: the centroid of the former ice sheets, derived from geological evidence, and the crustal displacement hypothesis. The orientation data was subsequently used to refine this position and to identify additional clustering peaks along the meridian that these independent sources pointed toward. While the binomial test was applied to peaks that were partly identified from the data, the starting point was anchored in prior geophysical and theoretical considerations.
+
+2. Using the full database as N made the binomial test more conservative — the expected counts were higher, making significance harder to reach. The nominal probabilities understated, rather than overstated, the rarity of the observed clustering under a uniform null.
+
+3. The 47°W meridian was derived in 2015 from the intersection of hemispheric average great circles, yielding 71.6°N, 47.1°W — a point that falls directly between the later-confirmed Poles II and III. A 2020 derivation with expanded data yielded 58°N, 44°W, confirming the same general sector. The drift between the two derivations indicates that the exact longitude is less precisely determined than the general region, but both point to the Greenland-Labrador Sea sector. The meridian was not found by scanning for clustering.
+
+4. The hemispheric derivation method follows from a geometric consequence of crustal rotation about an Euler pole: Western Hemisphere structures should show systematic clockwise deviation, Eastern Hemisphere structures counterclockwise deviation. The intersection of their average great circles estimates the displacement path, independent of individual intersection clustering.
+
+5. I am gratified that the clustering at Poles II and III (72.2°N and 76°N) has been independently confirmed under stringent null models — 115 and 119 observed structures within 1.5° compared to approximately 90 expected under the block-conditional null, with Šidák-corrected p-values of 0.0015 and 0.0005. I note, however, two results that warrant further reflection. First, the current geographic pole (Pole I, 90°N) was not identified as statistically significant under the null models used, despite its verifiable existence and the strong clustering observed at that latitude. This raises questions about the sensitivity of the test to signals at the pole itself, where geometric convergence effects are strongest. Second, the clustering at Poles IV (64.1°N) and V (52.3°N) did not reach significance under the most stringent null models. Whether this reflects a genuine absence of signal at these latitudes, or a limitation of the null models' ability to detect more diffuse clustering at older proposed pole positions, remains an open question.
+
+6. The site-to-pole assignment test found a 46% match rate between independent geometry and published pole assignments, compared to approximately 9% expected under the block-conditional null. This robust result demonstrates that the published pole assignments capture genuine concentrations in the data.
+
+7. The block-conditional null assumes regional independence and is structurally incapable of detecting a global cross-cultural signal. With 54% of the in-range data concentrated in the Americas block, this limitation is amplified. This should be disclosed to readers.
+
+8. The full latitude distribution contains structure — peaks, gaps, dispersion trends, hemispheric asymmetry — that the primary aggregate test statistic does not capture, partly because T is sensitive to outliers in ways that the per-pole count tests are not.
+
+9. The observed-data longitude scan found 47°W ranked 10th of 72 meridians by the T metric. I acknowledge this descriptive finding. The 2015 hemispheric derivation points to 47.1°W. The 2020 derivation drifted to 44°W. Both are within the same Atlantic sector. A theoretically-derived meridian need not be the empirical optimum under every metric, particularly when the derivation and the optimization use different methods and when the derivation itself shows sensitivity to data subset selection.
+
+10. The scope limitation means the analysis does not test the broader geophysical model and cannot be presented as having done so.
+
+11. The 2015 hemispheric intersection (71.6°N, 47.1°W) and the confirmed clustering at Poles II and III (72.2°N and 76°N) converge on the same latitude band using independent methods — a consistency that the pre-registered analysis was not designed to evaluate but that strengthens the empirical case.
+
+---
+
+*End of appendix A.*
+
 # Acknowledgments and References
 
 ## Acknowledgments
 
-I thank Mario Buildreps for providing the database file used in this analysis under the conditions described in §2.1, for confirming methodological details about his pipeline via direct correspondence during the analysis period (notably the recommendation to use the geometrically-correct raw-bearing approach rather than the manually-adjusted values published in his pre-computed column), and for accepting the 14-day comment window between the sharing of preliminary findings and the public release of this report. His willingness to make his data available for independent verification was essential to this work and is a substantial methodological contribution in its own right, regardless of the analytical conclusions reached.
+I thank Mario Buildreps for providing the database file used in this analysis under the conditions described in §2.1, for confirming methodological details about his pipeline via direct correspondence during the analysis period (notably the recommendation to use the geometrically-correct raw-bearing approach rather than the manually-adjusted values published in his pre-computed column), and for accepting the 14-day comment window between the sharing of preliminary findings and the public release of this report. His formal commentary on the findings, received during that window, is included verbatim as Appendix A. His willingness to make his data available for independent verification, and his willingness to provide on-the-record commentary for inclusion in this report, are substantial methodological contributions in their own right, regardless of how any reader interprets the analytical conclusions reached.
 
 The pre-registration document, the analysis code, the full analysis log, and the frozen snapshot of the analysis log as it stood at the opening of the comment window are all publicly available at the project repository. The analysis can be reproduced from the database file using the fixed random seed documented in the pre-registration; cryptographic verification of the data file is built into every analysis script.
 
