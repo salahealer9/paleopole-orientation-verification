@@ -516,7 +516,73 @@ Next step: draft the writeup and prepare the 14-day notice email to the data own
 
 ---
 
+## 2026-05-23 — Data owner's commentary received; writeup incorporations and declines
 
+Five days into the 14-day pre-publication notice window opened on 18 May 2026, the data owner provided a formal written commentary on the preliminary findings (received 23 May 2026). The full text is included verbatim as Appendix A of the final writeup (`writeup/results_v1.0.md`). This log entry documents the reasoning for which elements of the commentary were incorporated into the writeup and which were not, in the spirit of maintaining the analytical and methodological reasoning of the project as a transparent record.
+
+### Summary of the data owner's reply
+
+The data owner's commentary has the following structure:
+
+- A preface acknowledging several aspects of the analytical process: the discipline of diagnosing the 26-sigma artifact, the methodological lesson on hemisphere-conditioning in selection-effect-aware nulls, the independent confirmation of clustering at Poles II and III under stringent null models, and the validity of the critique of his original binomial test against a uniform null.
+- A clarification regarding the sample size used in his original binomial test (using N = 1,159 rather than 994 made his test conservative rather than inflated; he accepts the deeper circularity issue).
+- A clarification regarding the historical derivation of the 47°W meridian, which he states was derived from a 2015 hemispheric-intersection calculation (yielding 71.6°N, 47.1°W) and re-derived in 2020 (yielding approximately 58°N, 44°W), rather than being identified by scanning for the strongest clustering.
+- A clarification that Poles II–V were identified partly through examination of the orientation data, making the pre-registered per-pole confirmatory test better understood as cross-validation than as a test of independent predictions.
+- Acknowledgment of the descriptive longitude-scan finding (47°W is rank 10 of 72 in the observed data).
+- Seven substantive concerns about framing and interpretation: the meridian characterisation, the block-conditional null's structural limitations, the aggregate T statistic missing structural information in the latitude distribution, the interpretation of the Pole I null finding, the prominence of the scope limitation, the prominence of the confirmed signal in the narrative, and the broader claim that the analysis tested one component of a multi-component framework.
+
+### Decisions on incorporation
+
+The pre-registration's §12 point 4 commits to incorporating "factual corrections" identified during the comment window, while declining "interpretive disagreements." The boundary between these categories is consequential and I applied it as follows.
+
+**Incorporated into the writeup:**
+
+1. **47°W meridian's derivation history** (§2.7). The data owner's account of the 2015 hemispheric-intersection calculation is factual context about how the meridian was chosen that we did not have during the pre-registration drafting. We accept his account in good faith for the historical record, while noting that we cannot independently verify the 2015 derivation. The §2.7 text now presents both the theoretical-derivation account and the empirical longitude-scan results, with neither presented as definitive.
+
+2. **The Pole II–V derivation as cross-validation** (implicit in §2.8 and §3.5 framing). The clarification that Poles II–V were identified partly from data examination means our per-pole confirmatory tests function as cross-validation rather than independent prediction. The implication is documented in the relevant sections without restructuring the test specifications, which remain pre-registered as drafted.
+
+3. **The block-conditional null's structural limitation** (§4.5). The data owner's concern that the null may be biased against his hypothesis required closer analysis. His stronger formulation — that the null is "structurally incapable of detecting a global cross-cultural signal" — was, on careful examination, not entirely accurate. The null preserves block membership (each structure remains in its original block) and shuffles bearings only within blocks; a cross-regional signal that appears across multiple blocks would survive this procedure because the original block-to-block structure is preserved. What the null *does* erase is the possibility that the signal is driven by region-specific bearing distribution alone. We added an expanded paragraph to §4.5 documenting both what the null detects (cross-regional patterns) and what it absorbs (region-specific signals), explicitly noting that the surviving signals at Poles II and III are consistent with either interpretation (genuinely cross-regional, or sufficiently robust to within-block permutation) and that the analysis does not formally separate these possibilities.
+
+4. **The data owner's alternative interpretive frame for Pole I** (§4.6 footnote). The observation that a "background-consistent" finding for the current geographic pole is consistent with a discrete-pole-shift model — under which current-era structures would be expected to match the geometric background while older structures should appear as anomalies — is a reasonable reading of the null result for Pole I. This is recorded as a footnote, presented as the data owner's alternative interpretation rather than our endorsement, since it does not change the statistical finding that Pole I shows no excess clustering under any null model tested.
+
+5. **The longitude scan caveat** (§3.4). The pre-registered p_LEE values inherit the same hemisphere-mismatch limitation as the primary T statistic. The §3.4 text now states this caveat explicitly: a statistic that is dominated by hemisphere-selection at one meridian is dominated by the same effect when applied across 72 meridians. The pre-registered p_LEE value is reported as the pre-registered finding, with this limitation acknowledged.
+
+6. **The data owner's full commentary as Appendix A**. Per the pre-registration's commitment to transparency in the final writeup, the commentary is included verbatim with his permission. This ensures that any reader of the report has direct access to his perspective alongside the analytical conclusions, without requiring the reader to track the email thread or external references.
+
+7. **Updated acknowledgments**. The acknowledgments section now credits the data owner for providing on-the-record commentary in addition to the database.
+
+**Not incorporated:**
+
+1. **No changes to statistical findings, p-values, or analytical conclusions.** The data owner's commentary did not identify factual errors in the analysis itself. The pre-registered tests were run as specified, the null models behave as documented, and the p-values are correct. No incorporation is required at the analytical level.
+
+2. **No change to the abstract's framing.** The abstract already leads with the Pole II and III findings, which is what the data owner asked it to do. Further softening of the language about the null findings for Poles I, IV, V would overclaim relative to what the analysis establishes.
+
+3. **No change to the conclusion's restrained register** (§4.7). The conclusion states that "the framework receives partial empirical support." This is fair to the data. Strengthening it (e.g., to "the framework is supported") would not honour the actual findings, which show robust clustering at only two of five proposed poles and a null aggregate signal under principled nulls.
+
+4. **The descriptive longitude-scan finding remains in the report.** The data owner accepted that 47°W is rank 10 of 72 in the observed data, and the report records this as a descriptive observation. The 47°W meridian's theoretical-derivation context is added alongside, but the descriptive empirical observation is not retracted. A theoretically-derived parameter and an empirical optimum are different quantities, and the report presents both.
+
+5. **The §3.2 diagnostic narrative and §4.4 methodological lesson stand.** The data owner explicitly acknowledged these as the most valuable element of the analysis. The pre-registered unconditional null was confounded; the diagnostic identified the confound; the conditional and block-conditional nulls isolated the within-hemisphere question. This narrative is not softened in any way.
+
+### Reasoning for the boundary
+
+The boundary between factual-correction-incorporated and interpretive-disagreement-declined is articulated explicitly in the response to the data owner. The principle:
+
+- **Factual clarifications about the framework's derivation history**: incorporated. We did not have this information when the analysis was designed; it deserves to be in the record.
+- **Methodological limitations the data owner identifies**: incorporated where reasonable. The block-conditional null limitation is a legitimate concern that we did not adequately disclose in our initial draft.
+- **Interpretive disagreements about what the findings mean**: not incorporated by changes to our analytical framing. Such disagreements belong in the commentary as the data owner has provided it, where any reader will encounter them.
+- **Factual corrections to the analysis itself**: would have been incorporated, but the data owner's commentary did not identify any.
+
+This is not a softening of the analytical conclusions. It is the addition of context that, in combination with the appended commentary, gives the reader a more complete view of both the analysis and the framework's defence.
+
+### Methodological note on the comment-window phase
+
+The pre-registration's §12 point 2 commits to a 14-day window before public release of results, with the data owner welcome to provide commentary. The pre-registration does not commit to a specific procedure for incorporating comments. The procedure adopted here — incorporate factual clarifications and acknowledged methodological limitations, append the full commentary as a separate appendix, and decline interpretive disagreements at the analytical-framing level — was chosen as a balance between the data owner's reasonable interest in being heard and the report's need to maintain analytical integrity.
+
+This is, in itself, a methodological choice that may inform future pre-registered work that includes a comment window. Specifying the comment-incorporation procedure in the pre-registration itself (rather than leaving it to be worked out during the window) might be a useful refinement of pre-registration practice.
+
+### Status
+
+The writeup edits described above have been applied to `writeup/results_v1.0.md` and committed on 23 May 2026. The data owner has been notified of the changes in a response sent on the same date. The publication date remains 1 June 2026 as per the pre-registration; if the data owner provides factual corrections to the language drafted in response to his commentary by 30 May, these will be incorporated.
 
 
 
