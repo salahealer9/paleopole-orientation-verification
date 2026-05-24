@@ -583,3 +583,20 @@ This is, in itself, a methodological choice that may inform future pre-registere
 ### Status
 
 The writeup edits described above have been applied to `writeup/results_v1.0.md` and committed on 23 May 2026. The data owner has been notified of the changes in a response sent on the same date. The text of the response is preserved at `results/correspondence/2026-05-23_response_to_mario.md`. The publication date remains 1 June 2026 as per the pre-registration; if the data owner provides factual corrections to the language drafted in response to his commentary by 30 May, these will be incorporated.
+
+---
+
+## 2026-05-24 — Comment-window closure
+
+The data owner replied on 24 May to the 23 May response, confirming:
+
+- The 2015 hemispheric-intersection coordinates as paraphrased in §2.7 (71.6°N, 47.1°W) are accurate; no factual correction is needed.
+- No other factual corrections to the language drafted for his commentary points.
+- Acceptance of the technical clarification on the block-conditional null's behaviour, with his original framing preserved in Appendix A and our refined framing preserved in the body §4.5.
+- No objection to the publication timeline (final version by 31 May, Zenodo deposit on 1 June).
+
+The full reply is preserved verbatim at `results/correspondence/2026-05-24_reply_from_mario.md`.
+
+The 14-day pre-publication notice window opened on 18 May 2026 is effectively closed with the data owner's confirmation. The writeup is now in its final form pending only the rendering, signing, and timestamping workflow scheduled for 30-31 May, and the Zenodo deposit and follow-up email on 1 June.
+
+---
