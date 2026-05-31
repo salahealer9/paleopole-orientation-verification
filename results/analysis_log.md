@@ -600,3 +600,35 @@ The full reply is preserved verbatim at `results/correspondence/2026-05-24_reply
 The 14-day pre-publication notice window opened on 18 May 2026 is effectively closed with the data owner's confirmation. The writeup is now in its final form pending only the rendering, signing, and timestamping workflow scheduled for 30-31 May, and the Zenodo deposit and follow-up email on 1 June.
 
 ---
+
+## 2026-05-31 — Publication artifact finalised
+
+The final report has been rendered, GPG-signed, and OpenTimestamped, completing the pre-registered analytical and documentation protocol. The artifact is now committed to the public repository at `writeup/results_v1.0.pdf`. The Zenodo deposit is scheduled for 1 June 2026 per the pre-registration's publication-date commitment.
+
+### Provenance summary
+
+The publication artifact has the following cryptographic provenance chain:
+
+- **PDF file**: `writeup/results_v1.0.pdf`
+- **SHA-256**: `582b798e34a2bba58b7a93e4e46215c1d8812d81d21e90fb1f90d8557b0402a6`
+- **GPG signature**: `writeup/results_v1.0.pdf.asc` — signed with the same key used for the pre-registration (key ID `D4EC0...`) and for every commit in this repository.
+- **OpenTimestamps proofs**:
+  - PDF: `writeup/results_v1.0.pdf.ots` — Bitcoin block 951758, merkleroot `f5a820f2b9e363658dc6d7c43167851ae0e155d1ccb87e3ec5ecd33dc19358b1`
+  - Signature: `writeup/results_v1.0.pdf.asc.ots` — Bitcoin block 951797, merkleroot `eee902eebc3b300a6ac1e41c671d8f9d54c56409f90150bc54e534a0e0ee74a0`
+
+Any future reader can independently verify the cryptographic claims by:
+1. Computing the SHA-256 of the PDF and confirming it matches the value above.
+2. Running `gpg --verify writeup/results_v1.0.pdf.asc writeup/results_v1.0.pdf` against the public GPG key.
+3. Running `ots verify writeup/results_v1.0.pdf.ots` (with `--no-bitcoin` if no local Bitcoin node is available) and confirming the Bitcoin block heights against any public Bitcoin explorer.
+
+This is the same provenance pattern used for the pre-registration document deposited on 17 May 2026, applied now to the final report. Together they form a complete cryptographically-attested chain: the protocol was committed before the data was opened, and the report was rendered after the analysis was complete, with both timestamps independently verifiable on the Bitcoin blockchain.
+
+### Status of the project
+
+With this entry, the analytical and documentation work of the project is complete. What remains is the mechanical publication workflow on 1 June: depositing the artifact as version 2 of the existing Zenodo record (DOI 10.5281/zenodo.20258204), updating the repository README with the new version DOI, and notifying the data owner.
+
+The pre-registered protocol committed on 17 May 2026 has been executed in full. The 14-day pre-publication notice window committed by the protocol has been honoured. The data owner's formal commentary has been incorporated as factual clarifications in the body of the report and preserved verbatim as Appendix A. The findings reported are the findings produced by the pre-registered analysis, modified only in framing and limitation discussion in response to the data owner's substantive concerns. No statistical conclusion has been altered post-data.
+
+This concludes the analysis log for version 1.0 of the report. Any future entries — corrections, errata, responses to post-publication critique, follow-up analyses — will be marked clearly as such and will not modify the existing record.
+
+---
