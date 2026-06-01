@@ -632,3 +632,103 @@ The pre-registered protocol committed on 17 May 2026 has been executed in full. 
 This concludes the analysis log for version 1.0 of the report. Any future entries — corrections, errata, responses to post-publication critique, follow-up analyses — will be marked clearly as such and will not modify the existing record.
 
 ---
+
+## 2026-06-01 — Post-publication peer review; latitude look-elsewhere and finer-block sensitivity
+
+Within hours of the v2 deposit on Zenodo (DOI 10.5281/zenodo.20474028), a substantive peer-review response was received privately. The reviewer agreed that the v2 work was procedurally sound — the pre-registration discipline, the 26-sigma diagnosis, the escalating null models, the descriptive longitude finding, the separation of statistical and geophysical claims — but identified two specific gaps in the analytical machinery that v2 had not closed, and a framing claim that v2's wording overstated. The reviewer prefers anonymity; their substantive points stand on their merits.
+
+The three points:
+
+1. **Missing latitude look-elsewhere correction.** §10 of the pre-registration corrected for longitude (the 72-meridian min-T scan), but §11(a) tested counts at five specific latitudes with Šidák ×5. The Šidák correction is appropriate only if the five latitudes were a priori independent predictions. The data owner conceded in his v2 Appendix A commentary (point 3) that Poles II–V were "identified partly through examination of the orientation data." The targets were therefore read off the same intersection-latitude distribution against which they were being tested — the identical researcher-degree-of-freedom that motivated the longitude scan, left uncontrolled on the latitude axis.
+
+2. **Pseudoreplication in the block-conditional null.** §11(d)'s within-block shuffle treats all 539 Americas structures as exchangeable. Orientations within architectural traditions are spatially autocorrelated; a single tradition (e.g. a cluster of Mesoamerican sites) shares a convention, so dozens of sites carry near-identical bearings. Treating these as exchangeable inflates the effective sample size in the null and over-disperses it, making the observed concentration appear more surprising than it should against a properly autocorrelated baseline. The data owner had raised the inverse concern (Appendix A point 2: that within-block shuffling destroys a cross-regional signal); both worries point to the same lever — block granularity is doing heavy lifting at n=7.
+
+3. **The v2 framing overstates what was shown.** The v2 abstract led with "robust within-hemisphere clustering at Poles II and III." Given the data-derived nature of the targets and the missing controls in points 1 and 2, the honest characterization is "data-derived peaks reproduce under independent geometry and survive several nulls, pending latitude look-elsewhere correction and a finer-blocking sensitivity check." V2 also separated what is geometrically one broad concentration (Poles II and III are 3.8° apart; their ±1.5° windows nearly abut) into two distinct findings, when the natural unit is one ~7°-wide peak holding ~24% of the sample.
+
+The first two points are testable with the existing infrastructure. Two new exploratory scripts were drafted, reviewed for correctness against the reviewer's specification, run with the same random seed (20260517) and M = 10,000 as the pre-registered analyses, and committed to the repository on 1 June.
+
+### Script 07: latitude look-elsewhere control
+
+`analysis/07_latitude_lookelsewhere.py` scans the populated northern range (45–89°N PRIMARY, 45–90°N WIDE) at 0.25° step, and under each null records the *maximum* count in any ±1.5° window across the scan. The look-elsewhere-corrected p-value is then computed as the probability that this null T_max distribution produces a window as full as the observed Pole II / Pole III window count.
+
+Observed: T_max at 72.00°N with 119 structures. Pole II window (76°N) holds 115 adjacent. Pole III window (72.2°N) is essentially the T_max — confirming that the data's strongest concentration is at the Pole III latitude.
+
+Latitude-LEE-corrected p-values, three nulls:
+
+| Null model | Null T_max mean | p_II (115) | p_III (119) |
+|---|---|---|---|
+| Unconditional | 93.3 | 0.0001 | 0.0001 |
+| Conditional (global within-hemisphere) | 121.2 | **0.999** | **0.905** |
+| Block-conditional (within-block within-hemisphere) | 110.4 | 0.0043 | 0.0003 |
+
+The unconditional row is still dominated by hemisphere-mismatch and uninterpretable in isolation, as v2 established.
+
+The conditional row is the most decisive single result. Under the global within-hemisphere null — the one that preserves the only constraint v2 established as mandatory (the northern-hemisphere inclusion criterion), and which imposes no assumption about block structure — the null's *maximum* window count anywhere in the scan range averages 121.2, slightly above the observed peak of 119. Free reshuffling of hemisphere-compatible bearings produces a fuller window somewhere than the observed peak, more often than not. Once the freedom to choose which latitude to call a pole is accounted for, the observed concentration is not significant; for Pole II it is essentially typical (p = 0.999), for Pole III it is slightly worse than typical (p = 0.905).
+
+The block-conditional row produces small p-values, but its interpretation now requires care: it imposes within-block exchangeability, which the next script demonstrates is a stronger assumption than the data supports.
+
+### Script 08: finer-block sensitivity
+
+`analysis/08_finer_block_sensitivity.py` runs the §11(a) per-pole test under the block-conditional null at three granularities. The `coarse` scheme (8 blocks) reproduces the v2 §11(d) result and serves as a validation of the within-block swap chain (which uses block-proportional proposal weighting rather than v2's global proposal with rejection). The `americas_split` scheme splits the Americas (n=539) by latitude into North American (n=6), Mesoamerican (n=371), and Andes/S.America (n=162). The `fine` scheme additionally splits Middle East and Europe-Med.
+
+Trend table:
+
+| Scheme | n_blocks | Pole II null mean | Pole II obs | Pole II p-Šidák | Pole III null mean | Pole III obs | Pole III p-Šidák |
+|---|---|---|---|---|---|---|---|
+| coarse | 8 | 90.2 | 115 | 0.0010 | 90.8 | 119 | 0.0005 |
+| americas_split | 10 | 100.8 | 115 | 0.0452 | 100.1 | 119 | 0.0080 |
+| fine | 12 | 101.8 | 115 | 0.0571 | 99.5 | 119 | 0.0030 |
+
+Validation: `coarse` produces II=0.0010, III=0.0005, matching script 06's 0.0015 and 0.0005 to within Monte Carlo error. The within-block swap chain is working correctly.
+
+The substantive result is what happens to the null means as blocks get finer:
+
+- Pole II null mean: 90.2 → 100.8 → 101.8.
+- Pole III null mean: 90.8 → 100.1 → 99.5.
+
+This climb of ~10 structures in each null mean *is* the pseudoreplication, made quantitative. With the Americas constrained to keep its bearings within its three sub-regions (especially the dominant Mesoamerican sub-block of 371 sites), the null already piles ~100 structures into the high-north band by itself — because mid-latitude near-cardinal sites project there geometrically and the Mesoamerican bearings, held inside Mesoamerica, are no longer randomly redistributable across the entire western hemisphere.
+
+Decomposition of the apparent excess:
+
+- Pole II: under `coarse`, excess = 115 - 90 = 25 structures over null mean. Under `fine`, excess = 115 - 102 = 13. About 48% of the apparent Pole II excess was driven by within-Americas exchangeability rather than cross-regional structure.
+- Pole III: under `coarse`, excess = 119 - 91 = 28. Under `fine`, excess = 119 - 99 = 20. About 32% of the apparent Pole III excess was within-Americas exchangeability.
+
+Pole II crosses out of significance under the fine scheme (p = 0.0571, just above 0.05). Pole III weakens by ~6× but holds as a ~3σ residual (p = 0.0030).
+
+§11(b) assignment match remains p = 0.0001 across all three schemes, consistent with the v2 §3.6 interpretation (the test is largely tautological: it measures pipeline agreement and within-hemisphere latitude-band structure, not pole-pointing).
+
+### Substantive interpretation
+
+Taken together, the two scripts substantially retract the v2 characterization of "robust clustering at Poles II and III":
+
+**Pole II is not robust.** It fails both post-publication controls. Under the global conditional null with look-elsewhere correction it is entirely typical (p ≈ 0.999). Under finer geographic blocking it falls to p ≈ 0.057. Pole II is consistent with a look-elsewhere-plus-autocorrelation artifact.
+
+**Pole III is a null-dependent residual.** It survives the block-conditional nulls with look-elsewhere correction (p ≈ 0.0003 coarse, p ≈ 0.003 fine) and remains a ~3σ effect under finer blocking. But it does not survive the global conditional null with look-elsewhere correction (p ≈ 0.90), and it weakens monotonically as blocking better captures spatial autocorrelation. Its survival depends entirely on which null model is treated as the relevant baseline.
+
+The block-conditional null is the more stringent test in one direction (it imposes more independence structure than free reshuffling) and the less appropriate test in another (it treats spatially autocorrelated sub-traditions as exchangeable). At the relevant granularity, it manufactures significance for the v2 framework's claims by over-dispersing the null. The data owner argued in his v2 Appendix A commentary that the block-conditional null was biased against his hypothesis. The post-publication analysis shows the opposite: at the coarse granularity used in v2, it was biased *toward* significance for his hypothesis by treating autocorrelated Mesoamerican sites as exchangeable. Under finer blocking that better respects the autocorrelation structure, the apparent signal attenuates.
+
+The "one peak, not two" framing is also now numerically supported. The observed T_max is at 72°N, with the adjacent 76°N window containing 115 structures. These are not two distinct concentrations; they are one broad concentration centered near 72-73°N, spanning roughly 70-78°N, that v2 reported as two findings because the framework's specification carved this continuous concentration into two named poles.
+
+### Methodological lessons
+
+The v2 report identified one methodological lesson (pre-register selection effects, not just the final test statistic). The post-publication analysis extends this to three:
+
+1. **Pre-register the full data-processing pipeline, including all selection criteria** (the original v2 lesson). The 26-sigma artifact arose because the pre-registered null did not preserve the in-range hemisphere selection.
+
+2. **When testing targets are data-derived rather than a priori, simple multiple-comparisons corrections like Šidák are insufficient.** A continuous look-elsewhere control over the actual search space is required. The Šidák ×5 correction in v2 §11(a) treated five data-derived latitudes as independent predictions; the correct correction was the latitude look-elsewhere null implemented in script 07.
+
+3. **In spatially or culturally autocorrelated data, the granularity of any blocking null is itself a researcher degree of freedom.** Coarse blocks treat autocorrelated sub-traditions as exchangeable, inflating the apparent effect size; finer blocks that better respect the autocorrelation structure produce more honest nulls. The right granularity is "the granularity at which observations are actually independent," which in archaeological data is closer to "tradition" than to "continent."
+
+### What follows
+
+A v3 update of the Zenodo record will be drafted in the coming days, incorporating:
+
+- A new results section (likely §3.8) reporting the latitude look-elsewhere and finer-block sensitivity analyses.
+- Revisions to §3.5 (per-pole results) and §4.7 (conclusion) to retract the v2 "robust clustering at Poles II and III" characterization and replace it with the "Pole II not robust; Pole III null-dependent residual" framing.
+- Expansion of §4.4 (methodological lessons) from one to three lessons.
+- A brief preface to v3 noting the post-publication review and the changes incorporated.
+- A response to the data owner's Appendix A point 2 specifically, noting that the post-publication finding inverts his concern about the block-conditional null's bias direction.
+
+The v3 deposit is targeted for approximately 4-5 June 2026 — three to four days after v2, to give the data owner time to absorb v2 in its full form before v3 changes the framing of his framework's specific claims, and to allow the v3 writeup to be drafted carefully rather than rushed.
+
+This is not a retraction of v2. V2's analyses are correct as run, its provenance chain is intact, and the methodological discovery (the 26-sigma artifact) remains a substantive contribution. V3 adds two more analyses that refine the framing of what v2 demonstrated. The pre-registration discipline is doing exactly what it was designed to do: catching the work's own gaps before they accumulate in the public record.
