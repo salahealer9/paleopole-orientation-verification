@@ -1,0 +1,84 @@
+{
+  "script": "07_latitude_lookelsewhere.py",
+  "run_timestamp_utc": "2026-06-01T13:32:24.255927+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "status": "exploratory_post_publication",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "tolerance_deg": 1.5,
+  "n_in_range": 994,
+  "scan": {
+    "step_deg": 0.25,
+    "primary_range": [
+      45.0,
+      89.0
+    ],
+    "wide_range": [
+      45.0,
+      90.0
+    ]
+  },
+  "observed": {
+    "count_pole_II_76.0": 115,
+    "count_pole_III_72.2": 119,
+    "T_max_primary": 119,
+    "T_max_primary_at_lat": 72.0,
+    "T_max_wide": 119,
+    "T_max_wide_at_lat": 72.0
+  },
+  "results": {
+    "PRIMARY": {
+      "unconditional": {
+        "null_Tmax_mean": 93.3352,
+        "null_Tmax_std": 3.7643114855176374,
+        "null_Tmax_p95": 99.0,
+        "p_any": 9.999000099990002e-05,
+        "p_II": 9.999000099990002e-05,
+        "p_III": 9.999000099990002e-05
+      },
+      "conditional": {
+        "null_Tmax_mean": 121.1776,
+        "null_Tmax_std": 2.0303345143103884,
+        "null_Tmax_p95": 124.0,
+        "p_any": 0.9048095190480951,
+        "p_II": 0.9989001099890011,
+        "p_III": 0.9048095190480951
+      },
+      "block_conditional": {
+        "null_Tmax_mean": 110.3803,
+        "null_Tmax_std": 1.581224813238143,
+        "null_Tmax_p95": 113.0,
+        "p_any": 0.00029997000299970003,
+        "p_II": 0.004299570042995701,
+        "p_III": 0.00029997000299970003
+      }
+    },
+    "WIDE": {
+      "unconditional": {
+        "null_Tmax_mean": 93.3352,
+        "null_Tmax_std": 3.7643114855176374,
+        "null_Tmax_p95": 99.0,
+        "p_any": 9.999000099990002e-05,
+        "p_II": 9.999000099990002e-05,
+        "p_III": 9.999000099990002e-05
+      },
+      "conditional": {
+        "null_Tmax_mean": 121.1776,
+        "null_Tmax_std": 2.0303345143103884,
+        "null_Tmax_p95": 124.0,
+        "p_any": 0.9048095190480951,
+        "p_II": 0.9989001099890011,
+        "p_III": 0.9048095190480951
+      },
+      "block_conditional": {
+        "null_Tmax_mean": 110.3803,
+        "null_Tmax_std": 1.581224813238143,
+        "null_Tmax_p95": 113.0,
+        "p_any": 0.00029997000299970003,
+        "p_II": 0.004299570042995701,
+        "p_III": 0.00029997000299970003
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+
+================================================================
+Latitude look-elsewhere control (post-publication extension)
+Script: 07_latitude_lookelsewhere.py
+Run timestamp (UTC): 2026-06-01T13:29:51.579484+00:00
+Pre-registration DOI: 10.5281/zenodo.20258204
+Status: EXPLORATORY (post-data) per pre-registration §12 point 3
+Random seed: 20260517   M = 10000   tol = ±1.5°
+================================================================
+
+SHA-256 verified: 426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c
+
+Geometry self-test: 7 cases passed.
+
+N in-range: 994
+Scan grid: 181 centres from 45.0° to 90.0° at 0.25° step
+  PRIMARY range [45.0, 89.0]  (177 centres)
+  WIDE    range [45.0, 90.0]  (181 centres)
+
+Observed:
+  count within ±1.5° of Pole II  (76.0°N): 115
+  count within ±1.5° of Pole III (72.2°N): 119
+  T_max PRIMARY = 119 at 72.00°N
+  T_max WIDE    = 119 at 72.00°N
+
+Building compatibility matrix (conditional / block-conditional)...
+  built in 0.5s; density 0.5368
+  blocks: Africa=2, Americas=539, East Asia=32, Europe-Med=120, Middle East=205, Oceania/SE Asia=23, Other=8, South Asia=65
+
+[1/3] unconditional null...
+    unconditional: 2000/10000  elapsed   5.1s
+    unconditional: 4000/10000  elapsed  10.1s
+    unconditional: 6000/10000  elapsed  15.3s
+    unconditional: 8000/10000  elapsed  20.2s
+    unconditional: 10000/10000  elapsed  25.2s
+[2/3] conditional null (global swap chain)...
+    swap progress: 2000000/19884970 ( 10.1%)  elapsed   4.2s  accept 0.500
+    swap progress: 4000000/19884970 ( 20.1%)  elapsed   8.4s  accept 0.501
+    swap progress: 6000000/19884970 ( 30.2%)  elapsed  12.5s  accept 0.500
+    swap progress: 8000000/19884970 ( 40.2%)  elapsed  16.6s  accept 0.500
+    swap progress: 10000000/19884970 ( 50.3%)  elapsed  20.7s  accept 0.501
+    swap progress: 12000000/19884970 ( 60.3%)  elapsed  24.9s  accept 0.501
+    swap progress: 14000000/19884970 ( 70.4%)  elapsed  29.0s  accept 0.501
+    swap progress: 16000000/19884970 ( 80.5%)  elapsed  33.1s  accept 0.501
+    swap progress: 17900000/19884970 ( 90.0%)  elapsed  37.1s  accept 0.501
+    acceptance rate 0.5006
+    scan: 2000/10000  elapsed   5.0s
+    scan: 4000/10000  elapsed   9.8s
+    scan: 6000/10000  elapsed  14.7s
+    scan: 8000/10000  elapsed  19.5s
+    scan: 10000/10000  elapsed  24.3s
+[3/3] block-conditional null (within-block swap chain)...
+    swap progress: 2000000/19884970 ( 10.1%)  elapsed   3.7s  accept 0.352
+    swap progress: 4000000/19884970 ( 20.1%)  elapsed   7.3s  accept 0.352
+    swap progress: 6000000/19884970 ( 30.2%)  elapsed  11.0s  accept 0.352
+    swap progress: 8000000/19884970 ( 40.2%)  elapsed  14.7s  accept 0.352
+    swap progress: 10000000/19884970 ( 50.3%)  elapsed  18.4s  accept 0.352
+    swap progress: 12000000/19884970 ( 60.3%)  elapsed  22.1s  accept 0.352
+    swap progress: 14000000/19884970 ( 70.4%)  elapsed  25.8s  accept 0.352
+    swap progress: 16000000/19884970 ( 80.5%)  elapsed  29.5s  accept 0.352
+    swap progress: 17900000/19884970 ( 90.0%)  elapsed  33.0s  accept 0.352
+    acceptance rate 0.3523
+    scan: 2000/10000  elapsed   4.9s
+    scan: 4000/10000  elapsed   9.7s
+    scan: 6000/10000  elapsed  14.5s
+    scan: 8000/10000  elapsed  19.3s
+    scan: 10000/10000  elapsed  24.2s
+
+================================================================
+LATITUDE LOOK-ELSEWHERE p-VALUES
+(compare to §11(a) Šidák: II=0.0015, III=0.0005 under block-cond.)
+================================================================
+
+--- scan range: PRIMARY [45.0, 89.0] ---
+  null model            null T_max mean     p_any      p_II     p_III
+  unconditional                   93.34    0.0001    0.0001    0.0001
+  conditional                    121.18    0.9048    0.9989    0.9048
+  block_conditional              110.38    0.0003    0.0043    0.0003
+
+--- scan range: WIDE [45.0, 90.0] ---
+  null model            null T_max mean     p_any      p_II     p_III
+  unconditional                   93.34    0.0001    0.0001    0.0001
+  conditional                    121.18    0.9048    0.9989    0.9048
+  block_conditional              110.38    0.0003    0.0043    0.0003
+
+Summary written to results/07_latitude_lookelsewhere.json
+Observed scan profile: results/07_observed_scan_profile.csv
+
+Interpretation: p_II and p_III are the observed Pole II / III window
+counts compared against the null distribution of the MAXIMUM window
+count anywhere in the scan range. If these are markedly larger than
+the §11(a) Šidák p-values, the reported significance was inflated by
+treating five data-derived latitudes as a priori predictions.
+

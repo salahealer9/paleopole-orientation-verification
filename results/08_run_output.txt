@@ -1,0 +1,110 @@
+
+==================================================================
+Finer-block sensitivity of the block-conditional per-pole test
+Script: 08_finer_block_sensitivity.py
+Run timestamp (UTC): 2026-06-01T13:33:56.320516+00:00
+Pre-registration DOI: 10.5281/zenodo.20258204
+Status: EXPLORATORY (post-data) per pre-registration §12 point 3
+Random seed: 20260517   M = 10000   tol = ±1.5°
+==================================================================
+
+SHA-256 verified: 426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c
+
+Geometry self-test: 7 cases passed.
+
+N in-range: 994
+Observed per-pole counts (independent geometry):
+  Pole I (current)    ( 90.0°N):   95
+  Pole II             ( 76.0°N):  115
+  Pole III            ( 72.2°N):  119
+  Pole IV             ( 64.1°N):   70
+  Pole V              ( 52.3°N):   57
+Observed assignment match: 454 / 994
+
+Building compatibility matrix...
+  built in 0.5s; density 0.5368
+
+==================================================================
+Scheme: coarse
+==================================================================
+  8 blocks: Africa=2, Americas=539, East Asia=32, Europe-Med=120, Middle East=205, Oceania/SE Asia=23, Other=8, South Asia=65
+    swap progress: 2000000/19884970 ( 10.1%)  elapsed   7.4s  accept 0.974
+    swap progress: 4000000/19884970 ( 20.1%)  elapsed  14.8s  accept 0.974
+    swap progress: 6000000/19884970 ( 30.2%)  elapsed  22.1s  accept 0.974
+    swap progress: 8000000/19884970 ( 40.2%)  elapsed  29.5s  accept 0.974
+    swap progress: 10000000/19884970 ( 50.3%)  elapsed  37.0s  accept 0.974
+    swap progress: 12000000/19884970 ( 60.3%)  elapsed  44.4s  accept 0.974
+    swap progress: 14000000/19884970 ( 70.4%)  elapsed  51.7s  accept 0.974
+    swap progress: 16000000/19884970 ( 80.5%)  elapsed  59.0s  accept 0.974
+    swap progress: 18000000/19884970 ( 90.5%)  elapsed  66.6s  accept 0.974
+  swappable blocks: 8  acceptance rate: 0.9738
+  §11(a) per-pole (block-conditional, coarse):
+    Pole             obs  null mean  null std    p-Šidák
+    I (current)       95      95.45      1.06     0.9998
+    II               115      90.22      6.61     0.0010  <-- II/III
+    III              119      90.75      6.82     0.0005  <-- II/III
+    IV                70      70.12      6.67     0.9785
+    V                 57      50.99      5.48     0.5783
+  §11(b) assignment: obs 454  null mean 92.20  p 0.0001
+
+==================================================================
+Scheme: americas_split
+==================================================================
+  10 blocks: Africa=2, Am:Andes/S.Am=162, Am:Mesoamerica=371, Am:N.America=6, East Asia=32, Europe-Med=120, Middle East=205, Oceania/SE Asia=23, Other=8, South Asia=65
+    swap progress: 2000000/19884970 ( 10.1%)  elapsed   7.4s  accept 0.972
+    swap progress: 4000000/19884970 ( 20.1%)  elapsed  14.7s  accept 0.972
+    swap progress: 6000000/19884970 ( 30.2%)  elapsed  22.0s  accept 0.972
+    swap progress: 8000000/19884970 ( 40.2%)  elapsed  29.4s  accept 0.972
+    swap progress: 10000000/19884970 ( 50.3%)  elapsed  36.8s  accept 0.972
+    swap progress: 12000000/19884970 ( 60.3%)  elapsed  44.2s  accept 0.972
+    swap progress: 14000000/19884970 ( 70.4%)  elapsed  51.5s  accept 0.972
+    swap progress: 16000000/19884970 ( 80.5%)  elapsed  58.8s  accept 0.972
+    swap progress: 18000000/19884970 ( 90.5%)  elapsed  66.3s  accept 0.972
+  swappable blocks: 10  acceptance rate: 0.9717
+  §11(a) per-pole (block-conditional, americas_split):
+    Pole             obs  null mean  null std    p-Šidák
+    I (current)       95      96.35      0.71     1.0000
+    II               115     100.79      5.85     0.0452  <-- II/III
+    III              119     100.06      6.16     0.0080  <-- II/III
+    IV                70      63.07      5.68     0.4929
+    V                 57      48.43      4.91     0.2217
+  §11(b) assignment: obs 454  null mean 95.95  p 0.0001
+
+==================================================================
+Scheme: fine
+==================================================================
+  12 blocks: Africa=2, Am:Andes/S.Am=162, Am:Mesoamerica=371, Am:N.America=6, East Asia=32, Eur:north=38, ME:east=29, ME:west=176, Med:south=82, Oceania/SE Asia=23, Other=8, South Asia=65
+    swap progress: 2000000/19884970 ( 10.1%)  elapsed   7.3s  accept 0.970
+    swap progress: 4000000/19884970 ( 20.1%)  elapsed  14.7s  accept 0.970
+    swap progress: 6000000/19884970 ( 30.2%)  elapsed  22.0s  accept 0.970
+    swap progress: 8000000/19884970 ( 40.2%)  elapsed  29.4s  accept 0.970
+    swap progress: 10000000/19884970 ( 50.3%)  elapsed  36.9s  accept 0.970
+    swap progress: 12000000/19884970 ( 60.3%)  elapsed  44.2s  accept 0.970
+    swap progress: 14000000/19884970 ( 70.4%)  elapsed  51.5s  accept 0.970
+    swap progress: 16000000/19884970 ( 80.5%)  elapsed  58.8s  accept 0.970
+    swap progress: 18000000/19884970 ( 90.5%)  elapsed  66.3s  accept 0.970
+  swappable blocks: 12  acceptance rate: 0.9698
+  §11(a) per-pole (block-conditional, fine):
+    Pole             obs  null mean  null std    p-Šidák
+    I (current)       95      96.28      0.73     1.0000
+    II               115     101.84      5.61     0.0571  <-- II/III
+    III              119      99.51      6.02     0.0030  <-- II/III
+    IV                70      64.51      5.54     0.6388
+    V                 57      52.49      4.76     0.6706
+  §11(b) assignment: obs 454  null mean 98.94  p 0.0001
+
+==================================================================
+TREND: Pole II / III p-Šidák (block-conditional) across granularity
+==================================================================
+  scheme            n_blocks   II p-Šidák   III p-Šidák
+  coarse                   8       0.0010        0.0005
+  americas_split          10       0.0452        0.0080
+  fine                    12       0.0571        0.0030
+
+  Reference (script 06, 7 coarse blocks): II=0.0015, III=0.0005.
+  Stable across schemes -> robust to within-Americas exchangeability.
+  Climbing toward non-significance      -> pseudoreplication.
+
+Summary written to results/08_finer_block_sensitivity.json
+Per-site block labels: results/08_block_assignments_by_scheme.csv
+
