@@ -732,3 +732,93 @@ A v3 update of the Zenodo record will be drafted in the coming days, incorporati
 The v3 deposit is targeted for approximately 4-5 June 2026 — three to four days after v2, to give the data owner time to absorb v2 in its full form before v3 changes the framing of his framework's specific claims, and to allow the v3 writeup to be drafted carefully rather than rushed.
 
 This is not a retraction of v2. V2's analyses are correct as run, its provenance chain is intact, and the methodological discovery (the 26-sigma artifact) remains a substantive contribution. V3 adds two more analyses that refine the framing of what v2 demonstrated. The pre-registration discipline is doing exactly what it was designed to do: catching the work's own gaps before they accumulate in the public record.
+
+---
+
+## 2026-06-04 — v3 decision gate: scripts 09 and 10; clean null finding at all proposed poles
+
+The 1 June log entry left v3 in a preliminary framing of "Pole II not robust, Pole III null-dependent residual." That framing was provisional: it rested on a single observed asymmetry (the global conditional null with look-elsewhere gave p_III ≈ 0.90, while the block-conditional null with look-elsewhere gave p_III ≈ 0.0003) that had not been mechanistically explained. Before drafting the v3 writeup, the post-publication reviewer correctly identified that asymmetry as a gate, not a finding, and recommended a combined-controls check before publication. Two scripts were drafted, reviewed for correctness against their respective specifications, run with the standard seed (20260517) and M = 10,000, and committed on 4 June.
+
+### Script 09: latitude look-elsewhere under finer-block nulls
+
+`analysis/09_lookelsewhere_under_finer_blocks.py` applies both post-publication controls simultaneously: the latitude look-elsewhere statistic from script 07, computed under the finer-block nulls from script 08. The `coarse` row reproduces script 07's block-conditional LEE p-values within Monte Carlo error (p_II = 0.0050 vs 07's 0.0043; p_III = 0.0001 vs 07's 0.0003), validating the wiring.
+
+Trend across granularity (PRIMARY range, latitude-LEE-corrected):
+
+| Scheme | Null T_max mean | p (Pole II, 76°N) | p (Pole III, 72.2°N) |
+|---|---|---|---|
+| coarse | 110.4 | 0.0050 | 0.0001 |
+| americas_split | 110.9 | 0.0727 | 0.0122 |
+| fine | 110.8 | 0.0656 | 0.0108 |
+
+Pole II fails the combined controls cleanly: 0.0050 → 0.073 → 0.066, stable above 0.05. Pole III's per-pole p climbs from 0.0001 to 0.0108 between `coarse` and `americas_split`, then stalls — the `fine` step (splitting the Middle East and Europe-Med) produced essentially no change. Two mechanistically important features of this table are worth flagging:
+
+**The null T_max mean is flat.** It stays at ~110 across all three schemes. The pseudoreplication story predicted the null mean would rise toward the observed 119 as finer blocking better constrained the bearings — that mechanism did not fire. The climb in p_III came from the upper tail of the null distribution widening, not from the centre moving.
+
+**The fine step did nothing because it never touched the block where Pole III lives.** A diagnostic cross-tabulation of Pole III's site-level contributors against the fine-block labels shows: 64 of Pole III's 119 contributors are in Am:Mesoamerica, a single 371-site block that neither 08 nor 09 ever split. The `fine` scheme split the Middle East and Europe-Med (~1 Pole III contributor in each), while Mesoamerica remained intact. Script 09 was not testing the block that mattered.
+
+This left the global-vs-block asymmetry unresolved — the block-conditional null was producing significance for Pole III that the assumption-light global null did not show, and the explanation was likely the autocorrelation structure of Mesoamerican architectural orientations (a well-documented phenomenon in the Aveni/Šprajc literature), but the test for this had not yet been run.
+
+### Script 10: spatial-cluster null (assumption-light pseudoreplication control)
+
+`analysis/10_spatial_cluster_null.py` removes the block-exchangeability assumption directly. Sites are grouped via single-linkage connected components into spatially coherent clusters (any two sites within a distance threshold are linked), each cluster is collapsed to a single representative (the real site nearest the cluster centroid — no angular averaging), and the global conditional null with latitude look-elsewhere correction is run on the representatives. The effective sample size becomes the number of independent spatial clusters, which is the standard pseudoreplication fix. The distance threshold is swept across 25, 50, 75, and 100 km so it is not a hidden researcher degree of freedom.
+
+Result (PRIMARY range, global conditional null with LEE correction on cluster representatives):
+
+| Threshold | Clusters | Pole III contributors | Pole III p (per-pole, no LEE) | Pole III p_LEE |
+|---|---|---|---|---|
+| 25 km | 286 | 25 clusters (from 119 sites) | 0.1360 | **1.0000** |
+| 50 km | 210 | 17 clusters | 0.3140 | **1.0000** |
+| 75 km | 173 | 13 clusters | 0.4911 | **1.0000** |
+| 100 km | 144 | 10 clusters | 0.4107 | **1.0000** |
+
+Pole II shows the same pattern: per-pole p climbs from 0.010 at 25 km to 0.056 at 100 km, with p_LEE = 1.0000 at every threshold.
+
+The result is stable across the entire 25-100 km threshold sweep. Single-linkage chaining is not driving it: the largest cluster grows from 64 sites at 25 km to 244 at 100 km (as expected from chaining behaviour), and the conclusion does not change. The per-pole p drifting around with threshold while p_LEE pins at 1.0 is the signature of noise, not signal.
+
+The mechanism is visible in the cluster counts. At the tightest threshold (25 km, the most conservative against over-clustering), the 119 site-level "contributors" to Pole III collapse to 25 independent clusters (representing 106 of the 119 sites; 13 sites in singleton clusters scattered elsewhere). Against this, the null's typical maximum window count across the scan range averages 37. The site-level 119 was never 119 independent observations — it was a handful of dozens of spatial units, replicated.
+
+A diagnostic at the 25 km threshold breaks the 25 Pole III clusters down by region:
+
+| Region | Clusters | Sites in those clusters |
+|---|---|---|
+| Am:Mesoamerica | 5 | 42 (includes one 29-site cluster in northern Yucatán, ~20.3°N, 89.6°W) |
+| ME:west | 7 | 16 |
+| Med:south | 6 | 12 |
+| Eur:north | 4 | 8 |
+| Am:Andes/S.Am | 1 | 12 (single Andean coastal cluster) |
+| Oceania/SE Asia | 1 | 2 |
+| South Asia | 1 | 1 |
+
+The Americas supply 54 of 106 sites in Pole III clusters but only 6 of 25 independent clusters. The site-level concentration was inflated chiefly by a few dense American clusters being counted as separate observations — most strikingly, a single 29-site cluster in the northern Yucatán entering the v2 §11(a) test as 29 independent points.
+
+### Substantive interpretation
+
+The asymmetry that motivated this gate is now mechanistically explained. The global conditional null (script 07, p_III = 0.90) was the correct test: with hemisphere preservation enforced but no exchangeability assumption beyond that, the observed peak does not exceed what free reshuffling produces somewhere in the scan range. The block-conditional null (06/07/08/09 coarse) produced apparent significance by treating spatially autocorrelated sites as exchangeable, particularly the dense Mesoamerican cluster carrying ~24% of the apparent Pole III contributors. The spatial-cluster null (script 10) is the assumption-light test that confirms the global null was correct: with autocorrelation removed by collapsing to clusters, no proposed pole shows excess clustering at any threshold.
+
+The v2 finding of "robust clustering at Poles II and III" does not survive the controls identified in post-publication review. Both poles are consistent with the null:
+
+- **Pole II** is consistent with a look-elsewhere-plus-autocorrelation artifact. Under the combined controls (latitude LEE under finer blocking, script 09; spatial-cluster null, script 10), it does not reach significance at any threshold.
+- **Pole III**, which the 1 June log entry characterized as a null-dependent residual, dissolves under script 10. The block-conditional nulls that previously sustained it were artifacts of the within-block exchangeability assumption, which the spatial-cluster null removes directly.
+- **The §11(b) assignment match** remains p = 0.0001 at the site level across all nulls, but the v2 report already established (§3.6) that this test is largely tautological — it measures pipeline agreement and within-hemisphere latitude-band structure, not pole-pointing. It is not independent evidence of clustering at the proposed poles.
+
+This is a clean null finding at every proposed paleopole.
+
+### Methodological lessons (revised)
+
+The v2 report identified one methodological lesson. The post-publication analysis extends this to four, one per script in the post-publication sequence:
+
+1. **Pre-register the full data-processing pipeline including selection criteria.** Selection effects that operate before the registered test can produce arbitrarily large apparent significance. (V2 lesson, from the 26-sigma artifact.)
+2. **When testing targets are data-derived rather than a priori, simple multiple-comparisons corrections are insufficient.** A continuous look-elsewhere control over the actual search space is required. (Script 07.)
+3. **In spatially or culturally autocorrelated data, the granularity of any blocking null is itself a researcher degree of freedom.** Block nulls are only as honest as the blocks that constitute them; the right granularity is the granularity at which observations are actually independent. (Scripts 08 and 09.)
+4. **The honest independence unit in spatially autocorrelated data is the cluster, not the site.** A spatial-cluster null, with the threshold swept rather than fixed, removes the granularity-choice degree of freedom and provides an assumption-light pseudoreplication control. (Script 10.)
+
+### What follows
+
+V3 of the Zenodo record will be drafted in the next day, with deposit targeted for 4-5 June 2026. The framing changes from the preliminary v3 sketched in the 1 June log entry: the conclusion is now a single line rather than a two-tier statement.
+
+> Under controls for both latitude look-elsewhere and spatial autocorrelation, no proposed paleopole shows clustering distinguishable from chance. The v2 result does not survive controls identified in post-publication review.
+
+This is not a retraction of v2. V2's analyses are correct for the nulls it ran. The pre-registered protocol caught a real methodological issue (the 26-sigma artifact), the analysis identified two more issues (latitude look-elsewhere and pseudoreplication) that the controls applied during v2 had not addressed, and the v3 controls complete the picture. The pre-registration discipline is doing what it was designed to do: identifying the work's own gaps before they accumulate in the public record.
+
+Mario Buildreps has been notified that v3 is imminent, in a response to his closing reply of 4 June acknowledging the v2 publication. His v2 Appendix A commentary remains preserved verbatim. A brief note in v3 Appendix B will address his Appendix A point 2 specifically: he argued the block-conditional null was biased against his hypothesis. The spatial-cluster null is the assumption-light version of what he was implicitly asking for; it removes the apparent signal rather than restoring it.
