@@ -1,0 +1,114 @@
+{
+  "script": "10_spatial_cluster_null.py",
+  "run_timestamp_utc": "2026-06-04T07:13:01.694582+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "status": "exploratory_post_publication",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "tolerance_deg": 1.5,
+  "n_in_range_sites": 994,
+  "primary_threshold_km": 75.0,
+  "thresholds": {
+    "25km": {
+      "n_clusters": 286,
+      "largest_cluster": 64,
+      "n_singletons": 132,
+      "acceptance_rate": 0.5345995668914939,
+      "null_Tmax_mean": 36.897,
+      "observed_per_pole": {
+        "I (current)": 27,
+        "II": 28,
+        "III": 25,
+        "IV": 29,
+        "V": 18
+      },
+      "obs_II": 28,
+      "obs_III": 25,
+      "per_pole_p": {
+        "I (current)": 1.0,
+        "II": 0.0098990100989901,
+        "III": 0.135986401359864,
+        "IV": 0.006899310068993101,
+        "V": 0.0438956104389561
+      },
+      "p_II_lee": 1.0,
+      "p_III_lee": 1.0
+    },
+    "50km": {
+      "n_clusters": 210,
+      "largest_cluster": 64,
+      "n_singletons": 80,
+      "acceptance_rate": 0.5458042632199093,
+      "null_Tmax_mean": 25.2199,
+      "observed_per_pole": {
+        "I (current)": 18,
+        "II": 17,
+        "III": 17,
+        "IV": 25,
+        "V": 14
+      },
+      "obs_II": 17,
+      "obs_III": 17,
+      "per_pole_p": {
+        "I (current)": 0.9999000099990001,
+        "II": 0.1471852814718528,
+        "III": 0.31396860313968605,
+        "IV": 0.0014998500149985001,
+        "V": 0.039396060393960604
+      },
+      "p_II_lee": 1.0,
+      "p_III_lee": 1.0
+    },
+    "75km": {
+      "n_clusters": 173,
+      "largest_cluster": 101,
+      "n_singletons": 67,
+      "acceptance_rate": 0.5963468670404654,
+      "null_Tmax_mean": 22.1752,
+      "observed_per_pole": {
+        "I (current)": 16,
+        "II": 14,
+        "III": 13,
+        "IV": 21,
+        "V": 15
+      },
+      "obs_II": 14,
+      "obs_III": 13,
+      "per_pole_p": {
+        "I (current)": 0.9994000599940006,
+        "II": 0.2034796520347965,
+        "III": 0.49105089491050896,
+        "IV": 0.0020997900209979003,
+        "V": 0.007399260073992601
+      },
+      "p_II_lee": 1.0,
+      "p_III_lee": 1.0
+    },
+    "100km": {
+      "n_clusters": 144,
+      "largest_cluster": 244,
+      "n_singletons": 56,
+      "acceptance_rate": 0.6116141103612985,
+      "null_Tmax_mean": 21.8001,
+      "observed_per_pole": {
+        "I (current)": 16,
+        "II": 14,
+        "III": 10,
+        "IV": 14,
+        "V": 10
+      },
+      "obs_II": 14,
+      "obs_III": 10,
+      "per_pole_p": {
+        "I (current)": 0.9994000599940006,
+        "II": 0.05579442055794421,
+        "III": 0.4106589341065893,
+        "IV": 0.041995800419958006,
+        "V": 0.06209379062093791
+      },
+      "p_II_lee": 1.0,
+      "p_III_lee": 1.0
+    }
+  }
+}

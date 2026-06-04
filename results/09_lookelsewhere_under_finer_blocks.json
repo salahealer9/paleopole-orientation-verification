@@ -1,0 +1,84 @@
+{
+  "script": "09_lookelsewhere_under_finer_blocks.py",
+  "run_timestamp_utc": "2026-06-04T08:12:26.821517+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "status": "exploratory_post_publication",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "tolerance_deg": 1.5,
+  "n_in_range": 994,
+  "scan": {
+    "step_deg": 0.25,
+    "primary_range": [
+      45.0,
+      89.0
+    ],
+    "wide_range": [
+      45.0,
+      90.0
+    ]
+  },
+  "observed": {
+    "count_II": 115,
+    "count_III": 119,
+    "T_max_primary": 119,
+    "T_max_wide": 119
+  },
+  "schemes": {
+    "coarse": {
+      "n_blocks": 8,
+      "acceptance_rate": 0.9737600811064839,
+      "PRIMARY": {
+        "null_Tmax_mean": 110.3717,
+        "null_Tmax_std": 1.5735752635320623,
+        "p_any": 9.999000099990002e-05,
+        "p_II": 0.004999500049995001,
+        "p_III": 9.999000099990002e-05
+      },
+      "WIDE": {
+        "null_Tmax_mean": 110.3717,
+        "null_Tmax_std": 1.5735752635320623,
+        "p_any": 9.999000099990002e-05,
+        "p_II": 0.004999500049995001,
+        "p_III": 9.999000099990002e-05
+      }
+    },
+    "americas_split": {
+      "n_blocks": 10,
+      "acceptance_rate": 0.97174091788924,
+      "PRIMARY": {
+        "null_Tmax_mean": 110.8581,
+        "null_Tmax_std": 2.2480134318993734,
+        "p_any": 0.012198780121987801,
+        "p_II": 0.07269273072692731,
+        "p_III": 0.012198780121987801
+      },
+      "WIDE": {
+        "null_Tmax_mean": 110.8581,
+        "null_Tmax_std": 2.2480134318993734,
+        "p_any": 0.012198780121987801,
+        "p_II": 0.07269273072692731,
+        "p_III": 0.012198780121987801
+      }
+    },
+    "fine": {
+      "n_blocks": 12,
+      "acceptance_rate": 0.9697914555566339,
+      "PRIMARY": {
+        "null_Tmax_mean": 110.769,
+        "null_Tmax_std": 2.1610273020024526,
+        "p_any": 0.010798920107989201,
+        "p_II": 0.0655934406559344,
+        "p_III": 0.010798920107989201
+      },
+      "WIDE": {
+        "null_Tmax_mean": 110.769,
+        "null_Tmax_std": 2.1610273020024526,
+        "p_any": 0.010798920107989201,
+        "p_II": 0.0655934406559344,
+        "p_III": 0.010798920107989201
+      }
+    }
+  }
+}
