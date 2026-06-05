@@ -822,3 +822,28 @@ V3 of the Zenodo record will be drafted in the next day, with deposit targeted f
 This is not a retraction of v2. V2's analyses are correct for the nulls it ran. The pre-registered protocol caught a real methodological issue (the 26-sigma artifact), the analysis identified two more issues (latitude look-elsewhere and pseudoreplication) that the controls applied during v2 had not addressed, and the v3 controls complete the picture. The pre-registration discipline is doing what it was designed to do: identifying the work's own gaps before they accumulate in the public record.
 
 Mario Buildreps has been notified that v3 is imminent, in a response to his closing reply of 4 June acknowledging the v2 publication. His v2 Appendix A commentary remains preserved verbatim. A brief note in v3 Appendix B will address his Appendix A point 2 specifically: he argued the block-conditional null was biased against his hypothesis. The spatial-cluster null is the assumption-light version of what he was implicitly asking for; it removes the apparent signal rather than restoring it.
+
+---
+
+## 2026-06-05 — v3 finalised and deposited
+
+The v3 report has been finalised, rendered, GPG-signed, and OpenTimestamped.
+
+**PDF SHA-256:** `0661bba4709c90591056a43904589c4cfb5d880cc2ddc50c37b55151b78f3e40` (replace with actual)
+
+**Bitcoin attestations (upgraded 5 June 2026 after block confirmation):**
+
+- `writeup/results_v1.0.pdf.ots` — Bitcoin block **952402**, merkleroot `7aab6dd40936b73eab49a662811b05d988045909a5f374281b11c72c1df89b8e`
+- `writeup/results_v1.0.pdf.asc.ots` — Bitcoin block **952402**, merkleroot `7aab6dd40936b73eab49a662811b05d988045909a5f374281b11c72c1df89b8e`
+
+**Zenodo deposit:**
+
+- Version 3 DOI: `10.5281/zenodo.20546301`
+- Deposited 5 June 2026
+- Supersedes version 2 (10.5281/zenodo.20474028)
+
+**Corrected conclusion:** Under controls for both latitude look-elsewhere (assumption-free conditional null) and spatial autocorrelation (spatial-cluster null), no proposed pole shows clustering distinguishable from chance. Pole II p = 0.999, Pole III p = 0.90 under the global conditional null with look-elsewhere; both poles p = 1.0 under the spatial-cluster null with look-elsewhere (25–100 km thresholds). The v2 characterisation of "robust clustering at Poles II and III" is withdrawn.
+
+Version 2 remains available as a prior version. The pre-registration (10.5281/zenodo.20258204) and the v2 analyses are unchanged. The transition from v2 to v3 is documented in Appendix B and in this analysis log.
+
+This entry closes the post-publication review loop initiated on 1 June 2026. The project's documentation is complete.
