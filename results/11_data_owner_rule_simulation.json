@@ -1,0 +1,286 @@
+{
+  "script": "11_data_owner_rule_simulation.py",
+  "run_timestamp_utc": "2026-06-05T22:11:37.975658+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "status": "exploratory_post_publication",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_iterations": 10000,
+  "rule": {
+    "threshold": 12,
+    "min_run_degrees": 3,
+    "min_total": 36,
+    "nearpole_lat": 80.0,
+    "nearpole_threshold": 15
+  },
+  "n_in_range": 994,
+  "observed_histogram_max_per_deg": 90,
+  "observed_poles_flat12": [
+    {
+      "start": 50,
+      "end": 55,
+      "total": 94
+    },
+    {
+      "start": 60,
+      "end": 85,
+      "total": 581
+    }
+  ],
+  "binomial_uniform_vs_realistic": {
+    "I (90.0)": {
+      "bin": 89,
+      "observed": 90,
+      "uniform_expected": 11.044,
+      "p_uniform": 3.7222182521980464e-51,
+      "conditional_expected": 93.724,
+      "p_conditional": 0.6724676665621849,
+      "block_expected": 90.127,
+      "p_block": 0.5216013153798905
+    },
+    "II (76.0)": {
+      "bin": 76,
+      "observed": 33,
+      "uniform_expected": 11.044,
+      "p_uniform": 5.648019706785816e-08,
+      "conditional_expected": 26.451,
+      "p_conditional": 0.11863501843278823,
+      "block_expected": 29.131,
+      "p_block": 0.2574560897349499
+    },
+    "III (72.2)": {
+      "bin": 72,
+      "observed": 36,
+      "uniform_expected": 11.044,
+      "p_uniform": 1.5949933792008795e-09,
+      "conditional_expected": 25.726,
+      "p_conditional": 0.030205906085893682,
+      "block_expected": 28.156,
+      "p_block": 0.08387798207689288
+    },
+    "IV (64.1)": {
+      "bin": 64,
+      "observed": 30,
+      "uniform_expected": 11.044,
+      "p_uniform": 1.5269907628034176e-06,
+      "conditional_expected": 22.657,
+      "p_conditional": 0.07738298890781278,
+      "block_expected": 23.583,
+      "p_block": 0.11135221093358036
+    },
+    "V (52.3)": {
+      "bin": 52,
+      "observed": 15,
+      "uniform_expected": 11.044,
+      "p_uniform": 0.1479912478400966,
+      "conditional_expected": 12.996,
+      "p_conditional": 0.3237822433487415,
+      "block_expected": 16.028,
+      "p_block": 0.6365936394103271
+    }
+  },
+  "results": {
+    "flat12": {
+      "uniform": {
+        "null_npoles_mean": 3.8927,
+        "null_npoles_p95": 6.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.9622037796220378,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.0735,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1673,
+            "p": 0.1673832616738326
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1645,
+            "p": 0.1645835416458354
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1661,
+            "p": 0.16618338166183383
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1606,
+            "p": 0.1606839316068393
+          }
+        }
+      },
+      "conditional": {
+        "null_npoles_mean": 2.0609,
+        "null_npoles_p95": 3.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.7508249175082492,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.5782,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9996,
+            "p": 0.9996000399960004
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9966,
+            "p": 0.9966003399660034
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.5836,
+            "p": 0.5836416358364164
+          }
+        }
+      },
+      "block_conditional": {
+        "null_npoles_mean": 1.3822,
+        "null_npoles_p95": 2.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.3361663833616638,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.0002,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9985,
+            "p": 0.9985001499850015
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.8906,
+            "p": 0.8906109389061094
+          }
+        }
+      }
+    },
+    "nearpole15": {
+      "uniform": {
+        "null_npoles_mean": 3.4941,
+        "null_npoles_p95": 6.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.937006299370063,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.0027,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1673,
+            "p": 0.1673832616738326
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1645,
+            "p": 0.1645835416458354
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1661,
+            "p": 0.16618338166183383
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.1606,
+            "p": 0.1606839316068393
+          }
+        }
+      },
+      "conditional": {
+        "null_npoles_mean": 1.49,
+        "null_npoles_p95": 3.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.40835916408359163,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.0775,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9996,
+            "p": 0.9996000399960004
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9966,
+            "p": 0.9966003399660034
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.5836,
+            "p": 0.5836416358364164
+          }
+        }
+      },
+      "block_conditional": {
+        "null_npoles_mean": 1.32,
+        "null_npoles_p95": 2.0,
+        "observed_npoles": 2,
+        "p_npoles": 0.29257074292570745,
+        "per_claimed_pole": {
+          "I (90.0)": {
+            "observed_detected": false,
+            "null_detection_rate": 0.0,
+            "p": null
+          },
+          "II (76.0)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "III (72.2)": {
+            "observed_detected": true,
+            "null_detection_rate": 1.0,
+            "p": 1.0
+          },
+          "IV (64.1)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.9985,
+            "p": 0.9985001499850015
+          },
+          "V (52.3)": {
+            "observed_detected": true,
+            "null_detection_rate": 0.8906,
+            "p": 0.8906109389061094
+          }
+        }
+      }
+    }
+  }
+}
