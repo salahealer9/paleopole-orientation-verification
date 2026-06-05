@@ -111,3 +111,6 @@ Desktop.ini
 *.key
 secrets.yml
 config.local.*
+
+# OpenTimestamps backup files created by 'ots upgrade'
+*.bak
