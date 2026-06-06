@@ -847,3 +847,73 @@ The v3 report has been finalised, rendered, GPG-signed, and OpenTimestamped.
 Version 2 remains available as a prior version. The pre-registration (10.5281/zenodo.20258204) and the v2 analyses are unchanged. The transition from v2 to v3 is documented in Appendix B and in this analysis log.
 
 This entry closes the post-publication review loop initiated on 1 June 2026. The project's documentation is complete.
+
+---
+
+## 2026-06-05 — v3.1 work: script 11 and the scope of point 3
+
+Mario Buildreps replied to the v3 publication notification on 5 June 2026 with a substantive letter raising five concerns. His full letter is preserved verbatim as Appendix D of the v3.1 report; the analytical work prompted by it is recorded here. The decision to undertake a v3.1 update rather than respond purely by correspondence was made after Opus 4.8 post-publication review (see correspondence) of an initial draft response; the review revised the framing of which points required concession. The reviewer identified that three of Buildreps' five points were either methodologically incorrect (the asymmetric-ratchet claim in point 5), partly addressed in v3 already (the pre-registration framing in points 1 and 4), or empirically testable in ways that would resolve them rather than negotiate them (the rule-faithfulness claim in point 2 and the cluster-independence claim in point 3).
+
+### Script 11: implementation of Buildreps' stated peak-finding rule
+
+Buildreps' point 2 argued that the latitude look-elsewhere correction in script 07 tested a "caricature" of his method — that he did not scan the latitude axis for the fullest window but applied explicit rule-based criteria from a rules document shared before the database was opened. Script 11 (`analysis/11_data_owner_rule_simulation.py`) implements his rules as specified (minimum 12 structures per degree, clusters extending ≥3 degrees, gaps between clusters indicating discrete poles) and tests them under three null models (uniform, conditional, block-conditional). The script was drafted by the Opus 4.8 reviewer from Buildreps' rules document and verified against his stated thresholds with unit tests before running.
+
+**Results (flat-12 rule variant):**
+
+| Null model | Observed n_poles | Null mean n_poles | p(n_poles ≥ obs) |
+|------------|------------------|-------------------|------------------|
+| Uniform | 2 | 3.89 | 0.9622 |
+| Conditional (global) | 2 | 2.06 | 0.7508 |
+| Block-conditional | 2 | 1.38 | 0.3362 |
+
+Buildreps' rule, faithfully implemented, recovers his poles II–V on the observed data (Pole I = no; coverage II = yes, III = yes, IV = yes, V = yes). His rule's claim to recover his proposed poles is therefore not in dispute. The substantive finding is that his rule covers the Pole III latitude band in 10,000 of 10,000 replicates, because the great-circle geometry concentrates intersections in that band regardless of permutation; across replicates the rule finds no more poles overall than in random data (null means 1.38–2.06 vs observed 2). The rule reproduces its observed output, but under realistic nulls that output is not distinguishable from its output on random data.
+
+### Script 11b: diagnosis of the per-degree binomial baseline
+
+A second component of Buildreps' published methodology — the per-degree binomial that produces his "100% probability" and "99.999% probability" claims — was diagnosed in parallel (script 11b within the same module). The binomial compares observed structure counts in each pole's degree-bin against a baseline expectation.
+
+Under Buildreps' published baseline (uniform expectation of ~11 structures per degree across the latitude axis), the p-values are astronomical:
+
+| Pole | Observed in degree-bin | p (uniform baseline) |
+|------|------------------------|----------------------|
+| I (90.0°N) | 90 | 3.7 × 10⁻⁵¹ |
+| II (76.0°N) | 33 | 5.7 × 10⁻⁸ |
+| III (72.2°N) | 36 | 1.6 × 10⁻⁹ |
+| IV (64.1°N) | 30 | 1.5 × 10⁻⁶ |
+| V (52.3°N) | 15 | 0.148 |
+
+Re-running the identical binomial test with the per-degree expectation that the actual site geography produces under the conditional null (a non-uniform expectation reflecting that random great-circle intersections of mid-latitude sites pile in specific latitude bands by geometry):
+
+| Pole | p (conditional baseline) | p (block-conditional baseline) |
+|------|--------------------------|--------------------------------|
+| I (90.0°N) | 0.672 | 0.522 |
+| II (76.0°N) | 0.119 | 0.257 |
+| III (72.2°N) | 0.030 | 0.084 |
+| IV (64.1°N) | 0.077 | 0.111 |
+| V (52.3°N) | 0.324 | 0.637 |
+
+The departure from uniformity is real and unremarkable; it does not measure clustering at the proposed poles. The only marginally significant cell — Pole III at p = 0.030 under the conditional null — is unremarkable in isolation and not significant after multiplicity correction across five poles.
+
+### What script 11 closes; what remains open
+
+Point 2 of Buildreps' letter is addressed. His rule is faithful as published and his binomial is computed correctly, but the published confidence rests on a uniform-sky baseline that does not reflect the per-degree expectation the actual site geography produces. The disagreement was never the rule — it was the baseline against which the rule's output was scored.
+
+Point 3 (the spatial-cluster null's proximity-equals-dependence assumption) is not addressed by script 11. It is empirically testable but requires chronological evidence for the structures in the dominant spatial clusters of §3.8.3 — particularly the 29-site cluster centred near 20.3°N, 89.6°W in the northern Yucatán. The dating evidence must be conventionally derived (radiocarbon, ceramic seriation, epigraphic) rather than orientation-derived, to avoid circularity in testing whether independent cultures arrived at the same orientation versus a single tradition replicating itself across multiple sites.
+
+### Scope decision on point 3
+
+A reviewer-noted scope question was resolved before drafting the response to Buildreps' letter. Adjudicating whether the 29 Yucatán structures represent multiple independent cultures across a millennium versus a single tradition replicated is a Mesoamerican archaeological question, not a statistical-verification one. The pre-registered agreement and the v1-v3 sequence have all been about a specific statistical claim: do intersections cluster at the proposed latitudes more than chance? On that question, four null models converge on no.
+
+The spatial-cluster null's assumption that geographic proximity proxies cultural-temporal dependence is a real limitation, correctly disclosed in v3 §4.5 (now moved to §3.8.3 in v3.1 for placement). Disclosing a limitation is not the same as taking on the obligation to resolve it. The burden of producing chronological evidence belongs to the party making the archaeological claim that those structures are independently dated.
+
+It was decided before contacting him that only model-independent dates (radiocarbon, ceramic seriation, epigraphic) can bear on this question; orientation-derived dates cannot, as they would assume the conclusion under test. This criterion was fixed before his response was received.
+
+If Buildreps supplies model-independent dates showing genuine multi-period multi-polity spread for the 29 sites, v3.1 may be superseded by a v4 that re-runs the cluster null with chronological constraints incorporated. If he supplies orientation-derived dates or no dates, point 3 remains disclosed-but-unresolved from the available evidence, and v3.1's conclusion stands under its explicit assumption.
+
+This scope discipline keeps the project inside the agreement it was registered against and avoids the failure mode of becoming an amateur arbiter of Mesoamerican chronology. The report's job was the statistical question. On that question, the limitation is disclosed, the conclusion is conditional on the assumption, and the assumption is testable by someone with the relevant disciplinary expertise — which is not the author and is not the scope of this report.
+
+### V3.1 deposit
+
+A v3.1 deposit will follow this commit, incorporating §3.8.4 (script 11), the §3.7 summary table updates, the cluster-null limitation paragraph moved into §3.8.3, the Appendix B note on the v3 → v3.1 relationship, and the new Appendix D containing Buildreps' 5 June letter verbatim. The v3.1 Zenodo version will reserve a new DOI; the v3 record at 10.5281/zenodo.20546301 remains accessible as the prior version.
+
+An email to Buildreps will be drafted after the v3.1 commit lands, pointing him at the §3.8.5 result for point 2 (with the named 29-site list for point 3), stating the decision rule for what chronological evidence would resolve point 3 in either direction, and clarifying that the burden of producing the archaeological evidence rests with him as the party making the archaeological claim.
