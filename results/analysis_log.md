@@ -917,3 +917,51 @@ This scope discipline keeps the project inside the agreement it was registered a
 A v3.1 deposit will follow this commit, incorporating §3.8.4 (script 11), the §3.7 summary table updates, the cluster-null limitation paragraph moved into §3.8.3, the Appendix B note on the v3 → v3.1 relationship, and the new Appendix D containing Buildreps' 5 June letter verbatim. The v3.1 Zenodo version will reserve a new DOI; the v3 record at 10.5281/zenodo.20546301 remains accessible as the prior version.
 
 An email to Buildreps will be drafted after the v3.1 commit lands, pointing him at the §3.8.5 result for point 2 (with the named 29-site list for point 3), stating the decision rule for what chronological evidence would resolve point 3 in either direction, and clarifying that the burden of producing the archaeological evidence rests with him as the party making the archaeological claim.
+
+---
+
+## 2026-06-06 — Cluster 26 composition: within-site replication resolved, cross-site convergence open
+
+Following Mario Buildreps' 5 June 2026 letter (Appendix D), the 29-entry cluster (25 km linkage) that dominates the Pole III count was examined in detail.
+
+### Composition of the 29 entries
+
+Extraction from `results/10_cluster_labels.csv` and join to the original database:
+
+| Site | Entries | Bearings |
+|------|---------|----------|
+| Uxmal | 8 | 31,22,21,19,17,12,11,10 |
+| Labna | 6 | 45,23,16,13.5,13,10 |
+| Kabah | 6 | 19,15,14.5,13.5,13,12 |
+| Chacmultun | 4 | 20,15,14,10 |
+| Xlapak | 2 | 20,18 |
+| Palenque | 1 | 26 |
+| Cancuén | 1 | 24 |
+| Sayil | 1 | 14.5 |
+
+*Bearings verified against script output; no transcription errors.*
+
+**The 29 entries correspond to 8 distinct physical locations.** The columns examined (site name, coordinates, bearing, remarks) carry no unique structure identifiers. No date column is present in the main sheet. The sole `Remarks` entry is "2 structures similar oriented" for Sayil, which indicates shared orientation, not independence.
+
+### Geographic note on site names
+
+Two site labels appear inconsistent with their coordinates:
+- "Palenque" at ~20.25°N, 89.65°W — the well-known Palenque is in Chiapas at ~17.48°N, 92.05°W. The coordinates given are in the Puuc region.
+- "Cancuén" at ~20.2°N — the known Cancuén is in the Petén at ~15.9°N.
+
+This discrepancy does not affect the conclusion that the 29 entries are a small number of locations rather than 29 independent sites; if anything, a mislabel could reduce the distinct-location count further. Flagged for the data owner to confirm.
+
+### Two distinct independence questions
+
+**Within-site replication (resolved by the data).** The multiple bearings from Uxmal (8), Labna (6), Kabah (6), Chacmultun (4), and Xlapak (2) are not independent observations. The spatial-cluster null collapsed them into their physical locations. This part of point 3 is answered directly from the database, without recourse to archaeology. The cluster null was correct to do so.
+
+**Cross-site convergence (open, burden on the data owner).** Whether the 8 distinct locations represent independent cultures converging on the same latitude band, or one shared Maya orientation tradition, is an archaeological question. The database does not contain the metadata to resolve it. The data owner must provide model-independent evidence (unique structure identifiers, radiocarbon/ceramic/epigraphic dates, polity attribution) to justify treating these as independent observations.
+
+Per the criterion fixed before contacting him, only model-independent dates can bear on cross-site independence; orientation-derived dates are excluded as circular.
+
+### Decision rule
+
+- If the data owner provides solid evidence of cross-site independence, a new pre-registered analysis (v4) will be run respecting that independence.
+- If no such evidence is provided, the spatial-cluster null stands as the best available control, and point 3 will remain noted in the report as disclosed but unresolved (standing under its stated assumption).
+
+The author's role is statistical verification, not archaeological adjudication. The within-site replication question is settled by the data itself. The cross-site convergence question is the data owner's to answer.
