@@ -1063,3 +1063,46 @@ In every branch, v3.1 deposits after script 12 and 13. Further methodological co
 Any deviation from this specification during implementation will be recorded in a subsequent log entry with explicit rationale before the affected step is run. A different hemisphere cut specified by the data owner's published basis is acceptable grounds for amendment before running; deviations after seeing partial results are not.
 
 The scripts will be implemented in collaboration with Claude Opus 4.8 (Anthropic) acting as analytic interlocutor, following this pre-commitment. The author runs the code, verifies the output against the pre-committed branches, and is responsible for the conclusions.
+
+---
+
+## 2026-06-08 — Scripts 12 & 13: hemisphere-preserving null and the asymmetry circularity diagnostic (point 1 closed)
+
+This entry records the results of scripts 12 and 13, run under the pre-commitment of the 2026-06-08 entry above, in response to point 1 of the data owner's second follow-up (`2026-06-08_followup_from_mario.md`): that the v3 null models do not preserve the East/West hemispheric bearing asymmetry from which he derived the 47°W meridian, and therefore erase the peak-generating structure before testing.
+
+### Script 12 — hemisphere-preserving permutation null (Branch C)
+
+Bearings were permuted only within hemispheres (preserving the per-hemisphere bearing pool, hence the asymmetry), under both pre-committed cuts (primary −30° Americas/Old World; sensitivity 0° prime meridian), for three nulls (conditional 12a, block-conditional 12b, spatial-cluster 12c). Seed 20260517, M = 10,000. Look-elsewhere computed from each null's own window distribution.
+
+Per-pole, primary cut, look-elsewhere corrected:
+
+| Null | Pole II p_LEE | Pole III p_LEE |
+|------|---------------|----------------|
+| 12a conditional (site) | 0.4602 | 0.0135 |
+| 12b block-conditional × hemisphere | 0.0056 | 0.0005 |
+| 12c spatial-cluster (25 km) | 0.0629 | 1.0000 |
+
+Decision (12a, primary cut): Pole II p_LEE = 0.46 (dissolves); Pole III p_LEE = 0.0135 (survives) → **Branch C**, so the circularity diagnostic was run for Pole III only.
+
+Two findings frame the surviving pole. First, the descriptive composition: the Pole III contributors split 73 West / 46 East under the −30° cut (78/41 under 0°) — it is not a single-hemisphere phenomenon, contrary to the premise of point 1. Second, 12c: once spatially proximate structures are collapsed to one unit each *and* the hemispheric asymmetry is preserved, Pole III dissolves completely (p_LEE = 1.0; per-pole 0.0001 → 0.19). The 12a survival is carried by within-cluster replication, not by the asymmetry. (12b reproduces the committed block-conditional result, 0.0005, confirming the grouping machinery.)
+
+### Script 13 — asymmetry circularity diagnostic (Branch B1)
+
+The diagnostic tests whether the East/West asymmetry that 12a preserves is itself a geometric consequence of intersections clustering at far-northern latitudes. Synthetic bearings were reconstructed (min-deviation-from-north solution, verified by forward evaluation, sites unable to reach an assigned target discarded) to reproduce the observed *latitude* distribution with no hemispheric input.
+
+  D_obs = +34.0° (−30° cut), +33.0° (0° cut)
+  D_synth (median over 1,000 reconstructions) = +32.7° / +32.2°
+  R = D_synth/D_obs = 0.96 / 0.97  [5–95%: 0.92–1.02]
+  Uniform-target reference R = 1.14 / 1.15
+  Mean discards 16.5%
+  → R ≥ 0.80 at both cuts → **Branch B1**.
+
+The hemispheric bearing asymmetry is reproduced (~96%) from the latitude distribution plus geometry alone, with no hemispheric input — and is reproduced even from uniform targets (reference R > 1). Because bearing 0 = true north sends a great circle through the pole, reaching a far-northern target forces a small deviation whose sign is fixed by the site's longitude relative to −47.1°; the East/West asymmetry is the aggregate of that geometric necessity. The Pole III survival under the hemisphere-preserving null (12a) is therefore **circular**: the null preserves a feature entailed by the peak it is meant to test. This does not vindicate the framework.
+
+Two elaborations of the locked spec, recorded as elaborations not deviations: R is reported as a distribution over 1,000 reconstructions (median as headline) rather than a single construction; and a uniform-target reference R is reported as supplementary context. Neither changes the locked decision rule.
+
+### Disposition of point 1, and the close of the exchange
+
+Point 1 is answered three independent ways: (a) the Pole III contributors are not single-hemisphere (73/46); (b) preserving the asymmetry and collapsing replication together (12c) dissolves Pole III entirely; (c) the asymmetry itself is geometrically entailed by the latitude clustering (13, R = 0.96), so its preservation cannot be evidence for a pole. Point 2 was conceded by the data owner (script 11). Point 3's within-site half is resolved from the database (the 29 entries are 8 locations); its cross-site half requires model-independent dates the data owner states do not exist, so it remains disclosed-but-unresolved under the standing decision rule.
+
+Per the pre-committed stopping rule, scripts 12 and 13 are the final analyses before the v3.1 deposit. v3.1 deposits regardless of further correspondence. Branch B1 does not trigger v4. Should the data owner respond again, the response will be recorded and assessed, but no further analysis is undertaken at this stage: no remaining point bears on the statistical question that is not already answered.
