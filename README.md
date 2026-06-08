@@ -6,17 +6,18 @@ An independent, pre-registered statistical test of the claim that the orientatio
 
 ## Status
 
-**Final report v3 published 5 June 2026.** The pre-registered protocol committed on 17 May 2026 has been executed in full. The 14-day pre-publication notice window has closed with the data owner's formal commentary incorporated. Post-publication review by a Claude Opus 4.8 (Anthropic) external reviewer identified two further methodological controls, which have been applied in v3. All publication artifacts are GPG-signed and OpenTimestamped on the Bitcoin blockchain.
+**Final report v3.1 published 8 June 2026.** The pre-registered protocol committed on 17 May 2026 has been executed in full. The 14-day pre-publication notice window has closed with the data owner's formal commentary incorporated. Post-publication review by a Claude Opus 4.8 (Anthropic) external reviewer identified two further methodological controls, which have been applied in v3; v3.1 adds three further analyses (scripts 11–13) responding to the data owner's 5 and 8 June 2026 follow-up letters. All publication artifacts are GPG-signed and OpenTimestamped on the Bitcoin blockchain.
 
-The Zenodo record has three versions:
+The Zenodo record has four versions:
 
 | Version | Date | Description | Version DOI |
 |---|---|---|---|
 | 1 | 17 May 2026 | Pre-registration of the statistical protocol | [10.5281/zenodo.20258204](https://doi.org/10.5281/zenodo.20258204) |
 | 2 | 1 June 2026 | Final report (initial) — superseded by v3 | [10.5281/zenodo.20474028](https://doi.org/10.5281/zenodo.20474028) |
-| 3 | 5 June 2026 | Final report (current) — withdraws v2 finding following post-publication review | [10.5281/zenodo.20546301](https://doi.org/10.5281/zenodo.20546301) |
+| 3 | 5 June 2026 | Final report — withdraws v2 finding following post-publication review (superseded by v3.1) | [10.5281/zenodo.20546301](https://doi.org/10.5281/zenodo.20546301) |
+| 3.1 | 8 June 2026 | Final report (current) — adds scripts 11–13 in response to data-owner follow-up; conclusion unchanged | [10.5281/zenodo.20593690](https://doi.org/10.5281/zenodo.20593690) |
 
-The concept DOI [10.5281/zenodo.20258203](https://doi.org/10.5281/zenodo.20258203) always resolves to the latest version. The corresponding GitHub release tags are `prereg-v1.1`, `report-v1.0` (v2), and `report-v3.0` (current).
+The concept DOI [10.5281/zenodo.20258203](https://doi.org/10.5281/zenodo.20258203) always resolves to the latest version. The corresponding GitHub release tags are `prereg-v1.1`, `report-v1.0` (v2), `report-v3.0` (v3), and `report-v3.1` (current).
 
 ## Background
 
@@ -46,7 +47,7 @@ Specifically (v3, current):
 - **The site-to-pole assignment match rate** (46% vs ~9% expected) is robust under all null models, but reflects agreement between our independent geometry and the data owner's pipeline (within 0.1° for 95.7% of structures) together with the within-hemisphere concentration of intersections — not the pole positions. It is not independent evidence for the framework.
 - **The broader interpretive claim** that the observed clustering represents former geographic pole positions is not tested by this analysis and requires independent geological evidence to evaluate.
 
-The current report (v3) is at [10.5281/zenodo.20546301](https://doi.org/10.5281/zenodo.20546301).
+The current report (v3.1) is at [10.5281/zenodo.20593690](https://doi.org/10.5281/zenodo.20593690).
 
 ## Methodology
 
@@ -67,6 +68,8 @@ The pre-registration document at `preregistration/preregistration_v1.1.md` is th
 - **Latitude look-elsewhere** (script 07): the latitude analogue of the meridian look-elsewhere, scanning a ±1.5° window across the populated northern range (45–89°N) and recording the maximum window count per null iteration.
 - **Finer-block sensitivity** (scripts 08, 09): per-pole test re-run at progressively finer block granularities (coarse → americas_split → fine), with and without the latitude look-elsewhere correction.
 - **Spatial-cluster null** (script 10): single-linkage spatial clustering of nearby sites (25–100 km thresholds), with the per-pole test computed on cluster representatives.
+- **Data-owner rule simulation** (script 11): implements the data owner's own peak-finding rule and per-degree binomial under realistic nulls (v3.1 post-publication).
+- **Hemisphere-preserving null + circularity diagnostic** (scripts 12–13): permutes bearings within hemispheres to preserve the East/West asymmetry, and tests whether that asymmetry is geometrically entailed by the latitude clustering (v3.1 post-publication).
 
 Monte Carlo iterations: M = 10,000 throughout. Random seed: 20260517. Reproducible from the database file.
 
@@ -93,7 +96,10 @@ paleopole-orientation-verification/
 │   ├── 07_latitude_lookelsewhere.py        # v3 post-publication
 │   ├── 08_finer_block_sensitivity.py       # v3 post-publication
 │   ├── 09_lookelsewhere_under_finer_blocks.py  # v3 post-publication
-│   └── 10_spatial_cluster_null.py          # v3 post-publication
+│   ├── 10_spatial_cluster_null.py          # v3 post-publication
+│   ├── 11_data_owner_rule_simulation.py   # v3.1 post-publication
+│   ├── 12_hemisphere_preserving_null.py   # v3.1 post-publication
+│   └── 13_asymmetry_circularity_check.py  # v3.1 post-publication
 ├── results/                           Analysis outputs, log, correspondence
 │   ├── analysis_log.md                Live log of the project from inception
 │   ├── analysis_log_frozen_2026-05-18.md   Snapshot from when results were first shared with the data owner
@@ -101,10 +107,10 @@ paleopole-orientation-verification/
 │   └── *.json, *.csv, *.npy           Per-script output files
 ├── writeup/                           Final report source and rendered artifact
 │   ├── results_v1.0.md                Source markdown (current v3 content)
-│   ├── results_v1.0.pdf               Rendered v3 PDF (final artifact)
-│   ├── results_v1.0.pdf.asc           v3 GPG signature
-│   ├── results_v1.0.pdf.ots           v3 OpenTimestamps proof for PDF
-│   ├── results_v1.0.pdf.asc.ots       v3 OpenTimestamps proof for signature
+│   ├── results_v1.0.pdf               Rendered v3.1 PDF (current artifact)
+│   ├── results_v1.0.pdf.asc           v3.1 GPG signature
+│   ├── results_v1.0.pdf.ots           v3.1 OpenTimestamps proof for PDF
+│   ├── results_v1.0.pdf.asc.ots       v3.1 OpenTimestamps proof for signature
 │   ├── pandoc_metadata.yaml           Rendering configuration
 │   └── render_writeup.sh              Reproducible render script
 └── data/                              Data not redistributed; see data/README.md for hash
@@ -129,8 +135,9 @@ Every commit in this repository is GPG-signed. The pre-registration document and
 | Artifact | SHA-256 | Bitcoin attestation |
 |---|---|---|
 | Pre-registration PDF (v1.1) | (see `preregistration/preregistration_v1.1.pdf.asc`) | OTS proof in `preregistration/` |
-| Final report v2 PDF | `582b798e34a2bba58b7a93e4e46215c1d8812d81d21e90fb1f90d8557b0402a6` | Bitcoin block 951758, merkleroot `f5a820f2b9e363658dc6d7c43167851ae0e155d1ccb87e3ec5ecd33dc19358b1` (archived on Zenodo v2) |
-| Final report v3 PDF (current) | `0661bba4709c90591056a43904589c4cfb5d880cc2ddc50c37b55151b78f3e40` | Bitcoin block 952402, merkleroot `7aab6dd40936b73eab49a662811b05d988045909a5f374281b11c72c1df89b8e` |
+| Final report v2 PDF | `582b798e34a2bba58b7a93e4e46215c1d8812d81d21e90fb1f90d8557b0402a6` | Bitcoin block 951758, merkleroot `f5a820f2b9e363658dc6d7c43167851ae0e155d1ccb87e3ec5ecd33dc19358b1` |
+| Final report v3 PDF (superseded) | `0661bba4709c90591056a43904589c4cfb5d880cc2ddc50c37b55151b78f3e40` | Bitcoin block 952402, merkleroot `7aab6dd40936b73eab49a662811b05d988045909a5f374281b11c72c1df89b8e` |
+| Final report v3.1 PDF (current) | `82fea07d4ed8141ecdbe46fbd655e100ad4b4b4bc63e10c7dda72287c2f5ef6e` | Bitcoin blocks 952853 and 952854, merkleroots `e96b67321d5b90ccd07ad3e06f084406fb6b43066c0f514226952b3400a21cda` and `57ab8ece804ad847b212bf00b08d59ec4e0139a3eacc829441589d8ba045517e` |
 
 Anyone can independently verify by running `gpg --verify` against the signature and `ots verify --no-bitcoin` against the OTS proof, then checking the reported Bitcoin block heights against any public blockchain explorer (e.g., [mempool.space](https://mempool.space)).
 
@@ -165,6 +172,11 @@ python analysis/08_finer_block_sensitivity.py
 python analysis/09_lookelsewhere_under_finer_blocks.py
 python analysis/10_spatial_cluster_null.py
 
+# Run v3.1 post-publication analyses
+python analysis/11_data_owner_rule_simulation.py
+python analysis/12_hemisphere_preserving_null.py
+python analysis/13_asymmetry_circularity_check.py
+
 # Re-render the writeup PDF (requires pandoc and texlive)
 ./writeup/render_writeup.sh
 ```
@@ -175,10 +187,10 @@ All analyses use fixed pseudo-random seed `20260517` and are bit-for-bit reprodu
 
 If you reference the analysis in your own work, please cite the current version of the report and the pre-registration:
 
-- **Final report (current, v3)**: Gherbi, S.-E. (2026). *Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v3).* Zenodo. [https://doi.org/10.5281/zenodo.20546301](https://doi.org/10.5281/zenodo.20546301)
+- **Final report (current, v3.1)**: Gherbi, S.-E. (2026). *Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v3.1).* Zenodo. [https://doi.org/10.5281/zenodo.20593690](https://doi.org/10.5281/zenodo.20593690)
 - **Pre-registration**: Gherbi, S.-E. (2026). *Pre-registration: Independent Monte Carlo verification of paleopole orientation clustering in the Buildreps database.* Zenodo. [https://doi.org/10.5281/zenodo.20258204](https://doi.org/10.5281/zenodo.20258204)
 
-If citing the historical v2 result specifically (now superseded), use [10.5281/zenodo.20474028](https://doi.org/10.5281/zenodo.20474028) and note that it has been superseded by v3.
+If citing a superseded version, v2 is 10.5281/zenodo.20474028 and v3 is 10.5281/zenodo.20546301; both have been superseded by v3.1.
 
 A `CITATION.cff` file is included in the repository for tools that read structured citation metadata.
 
@@ -195,6 +207,8 @@ Mario Buildreps generously provided the database for independent verification un
 The two methodological controls that distinguish v3 from v2 — the latitude look-elsewhere correction and the spatial-cluster independence control — were identified in a post-publication review carried out by Claude Opus 4.8 (Anthropic) acting as an external reviewer. The reviewer's own summary of the gaps identified and predictions made is preserved verbatim as Appendix C of the final report.
 
 The discussion that took place during the comment window and the post-publication review — both in agreement and in disagreement — is part of the public record.
+
+Version 3.1's further analyses (scripts 11–13) followed from the same reviewer's engagement with the data owner's June 2026 follow-up correspondence; the author ran and verified all analyses and is responsible for the conclusions.
 
 ## License
 

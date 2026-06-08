@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database"
-message: "If you use this work, please cite the current version (v3) and the pre-registration; see preferred-citation and references."
+message: "If you use this work, please cite the current version (v3.1) and the pre-registration; see preferred-citation and references."
 type: software
 authors:
   - family-names: "Gherbi"
@@ -28,15 +28,19 @@ abstract: >-
   return p = 1.0 at every linkage threshold from 25 to 100 km; the 119 site-level
   contributors to the Pole III window reduce to 25 independent clusters at the
   25 km threshold, the largest a single 29-site Mesoamerican cluster in the
-  northern Yucatán. Version 3 (current; deposited 5 June 2026) therefore withdraws
-  the v2 characterisation of robust clustering at Poles II and III. The pre-registered
-  aggregate test statistic, formally significant at p = 0.0001 under the unconditional
-  null, was shown by diagnostic analysis to be an artifact of hemisphere-selection
-  in the in-range subset; this finding stands unchanged. The corrected conclusion
-  is that no proposed pole shows clustering distinguishable from chance. The
-  framework's broader interpretive claim — that the observed concentrations
-  represent former positions of Earth's rotational axis — is not tested by an
-  orientation-clustering analysis and would require independent geological evidence.
+  northern Yucatán. Version 3 (deposited 5 June 2026) therefore withdrew the v2
+  characterisation of robust clustering at Poles II and III. Version 3.1 (current;
+  deposited 8 June 2026) adds, in response to the data owner's 5 and 8 June 2026
+  follow-up letters, a direct simulation of his own stated peak-finding rule and
+  a hemisphere-preserving null with an asymmetry circularity diagnostic; the
+  conclusion is unchanged. The pre-registered aggregate test statistic, formally
+  significant at p = 0.0001 under the unconditional null, was shown by diagnostic
+  analysis to be an artifact of hemisphere-selection in the in-range subset;
+  this finding stands unchanged. The corrected conclusion is that no proposed
+  pole shows clustering distinguishable from chance. The framework's broader
+  interpretive claim — that the observed concentrations represent former
+  positions of Earth's rotational axis — is not tested by an orientation-clustering
+  analysis and would require independent geological evidence.
 keywords:
   - "Monte Carlo"
   - "pre-registration"
@@ -51,15 +55,18 @@ keywords:
   - "paleopole"
   - "Buildreps"
 license: "CC-BY-4.0"
-version: "3.0"
-date-released: "2026-06-05"
+version: "3.1"
+date-released: "2026-06-08"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.20258203"
     description: "Concept DOI (always resolves to the latest version of the Zenodo record)"
   - type: doi
+    value: "10.5281/zenodo.20593690"
+    description: "Final report v3.1 (current; deposited 8 June 2026)"
+  - type: doi
     value: "10.5281/zenodo.20546301"
-    description: "Final report v3 (current; deposited 5 June 2026)"
+    description: "Final report v3 (deposited 5 June 2026; superseded by v3.1)"
   - type: doi
     value: "10.5281/zenodo.20474028"
     description: "Final report v2 (deposited 1 June 2026; superseded by v3)"
@@ -68,7 +75,7 @@ identifiers:
     description: "Pre-registration (v1; deposited 17 May 2026)"
 preferred-citation:
   type: report
-  title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v3)"
+  title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v3.1)"
   authors:
     - family-names: "Gherbi"
       given-names: "Salah-Eddin"
@@ -77,9 +84,21 @@ preferred-citation:
   month: 6
   publisher:
     name: "Zenodo"
-  doi: "10.5281/zenodo.20546301"
-  url: "https://doi.org/10.5281/zenodo.20546301"
+  doi: "10.5281/zenodo.20593690"
+  url: "https://doi.org/10.5281/zenodo.20593690"
 references:
+  - type: report
+    title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v3; superseded by v3.1)"
+    authors:
+      - family-names: "Gherbi"
+        given-names: "Salah-Eddin"
+        orcid: "https://orcid.org/0009-0005-4017-1095"
+    year: 2026
+    month: 6
+    publisher:
+      name: "Zenodo"
+    doi: "10.5281/zenodo.20546301"
+    url: "https://doi.org/10.5281/zenodo.20546301"
   - type: report
     title: "Independent Monte Carlo Verification of Paleopole Orientation Clustering in the Buildreps Database (v2; superseded by v3)"
     authors:
