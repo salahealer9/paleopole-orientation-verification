@@ -965,3 +965,101 @@ Per the criterion fixed before contacting him, only model-independent dates can 
 - If no such evidence is provided, the spatial-cluster null stands as the best available control, and point 3 will remain noted in the report as disclosed but unresolved (standing under its stated assumption).
 
 The author's role is statistical verification, not archaeological adjudication. The within-site replication question is settled by the data itself. The cross-site convergence question is the data owner's to answer.
+
+---
+
+## 2026-06-08 — Script 12 pre-commitment: hemisphere-preserving permutation null
+
+The data owner's 8 June 2026 second follow-up letter (correspondence file `2026-06-08_followup_from_mario.md`) raised three further methodological points after conceding that script 11 implemented his peak-finding rule faithfully and that his published binomial figures rest on a baseline the data do not support. Of his three new points, point 1 — that the v3 null models do not preserve the East/West hemispheric bearing asymmetry from which he derived the 47°W meridian — is a substantive methodological question worth running directly rather than answering rhetorically. This entry pre-commits the specification, the decision rule, and the interpretation framework for script 12 (and its companion diagnostic, script 13) before any code is written, so that the readout is not adjustable after the results are seen.
+
+### Background
+
+The data owner's published work (2015, 2020) identifies a systematic clockwise bearing deviation in the Americas and a counterclockwise deviation in the Old World, and derives the 47°W meridian from the convergence of these deviations. He argues that the v3 nulls (script 03b global conditional, script 06 block-conditional, script 10 spatial-cluster) permute bearings in ways that do not preserve this asymmetry, and that the null finding at Poles II and III is therefore unsurprising — the null erases the structure that produces the peaks before testing them.
+
+This is partly correct as a description of the v3 nulls: the global conditional null permutes bearings across all in-range sites with no hemisphere constraint, and the spatial-cluster null permutes at the cluster level globally. The block-conditional null permutes within seven geographic regions, but those blocks are not cut on an East/West line. None of the v3 nulls explicitly preserves an East/West bearing asymmetry as a feature of the null distribution.
+
+Script 12 runs a null that preserves the asymmetry by permuting bearings only within hemispheres, and re-computes the per-pole counts, the latitude look-elsewhere correction, and the cluster-null statistic under this modified null. It is exploratory per pre-registration §12 point 3.
+
+### Hemisphere cut: pre-committed definitions (primary + sensitivity)
+
+The data owner's claim is specifically about the Americas versus the Old World, not about the prime meridian. To preserve the asymmetry he actually describes, the **primary** cut isolates the Americas:
+
+- **Primary cut (Americas / Old World):** Western = longitude in [−180°, −30°); Eastern = longitude in [−30°, +180°]. The −30° line runs through the mid-Atlantic and cleanly separates the Americas (the population carrying his claimed clockwise deviation) from Europe, Africa, and Asia.
+
+- **Sensitivity cut (prime meridian):** Western = [−180°, 0°); Eastern = [0°, +180°]. The conventional geographic definition, run as a robustness check.
+
+Both cuts are run. Rationale for running both: the primary cut matches the data owner's stated asymmetry and so genuinely preserves the feature he says the v3 nulls destroy; the sensitivity cut guards against the objection that the result depends on where the line is drawn. If the peaks dissolve under both cuts, the conclusion is robust to the cut definition.
+
+Cuts derived from the data are explicitly rejected. A cut at 47°W would condition the null on the meridian the data owner derived from the data; a cut at ±20°E would condition it on the attractor longitude observed in the v3 longitude scan (§3.4). Both would condition the null on the conclusion under test. If the data owner's published basis specifies a different cut, this entry will be amended in a follow-up entry, with the change documented before running; amendment after seeing partial results is not permitted.
+
+### Script 12 design
+
+Three nulls, paralleling the v3 nulls with the hemisphere constraint added, run under each of the two cuts above:
+
+1. **Conditional, hemisphere-preserving (12a):** Metropolis swap chain analogous to script 03b, with swaps accepted only between sites in the same hemisphere. Preserves the in-range hemisphere selection and the East/West bearing asymmetry simultaneously.
+2. **Block-conditional, hemisphere-preserving (12b):** swap chain analogous to script 06, with blocks intersected with hemisphere (splitting any block that straddles the cut).
+3. **Spatial-cluster, hemisphere-preserving (12c):** cluster-level swap chain analogous to script 10, with swaps restricted to within-hemisphere cluster representatives.
+
+For each null the script computes: per-pole counts at Poles I–V (paralleling §3.5); latitude look-elsewhere corrected p-values at Poles II and III (paralleling §3.8.1). **The look-elsewhere maximum-window distribution is computed from the hemisphere-preserving null's own per-degree distribution, not reused from script 07.** Standard seed (20260517), M = 10,000.
+
+**Descriptive output (reported regardless of branch):** the fraction of in-range structures in each hemisphere group under each cut, and the per-hemisphere distribution of intersection latitudes. In particular, the hemisphere membership of the Pole III cluster contributors is reported. If the Pole III contributors are overwhelmingly in one hemisphere, the within-hemisphere null permutes them largely among themselves, making it close to the global null for that pole; this descriptive fact is part of the interpretation and is surfaced explicitly rather than left implicit.
+
+### Three-way decision rule (pre-committed before running)
+
+Applied to the primary (Americas/Old World) cut. The sensitivity cut is reported alongside; if it disagrees with the primary cut, the disagreement is reported and neither is treated as decisive without the circularity diagnostic.
+
+**Branch A (peaks dissolve under the hemisphere-preserving null):** Pole II p_LEE ≥ 0.05 *and* Pole III p_LEE ≥ 0.05 under the hemisphere-preserving conditional null with look-elsewhere correction. The data owner's point 1 is answered on the null he asked for. v3.1 reports the result and the conclusion stands as previously formulated.
+
+**Branch B (peaks survive):** Pole II p_LEE < 0.05 *or* Pole III p_LEE < 0.05. The circularity diagnostic (script 13, below) is run before any substantive conclusion. Two sub-branches, decided by the diagnostic's reported fraction:
+
+- **B1 (asymmetry geometrically entailed):** the preserved asymmetry can be reproduced from latitude-clustered intersections alone. Survival under this null is then circular — the null preserves a feature that is itself a consequence of the peaks — and does not vindicate the framework. v3.1 reports the result with the circularity finding.
+- **B2 (asymmetry has independent structure):** the asymmetry is not reproduced from latitude clustering alone. Survival is then a genuine result and requires v4 with a new pre-registration specifying how the hemisphere–bearing relationship enters the null. v3.1 still deposits (see stopping rule); v4 is opened in parallel.
+
+**Branch C (mixed):** Pole II and Pole III p_LEE fall on opposite sides of 0.05. Reported pole-by-pole with no aggregate verdict; the diagnostic is run for the surviving pole only, with B1/B2 applied to that pole.
+
+These branches are exhaustive. There is no fourth "the result is ambiguous, run further controls" option; genuine ambiguity is a Branch C outcome and is reported as such.
+
+### Circularity diagnostic (script 13): pre-committed specification
+
+The diagnostic tests whether the East/West bearing asymmetry that the hemisphere-preserving null preserves is itself a geometric consequence of intersections being concentrated at far-northern latitudes on the 47°W meridian, rather than an independent property of how structures are oriented.
+
+**Step 1 — Observed asymmetry.** Compute a deviation-from-true-north measure of bearing per hemisphere (the folded ±45° bearing convention used throughout), and take the difference of hemisphere medians as the observed asymmetry magnitude D_obs.
+
+**Step 2 — Synthetic bearings from the latitude-clustered model.** For each in-range site (real lat/lon), draw a target intersection latitude from the *observed* empirical distribution of intersection latitudes, then compute the bearing carrying that site's great circle to that target latitude on the 47°W meridian. **Multiplicity and existence are resolved by a fixed, model-neutral rule: where more than one bearing reaches the target latitude, take the solution of minimum absolute deviation from true north; where no bearing reaches it, discard the site and report the discarded count.** The minimum-deviation rule is chosen because it does not reference the site's observed bearing (which would reintroduce the quantity under test) and is the same neutral criterion for every site. This yields a synthetic bearing dataset with, by construction, the observed latitude clustering but no independent hemispheric input.
+
+**Step 3 — Synthetic asymmetry.** Compute the same hemisphere-median statistic on the synthetic data: D_synth.
+
+**Step 4 — Report the reproduction fraction R = D_synth / D_obs** (not a binary threshold). Interpretation is pre-committed by range:
+
+- **R ≥ 0.80:** the asymmetry is dominated by geometric entailment → Branch B1.
+- **R ≤ 0.20:** the asymmetry has substantial independent structure → Branch B2.
+- **0.20 < R < 0.80:** partial. Reported as "the asymmetry is approximately R reproducible from geometry alone." Resolved by a pre-committed secondary criterion: re-run the hemisphere-preserving conditional null on the *synthetic* bearings; if the peaks survive on synthetic data too (which carries only the geometric asymmetry), the surviving signal is geometric → B1; if they do not, the observed survival depended on the non-geometric component → B2.
+
+There is no sampling/inferential framework here (both D quantities are computed once from real or constructed data); R is a magnitude comparison and is reported as such. Script 13 is a separate artifact with its own log entry so its output can be examined independently of the script 12 null result.
+
+### Stopping rule (pre-committed)
+
+Scripts 12 and 13 are the final analyses before the v3.1 deposit, regardless of outcome:
+
+- Branch A → v3.1 deposits as formulated.
+- Branch B1 / partial-resolving-to-B1 → v3.1 deposits with the circularity
+  finding included.
+- Branch B2 / partial-resolving-to-B2 → v3.1 deposits *and* a v4
+  pre-registration is opened; the v3.1 deposit is not held for v4.
+- Branch C → v3.1 deposits with the pole-by-pole result and per-pole diagnostic.
+
+In every branch, v3.1 deposits after script 12 and 13. Further methodological controls beyond these are v4 territory and require their own pre-registration. This stopping rule is committed now, before results, so that the decision to deposit is not contingent on whether the outcome is favorable.
+
+### What this entry locks in
+
+1. Hemisphere cut: primary = Americas/Old World at −30°; sensitivity = prime meridian at 0°. Both run. Data-derived cuts (47°W, ±20°E) rejected.
+2. Three nulls (12a conditional, 12b block-conditional, 12c spatial-cluster), each under both cuts; LEE computed from each null's own distribution.
+3. Per-hemisphere descriptive output, including Pole III contributors' hemisphere membership, reported in every branch.
+4. Standard seed (20260517), M = 10,000.
+5. Three-way decision rule (A / B-with-B1·B2 / C), exhaustive; no fourth run further controls" option.
+6. Circularity diagnostic (script 13): hemisphere-median bearing statistic; synthetic bearings with the minimum-deviation solution rule and reported discard count; reproduction fraction R with pre-committed ranges and a secondary criterion for the 0.20–0.80 band.
+7. Stopping rule: v3.1 deposits after scripts 12 and 13 in every branch; B2 additionally opens a v4 pre-registration in parallel.
+
+Any deviation from this specification during implementation will be recorded in a subsequent log entry with explicit rationale before the affected step is run. A different hemisphere cut specified by the data owner's published basis is acceptable grounds for amendment before running; deviations after seeing partial results are not.
+
+The scripts will be implemented in collaboration with Claude Opus 4.8 (Anthropic) acting as analytic interlocutor, following this pre-commitment. The author runs the code, verifies the output against the pre-committed branches, and is responsible for the conclusions.
