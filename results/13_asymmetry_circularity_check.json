@@ -1,0 +1,51 @@
+{
+  "script": "13_asymmetry_circularity_check.py",
+  "run_timestamp_utc": "2026-06-08T08:04:27.528644+00:00",
+  "preregistration_doi": "10.5281/zenodo.20258204",
+  "status": "exploratory_post_publication",
+  "precommitment": "analysis_log.md entry 2026-06-08",
+  "file_hash_sha256": "426dd95f4f1d62dbb2ea6b7be0bd2d1499834fb8b2c923ca59299384fd4ddb7c",
+  "random_seed": 20260517,
+  "M_synth": 1000,
+  "bearing_grid_step_deg": 0.1,
+  "n_in_range": 994,
+  "mean_discards_per_perm": 164.411,
+  "thresholds": {
+    "B1_if_R_ge": 0.8,
+    "B2_if_R_le": 0.2
+  },
+  "by_cut": {
+    "primary_-30 (Americas/OldWorld)": {
+      "D_obs": 34.0,
+      "D_synth_median": 32.68192376834388,
+      "D_synth_5_95": [
+        31.190031553565504,
+        34.22291558519519
+      ],
+      "R_median": 0.961233052010114,
+      "R_5_95": [
+        0.9173538692225148,
+        1.006556340741035
+      ],
+      "R_uniform_target_median": 1.1386104779694772,
+      "branch": "B1"
+    },
+    "sensitivity_0 (prime meridian)": {
+      "D_obs": 33.0,
+      "D_synth_median": 32.1573805006924,
+      "D_synth_5_95": [
+        30.618892024627847,
+        33.68933168881387
+      ],
+      "R_median": 0.9744660757785576,
+      "R_5_95": [
+        0.9278452128675105,
+        1.0208888390549657
+      ],
+      "R_uniform_target_median": 1.148560292244849,
+      "branch": "B1"
+    }
+  },
+  "secondary_criterion": null,
+  "final_branch_primary_cut": "B1"
+}
