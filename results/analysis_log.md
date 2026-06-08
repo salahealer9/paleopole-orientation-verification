@@ -1106,3 +1106,31 @@ Two elaborations of the locked spec, recorded as elaborations not deviations: R 
 Point 1 is answered three independent ways: (a) the Pole III contributors are not single-hemisphere (73/46); (b) preserving the asymmetry and collapsing replication together (12c) dissolves Pole III entirely; (c) the asymmetry itself is geometrically entailed by the latitude clustering (13, R = 0.96), so its preservation cannot be evidence for a pole. Point 2 was conceded by the data owner (script 11). Point 3's within-site half is resolved from the database (the 29 entries are 8 locations); its cross-site half requires model-independent dates the data owner states do not exist, so it remains disclosed-but-unresolved under the standing decision rule.
 
 Per the pre-committed stopping rule, scripts 12 and 13 are the final analyses before the v3.1 deposit. v3.1 deposits regardless of further correspondence. Branch B1 does not trigger v4. Should the data owner respond again, the response will be recorded and assessed, but no further analysis is undertaken at this stage: no remaining point bears on the statistical question that is not already answered.
+
+---
+
+## 2026-06-08 — v3.1 finalised and deposited
+
+Version 3.1 of the report has been finalised, rendered, GPG-signed, and OpenTimestamped.
+
+**PDF SHA-256:** `82fea07d4ed8141ecdbe46fbd655e100ad4b4b4bc63e10c7dda72287c2f5ef6e`
+
+**Bitcoin attestations (upgraded 8 June 2026 after block confirmation):**
+
+- `writeup/results_v1.0.pdf.ots` — Bitcoin blocks **952853** and **952854**, merkleroots `e96b67321d5b90ccd07ad3e06f084406fb6b43066c0f514226952b3400a21cda` (952853) and `57ab8ece804ad847b212bf00b08d59ec4e0139a3eacc829441589d8ba045517e` (952854)
+- `writeup/results_v1.0.pdf.asc.ots` — Bitcoin blocks **952853** and **952854**, same merkleroots
+
+**Zenodo deposit:**
+
+- Version 3.1 DOI: `10.5281/zenodo.20593690`
+- Deposited 8 June 2026
+- Supersedes version 3 (10.5281/zenodo.20546301) and version 2 (10.5281/zenodo.20474028)
+
+**What v3.1 adds:** Responds to the data owner's 5 and 8 June 2026 follow-up letters (Appendices D and E). Adds script 11 (direct simulation of his peak-finding rule; his rule recovers his poles on observed data but finds no more than chance under realistic nulls; his per-degree binomial collapses from ~10⁻⁹ to 0.03 under the correct geometric baseline). Adds scripts 12 and 13 (hemisphere-preserving permutation null and asymmetry circularity diagnostic; Pole II dissolves; Pole III site-level residual dissolves once replication removed; East/West asymmetry ~96% reproducible from latitude clustering + geometry alone, R = 0.96). The pre-committed stopping rule is invoked; no further analysis will be conducted at this stage absent genuinely new evidence (model-independent dates or a flaw in scripts 11–13).
+
+**Corrected conclusion (unchanged from v3):** Under controls for both latitude look-elsewhere (assumption-free conditional null) and spatial autocorrelation (spatial-cluster null), no proposed pole shows clustering distinguishable from chance. Pole II p = 0.999, Pole III p = 0.90 under the global conditional null with look-elsewhere; both poles p = 1.0 under the spatial-cluster null with look-elsewhere (25–100 km thresholds). The v2 characterisation of "robust clustering at Poles II and III" is withdrawn.
+
+Version 3 remains available as a prior version. The pre-registration (10.5281/zenodo.20258204) and the v2/v3 analyses are unchanged. The transition from v3 to v3.1 is documented in Appendix B and in this analysis log.
+
+This entry closes the remaining *testable* points; the cross-site chronology question remains disclosed as unresolvable from available evidence (see §3.8.3, Appendix E). The project's documentation is complete.
+
