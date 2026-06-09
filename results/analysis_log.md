@@ -1134,3 +1134,20 @@ Version 3 remains available as a prior version. The pre-registration (10.5281/ze
 
 This entry closes the remaining *testable* points; the cross-site chronology question remains disclosed as unresolvable from available evidence (see §3.8.3, Appendix E). The project's documentation is complete.
 
+---
+
+## 2026-06-09 — Data owner's final letter: acceptance of the finding; close of the exchange
+
+The data owner sent a final letter on 9 June 2026 (preserved verbatim in `results/correspondence/2026-06-09_followup_from_mario.md`, with the author's reply alongside it). Two things in it bear on the record.
+
+First, he accepts the narrow statistical finding within the scope defined ("under the most stringent controls, they do not [cluster beyond chance] ... I accept that finding within the scope you defined"), and reaffirms that he will revise his published "100%" and "99.999%" probability figures. This completes the concession recorded on 8 June; the correction to his published materials is the principal concrete outcome of the post-publication exchange.
+
+Second, he sets out a substantially expanded interpretive framework — hemispheric asymmetry as evidence of a shared orientation choice, the last-glacial ice-sheet centroid, a glaciation/temperature correlation, crustal displacement, an Earth-expansion mechanism, global flood traditions, and submerged landscapes — and states his intention to develop it in a forthcoming book. None of this falls within the scope of the present analysis, which tests only whether the orientations cluster at the proposed latitudes beyond chance, and none of it is evaluated here. Two points he frames as "remaining" were in fact addressed by
+this analysis and are not reopened by the letter: the hemispheric asymmetry is ~96% reproducible from great-circle geometry plus the latitude distribution (script 13, §3.8.6), so it carries no information beyond near-north orientation and meridian geometry; and the "contemporary buildings point to the current pole" control is consistent with the Pole I result (§ Appendix E author's note) — it shows the method detects the pole everything already points to, not that it detects former poles. The remaining claims (geology, climatology, comparative mythology, Earth expansion) lie outside both the scope of this work and the author's competence, and are neither endorsed nor disputed here.
+
+The author's reply (same date) thanks him, accepts his acceptance, welcomes the revision of the probability figures, and declines on scope-and-competence grounds to evaluate the broader framework. The standing invitation remains: model-independent dating or structure-level provenance bearing on the orientation question would be considered; absent that, no further analysis is undertaken.
+
+Decision on the deposit: this letter does not warrant re-cutting the v3.1 deposit. It is preserved in the correspondence record and noted here; re-depositing a signed, timestamped, DOI-assigned artifact to append a closing letter that changes no analysis or conclusion would be disproportionate. Should some future change force a v3.2, the 9 June letter would be added then as an appendix (it would be the natural Appendix F); until then the correspondence files and this entry preserve it permanently. The pre-committed stopping rule stands: the statistical question is answered, and the exchange is closed absent genuinely new
+evidence.
+
+This concludes the post-publication exchange. The project documentation is complete.
